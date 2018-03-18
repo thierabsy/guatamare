@@ -1,0 +1,280 @@
+
+.allersite{
+    width: 110px;
+    text-align: center;
+    background: #4e626c linear-gradient(90deg, transparent, #4e626c,black);
+    padding: 5px;
+    box-shadow: 0 0 20px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 1px solid #39474e;
+    font-family: fantasy;
+    letter-spacing: 1.2px;
+    &:hover{
+        box-shadow: 0 0 5px;
+    }
+    a{
+        text-decoration: none;
+        color: gainsboro;
+        padding: 5px;
+        display: block; 
+        &:hover{
+            text-decoration: none;
+            color: white;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+        span{
+            // display: block;
+        }
+    }
+    &.a2{
+        width: 100%;
+        margin-top: 10px;
+        // background: white;
+        border-radius: 10px;
+        border: 1px solid gainsboro;
+        letter-spacing: 2px;
+        box-shadow: 0 0 5px;
+        &:hover{
+            background: gainsboro;
+        }
+        a{
+            // color: $blue3;
+            font-weight: bold;
+            &:hover{
+                color: $blue3;
+            }
+            img{
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+}
+.datetime {
+    width: 120px;
+    margin-right: 0;
+    margin-left: auto;
+    text-align: center;
+    padding: 10px;
+    background: #4e626c linear-gradient(90deg,black,transparent, transparent, #4e626c, black);
+    color: gainsboro;
+    box-shadow: 0 0 20px rgba(0,0,0,.5);
+    font-family: fantasy;
+    position: relative;
+    cursor: crosshair;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    .torotate{
+        position: absolute;
+        transition: 5s;
+        &.tr1{
+            right: 100%;
+        }
+        &.tr4{
+            left: 100%;
+        }
+    }
+    &:hover {
+        transform: rotate(360deg);
+        background: white;
+        box-shadow: inset 0 0 20px black;
+        .torotate {
+            position: absolute;
+            border: 1px solid #2f3b41;
+            &.tr1{
+                top: 13%;
+                left: 6%;
+                bottom: 40%;
+                right: 23%;
+                background: rgba(0,255,0,.5)
+            }
+            &.tr4{
+                bottom: 13%;
+                right: 6%;
+                top: 40%;
+                left: 22%;
+                background: rgba(255,0,0,.5);
+            }
+        }
+    }
+}
+.profilheader{
+    background: url(http://localhost:8000/img/items.jpg);
+    position: relative;
+    &.profil{
+        background: url(http://localhost:8000/img/welcome4.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    &.admin{
+        background: url(http://localhost:8000/img/pattern13.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .overlayer{
+        width: 100%;
+        height: 100%;
+        background: rgba(69, 90, 100, 0.85);
+    }
+    .container{
+        background: transparent;
+        box-shadow: 0px 0 $blue4, 0px 0 $blue4;
+        .auteurcard{
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: crosshair;
+            &:hover{
+                img{
+                    transform: rotate(-10deg);
+                    box-shadow: 5px 10px 5px;
+                }
+            }
+            img{
+                width: 110px;
+                height: 110px;
+                border-radius: 5px;
+                border: 2px solid rgba(0,0,0,.4);
+            }
+            h4{
+                margin-bottom: 0;
+                margin-top: 5px;
+                color: white;
+            }
+            p{
+                margin-bottom: 5px;
+                color: #45b95f;
+            }
+            span{
+                button{
+                    margin: 3px;
+                }
+            }
+            .configsignup{
+                margin-top: 10px;
+                a{
+                    text-decoration: none;
+                    color: gainsboro;
+                    padding: 5px;
+                    &:hover{
+                        text-decoration: none;
+                    }
+                }
+                .config:after {
+                    content: "|";
+                    padding-left: 5px;
+                    color: gray;
+                }
+                .signup{
+
+                }
+            }
+        }
+    }
+}
+.cardTopWrapper{
+    border: 2px solid rgba(0,0,0,.4);
+    padding: 2px;
+    box-shadow: 0 0 20px;
+    .cardTop {
+        padding: 5px;
+        background: #4e626c linear-gradient(to bottom, transparent, #4e626c, black);
+        position: relative;
+        border: 1px solid #293a46;
+        &:hover{
+            box-shadow: 0 0 20px;
+        }
+    }
+}
+
+
+.profilbody{
+    .container{
+        padding-top: 20px;
+        min-height: 100vh;
+        padding-bottom: 20px;
+    }
+    .ql-editor{
+        min-height: 150px;
+        background: white;
+    }
+}
+
+.list-group{
+    .list-group-item{
+        a{
+            color: $blue3;
+        }
+        &.activeNav{
+            background: linear-gradient(to right, transparent, rgba(69, 90, 100, 0.5));
+        }
+    }
+}
+
+.auteurright{
+    padding: 10px;
+    background: white;
+    border: 1px solid gainsboro;
+    margin-bottom: 10px;
+    h3.lead{
+        color: $blue3;
+        font-weight: 900;
+    }
+    .form-control{
+        background-color: #f4f8fd;
+    }
+    label{
+        font-weight: bold;
+    }
+    .card {
+        width: 300px;
+        margin: auto;
+        box-shadow: 0 0 10px;
+        img{
+            height: 165px;
+        }
+    }
+}
+
+button{
+    &.btnlinks{
+        border-radius: 0;
+        margin: 5px;
+        box-shadow: 0 0 6px rgba(0,0,0,.5);
+        &:hover{
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+}
+}
+
+.auteurarticles{
+    .pageheader{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        max-height: 600px;
+        overflow-y: scroll;
+        box-shadow: inset 0 0 10px;
+        border: 2px solid $blue4;
+        .card{
+            width: 300px;
+            margin: 10px;
+            text-align: center;
+            .card-img-top{
+                height: 150px;
+            }
+        }
+        &:after {
+            content: "";
+            flex: auto;
+            max-width: 40%;
+        }
+    }
+}

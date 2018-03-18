@@ -1,0 +1,73 @@
+
+
+.subNavItems{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .subNavItem {
+        margin: 5px;
+        border: 1px solid $blue4;
+        padding: 0 10px;
+        border-radius: 10px;
+        background: $blue4;
+        a{
+            color: white;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+    .activeSubNav{
+        background: #17a2b8;
+    }
+}
+
+.react-bs-table-container{
+    .react-bs-table-search-form{
+        display: flex;
+        justify-content: flex-end;
+        .form-control{
+            background-color: #c5cdd8;
+            border: 1px solid #8fa0a9;
+            box-shadow: 0 0 5px;
+            width: 70%;
+            transition: 1s;
+            &:focus{
+                width: 100%;
+            }
+        }
+    }
+   
+}
+.modal-header{
+    background: #4e626c linear-gradient(90deg, transparent, #4e626c,black);
+    color: white;
+    .close{
+        color: white;
+    }
+}
+.modal-content{
+    border: 1px solid rgb(78, 98, 108) !important;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: $blue3 !important;
+    border-color: $blue3 !important;
+}
+.page-item .page-link {
+    color: $blue4;
+}
+svg.svg-inline--fa.fa-sort.fa-w-10.order {
+    margin: 0px 0px 0px 10px !important;
+}
+
+.th-inner.table-header-column input {
+    width: 100%;
+    border-radius: 20px;
+    padding: 0 5px;
+    &:focus{
+        outline: none;
+    }
+}

@@ -1,0 +1,157 @@
+
+// SHARED COMPONENTS
+.currency{
+    margin: 10px 0;
+    padding: 5px;
+    background: lightgray;
+    @include boxShadow(0.4);
+
+    div#demo-rate-convert{
+        max-height: 280px;
+        overflow-y: auto;
+        input#curr_amount{
+            padding: 2px;
+        }
+        label{
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+        .form-control{
+            padding: 5px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        div#currency_converter_menu_links{
+            display: none;
+        }
+    }
+} // CURRENCY CONVERT
+
+.sidebarslider{
+    .sbslider{
+        border: 1px solid $blue3;
+        position: relative;
+        @include boxShadow(0.4);
+        .psheader{
+            text-align: center;
+            background: $blue3;
+            color: white;
+            margin-bottom: 10px;
+            border: 1px solid rgba(0, 0, 0, .05);
+            h5{
+                margin-bottom: 5px;
+            }
+            p{
+                margin-bottom: 0;
+            }
+        }
+        .pwrapper {
+            margin: 5px;
+            padding: 5px;
+            background: radial-gradient(transparent, $blue3);
+            box-shadow: 0 0px 1px rgba(0, 0, 0, 0.5);
+            &:hover{
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+        }
+        // SIDEBAR SLIDER
+    }
+    .ong{
+        // margin: 5px;
+        a{
+            text-decoration: none;
+            color: darkgrey;
+            text-align: center;
+            img{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                margin-left: 50%;
+                transform: translate(-50%);
+                margin-bottom: 5px;
+            }
+            h5{
+                font-size: 16px;
+            }
+        }
+    }
+    .prevnext{
+        .btx{
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            transform: scaleY(1.5);
+            background: #f4f8fd;
+            border: 1px solid $blue4;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            &:focus{
+                outline-color: transparent;
+            }
+            &.prev{
+                left: 0;
+            }
+            &.next{
+                right: 0;
+            }
+        }
+    }
+} // SIDEBAR SLIDER
+
+// AD METEO
+.admeteo{
+    .meteo{
+        img{
+            width: 100%;
+            height: 180px;
+            margin-bottom: 10px;
+            @include boxShadow(0.3);
+        }
+    }
+    .ad{
+        img{
+            width: 100%;
+            height: 160px;
+            @include boxShadow(0.3);
+        }
+    }
+}
+
+// TV
+.tv{
+    padding-bottom: 5px;
+    @include boxShadow(0.4);
+    h5{
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding: 5px;
+        font-style: italic;
+        text-transform: uppercase;
+        background: lightgray;
+    }
+    .vtop{
+        padding: 5px;
+        margin-bottom: 5px;
+        background: lightgray;
+    }
+    .vlist{
+        background: lightgray;
+        margin-left: 5px;
+        padding: 5px;
+        box-shadow: inset 1px 0 5px;
+        max-height: 130px;
+        overflow-y: scroll;
+        ul{
+            padding: 5px;
+            li{
+                list-style: none;
+                border-bottom: 1px dotted #898b8c;
+                a{
+                    i{
+
+                    }
+                }
+            }
+        }
+    }
+}
