@@ -98626,7 +98626,7 @@ var Auteur = function (_Component) {
         value: function render() {
             var pageContent = __WEBPACK_IMPORTED_MODULE_2_query_string___default.a.parse(this.props.location.search);
             var pagemap = pageContent.action;
-
+            // console.log(this.state.currentArticle.titre);
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'profilpage' },
@@ -99186,7 +99186,8 @@ var Auteurarticles = function Auteurarticles() {
 var Auteurrediger = function Auteurrediger(_ref) {
     var titreChange = _ref.titreChange;
 
-    console.log(titreChange);
+    // console.log(titreChange)
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'auteurprofil' },
@@ -103370,13 +103371,6 @@ module.exports = function (css) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__path__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Auteurresumeview__ = __webpack_require__(418);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Auteurfullarticle__ = __webpack_require__(419);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
@@ -103384,56 +103378,42 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var Auteurarticleapercu = function Auteurarticleapercu(_ref) {
+    var currentArticle = _ref.currentArticle;
 
-var Auteurarticleapercu = function (_Component) {
-    _inherits(Auteurarticleapercu, _Component);
-
-    function Auteurarticleapercu() {
-        _classCallCheck(this, Auteurarticleapercu);
-
-        return _possibleConstructorReturn(this, (Auteurarticleapercu.__proto__ || Object.getPrototypeOf(Auteurarticleapercu)).apply(this, arguments));
-    }
-
-    _createClass(Auteurarticleapercu, [{
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: 'auteurarticleapercu' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Auteurresumeview__["a" /* default */], { rv: this.props.currentArticle }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Auteurfullarticle__["a" /* default */], { fa: this.props.currentArticle }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'auteurarticleapercu' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Auteurresumeview__["a" /* default */], { rv: currentArticle }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Auteurfullarticle__["a" /* default */], { fa: currentArticle }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'btnlinks text-center' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { to: '#' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'btnlinks text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                        { to: '#' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { className: 'btn btn-primary btnlinks' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-edit' }),
-                            ' Modifier '
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
-                        { to: '#' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { className: 'btn btn-success btnlinks' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-share-square' }),
-                            ' Poster '
-                        )
-                    )
+                    'button',
+                    { className: 'btn btn-primary btnlinks' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-edit' }),
+                    ' Modifier '
                 )
-            );
-        }
-    }]);
-
-    return Auteurarticleapercu;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */],
+                { to: '#' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { className: 'btn btn-success btnlinks' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-share-square' }),
+                    ' Poster '
+                )
+            )
+        )
+    );
+};
 
 /* harmony default export */ __webpack_exports__["a"] = (Auteurarticleapercu);
 
@@ -106305,6 +106285,7 @@ module.exports = function (styleStr) {
 var Auteurresumeview = function Auteurresumeview(_ref) {
     var rv = _ref.rv;
 
+    console.log(rv);
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'resumeview' },
@@ -106439,7 +106420,7 @@ var Auteurfullarticle = function Auteurfullarticle(_ref) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'text' },
-                    __WEBPACK_IMPORTED_MODULE_2_react_render_html___default()(fa.articlebody)
+                    fa.articlebody && __WEBPACK_IMPORTED_MODULE_2_react_render_html___default()(fa.articlebody)
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',

@@ -17,7 +17,7 @@ const Auteurfullarticle = ({fa}) => {
                     </div>
                     <img src={`${ urlPath }/img/economie.jpg`} className="" />
                     <div className="text">
-                        { renderHTML(fa.articlebody) }
+                        { fa.articlebody && renderHTML(fa.articlebody) }
                     </div>
                     <div className="articlefooter">
                         <h4>Dr Mocoudou FAYE</h4>

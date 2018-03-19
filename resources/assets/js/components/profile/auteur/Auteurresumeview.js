@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { urlPath } from '../../path';
 
 const Auteurresumeview = ({rv}) => {
+    console.log(rv)
     return(
         <div className="resumeview">
             <h3>Résumé</h3> <span className="parties">(Image, Titre, Résumé)</span>

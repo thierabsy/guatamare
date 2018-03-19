@@ -41,7 +41,7 @@ export default class Auteur extends Component {
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
-
+        // console.log(this.state.currentArticle.titre);
         return (
             <div className="profilpage" >
                 <div className="profilheader profil">

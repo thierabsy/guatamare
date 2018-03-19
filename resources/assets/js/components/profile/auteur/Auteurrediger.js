@@ -7,8 +7,9 @@ import 'react-quill/dist/quill.snow.css';
 
 import { panelistes } from '../../data/panelistes';
 
-const Auteurrediger = ({titreChange}) => {
-    console.log(titreChange)
+const Auteurrediger = ({titreChange}) => { 
+    // console.log(titreChange)
+    
     return (
         <div className="auteurprofil">
             <form action="" >

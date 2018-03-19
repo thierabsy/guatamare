@@ -5,13 +5,12 @@ import { urlPath } from '../../path';
 import Auteurresumeview from './Auteurresumeview';
 import Auteurfullarticle from './Auteurfullarticle';
 
-class Auteurarticleapercu extends Component {
-    render(){
+const Auteurarticleapercu = ({currentArticle})=> {
         return (
             <div className="auteurarticleapercu">
-                <Auteurresumeview rv={this.props.currentArticle} />
+                <Auteurresumeview rv={ currentArticle } />
                 <hr />
-                <Auteurfullarticle fa={this.props.currentArticle}  />
+                <Auteurfullarticle fa={ currentArticle }  />
                 <hr />
                 <div className="btnlinks text-center">
                     <Link to="#"><button className="btn btn-primary btnlinks"><i className="fas fa-edit"></i> Modifier </button></Link>
@@ -19,7 +18,6 @@ class Auteurarticleapercu extends Component {
                 </div> 
             </div>
         );
-    }
 }
 
 export default Auteurarticleapercu;
