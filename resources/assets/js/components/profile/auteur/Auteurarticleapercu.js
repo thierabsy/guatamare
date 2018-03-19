@@ -5,12 +5,12 @@ import { urlPath } from '../../path';
 import Auteurresumeview from './Auteurresumeview';
 import Auteurfullarticle from './Auteurfullarticle';
 
-const Auteurarticleapercu = ({currentArticle})=> {
+const Auteurarticleapercu = ({currentArticle, preview})=> {
         return (
             <div className="auteurarticleapercu">
-                <Auteurresumeview rv={ currentArticle } />
+                <Auteurresumeview rv={ currentArticle } preview={preview} />
                 <hr />
-                <Auteurfullarticle fa={ currentArticle }  />
+                <Auteurfullarticle fa={ currentArticle } preview={preview}   />
                 <hr />
                 <div className="btnlinks text-center">
                     <Link to="#"><button className="btn btn-primary btnlinks"><i className="fas fa-edit"></i> Modifier </button></Link>

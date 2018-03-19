@@ -51,7 +51,7 @@ class Topheader extends Component {
                         <span className="torotate tr4"></span>
                         <span className="date">Date:  {('0'+today).slice(-2) }-{ ('0'+month).slice(-2) }-{year} </span> <br />
                         <span className="time">Heure UTC <br/> {  ('0'+this.state.hours).slice(-2) }:{ ('0'+this.state.minutes).slice(-2)}:{ ('0'+this.state.seconds).slice(-2) } </span>
-                        
+                        {/* <span className="torotate tr3"> { this.state.hours < 14 ? "Bonsoir" : "Bonjour" } </span> */}
                     </div>
                 </div>
             </div>

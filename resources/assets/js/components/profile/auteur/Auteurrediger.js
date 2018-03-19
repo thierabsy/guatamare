@@ -6,13 +6,14 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import { panelistes } from '../../data/panelistes';
+import FileUpload from '../FileUpload';
 
-const Auteurrediger = ({titreChange}) => { 
+const Auteurrediger = ({titreChange, imgLoaded, dz, preview, currentArticle}) => { 
     // console.log(titreChange)
     
     return (
         <div className="auteurprofil">
-            <form action="" >
+            <form action="" encType="multipart/form-data" >
                 <div className="form-group">
                     <label htmlFor="titre">Titre</label>
                     <input  
@@ -20,8 +21,9 @@ const Auteurrediger = ({titreChange}) => {
                         id="titre" 
                         name="titre" 
                         placeholder="Entrez le titre de l'article" 
-                        onChange={ e => titreChange(e)}
+                        onChange={ e => titreChange(e) }
                         className="form-control"
+                        defaultValue={ currentArticle.titre }
                     />
                 </div>
                 <div className="form-group">
@@ -53,11 +55,22 @@ const Auteurrediger = ({titreChange}) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="resume">Résumé</label>
-                    <input type="text" className="form-control" id="resume" name="resume" placeholder="Entrez un court résumé de l'article" />
+                    <textarea  
+                        className="form-control" 
+                        id="resume" 
+                        name="resume" 
+                        placeholder="Entrez un court résumé de l'article" 
+                        rows="2"
+                        onChange={ e => titreChange(e) }
+                    ></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="mainimage">Choisir l'image principal</label>
-                    <input type="file" className="form-control" id="mainimage" name="mainimage" />
+                    {/* <input type="file" className="form-control" id="mainimage" name="mainimage" onChange={ e => imgLoaded(e) } /> */}
+                    <FileUpload dz={dz} >
+                        Upload an image
+                        { preview && <img src={preview} />} 
+                    </FileUpload>
                     <span> Format: jpg ou png</span>
                 </div>
                 <div className="form-group">
@@ -70,8 +83,11 @@ const Auteurrediger = ({titreChange}) => {
                         name="articlebody" 
                         placeholder="Votre article ici ........."
                         className="form-control"
+                        ref={ input => currentArticle.articlebody = input }
+                        onChange={ e => titreChange(e) }
                     />                    
                 </div>
+                {/* <input type="hidden" value={{ csrf_token() }} name="_token" /> */}
                 <button type="submit" className="btn btn-primary btnlinks"><i className="fas fa-save"></i> Enregistrer </button>
             </form>
         </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import renderHTML from 'react-render-html';
 import { urlPath } from '../../path';
 
-const Auteurfullarticle = ({fa}) => {
+const Auteurfullarticle = ({fa, preview}) => {
     return(
         <div className="fullarticle">
             <h3>Article entier</h3> <span className="parties">(Titre, Image, Contenu)</span>
@@ -15,9 +15,9 @@ const Auteurfullarticle = ({fa}) => {
                         <span className="span1"><i className="fas fa-edit"></i> Auteur</span>
                         <span className="span2"><i className="fas fa-clock"></i> 04-04-2018</span>
                     </div>
-                    <img src={`${ urlPath }/img/economie.jpg`} className="" />
+                    <img src={preview} className="" />
                     <div className="text">
-                        { fa.articlebody && renderHTML(fa.articlebody) }
+                        {/* { fa.articlebody && renderHTML(fa.articlebody) } */}
                     </div>
                     <div className="articlefooter">
                         <h4>Dr Mocoudou FAYE</h4>

@@ -23,25 +23,48 @@ export default class Auteur extends Component {
                 resume: 'Resume A',
                 image: 'Image A',
                 articlebody: 'Body A'
-            }
+            },
+            imagePreviewUrl: []
         }
         this.titreChange = this.titreChange.bind(this);
+        this.imgLoaded = this.imgLoaded.bind(this);
+        this.dropZone = this.dropZone.bind(this);
     }
     componentDidMount(){
         }
 
     titreChange(e){
         this.setState({
-            ...this.state.currentArticle,
-            currentArticle:{
-                titre: e.target.value
+            currentArticle: { 
+                ...this.state.currentArticle,
+                [e.target.name]: e.target.value
             }
         })
     }
+    imgLoaded(e){
+        this.setState({
+            currentArticle: { 
+                ...this.state.currentArticle,
+                image: e.target.files[0]
+            }
+        })
+    }
+
+   dropZone(files){
+       this.setState({
+           imagePreviewUrl: files
+       })
+   }
+    
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
-        // console.log(this.state.currentArticle.titre);
+        console.log(this.state.currentArticle.titre);
+        console.log(this.state.currentArticle);
+        console.log(this.state);
+        console.log(this.state.currentArticle.image);
+        console.log(this.state.imagePreviewUrl);
+        console.log(this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview);
         return (
             <div className="profilpage" >
                 <div className="profilheader profil">
@@ -68,11 +91,11 @@ export default class Auteur extends Component {
                                         pagemap === "Mes Articles" ?
                                             <Auteurarticles /> :
                                         pagemap === "Rédiger un article" ?
-                                            <Auteurrediger titreChange={this.titreChange} /> :
+                                            <Auteurrediger preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} dz={this.dropZone} titreChange={this.titreChange} imgLoaded={this.imgLoaded} currentArticle={this.state.currentArticle}/> :
                                         pagemap === "Aperçu" ?
-                                            <Auteurarticleapercu currentArticle={this.state.currentArticle} /> :
+                                            <Auteurarticleapercu preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} currentArticle={this.state.currentArticle} /> :
                                         pagemap === "Poster un article" ?
-                                            <Auteurposter ap={ this.state.currentArticle } /> :
+                                            <Auteurposter preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} ap={ this.state.currentArticle } /> :
 
                                             <Auteuralertes />
                                     }
