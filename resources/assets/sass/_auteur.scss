@@ -253,7 +253,17 @@ button{
     }
 }
 }
-
+.resumeview{
+    .pageheader{
+        text-align: center;
+        .svg-inline--fa{
+            margin-left:5px;
+        }
+        .card-img-top{
+            height: 150px !important;
+        }
+    }
+}
 .auteurarticles{
     .pageheader{
         display: flex;
@@ -268,8 +278,14 @@ button{
             margin: 10px;
             text-align: center;
             .card-img-top{
-                height: 150px;
+                height: 150px !important;
             }
+            .card-body.text{
+            background: linear-gradient(to bottom, white, white,transparent);
+            z-index: 2;
+            border: 1px solid lightgray;
+            margin: -30px 10px 0;
+        }
         }
         &:after {
             content: "";
@@ -285,7 +301,17 @@ button{
         overflow-y: auto;
     }
 }
-.ignore img {
-    width: 100%;
-    height: 300px;
+.ignore {
+    img {
+        width: 100%;
+        height: 300px;
+        border: 1px solid $blue4;
+        margin-top: 5px;
+    }
+    span.imgchoice {
+        background: gainsboro;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }

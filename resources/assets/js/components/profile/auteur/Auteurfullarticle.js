@@ -15,9 +15,9 @@ const Auteurfullarticle = ({fa, preview}) => {
                         <span className="span1"><i className="fas fa-edit"></i> Auteur</span>
                         <span className="span2"><i className="fas fa-clock"></i> 04-04-2018</span>
                     </div>
-                    <img src={preview} className="" />
+                    <img src={preview || `${urlPath}/img/economie.jpg`} className="mainImage" />
                     <div className="text">
-                        {/* { fa.articlebody && renderHTML(fa.articlebody) } */}
+                        { fa.articlebody && renderHTML(fa.articlebody) }
                     </div>
                     <div className="articlefooter">
                         <h4>Dr Mocoudou FAYE</h4>

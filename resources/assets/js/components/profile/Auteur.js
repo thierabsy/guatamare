@@ -12,6 +12,7 @@ import Auteurposter from './auteur/Auteurposter';
 import AuteurNav from './auteur/AuteurNav';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
+// import { Quill } from 'quill';
 
 export default class Auteur extends Component {
     constructor(props){
@@ -28,6 +29,7 @@ export default class Auteur extends Component {
         }
         this.titreChange = this.titreChange.bind(this);
         this.imgLoaded = this.imgLoaded.bind(this);
+        this.getBody = this.getBody.bind(this);
         this.dropZone = this.dropZone.bind(this);
     }
     componentDidMount(){
@@ -49,7 +51,14 @@ export default class Auteur extends Component {
             }
         })
     }
-
+    getBody(value){
+        this.setState({
+            currentArticle: { 
+                ...this.state.currentArticle,
+                articlebody: value
+            }
+        })
+    }
    dropZone(files){
        this.setState({
            imagePreviewUrl: files
@@ -59,7 +68,7 @@ export default class Auteur extends Component {
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
-        console.log(this.state.currentArticle.titre);
+        console.log(this.state.currentArticle.articlebody);
         console.log(this.state.currentArticle);
         console.log(this.state);
         console.log(this.state.currentArticle.image);
@@ -91,7 +100,7 @@ export default class Auteur extends Component {
                                         pagemap === "Mes Articles" ?
                                             <Auteurarticles /> :
                                         pagemap === "Rédiger un article" ?
-                                            <Auteurrediger preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} dz={this.dropZone} titreChange={this.titreChange} imgLoaded={this.imgLoaded} currentArticle={this.state.currentArticle}/> :
+                                            <Auteurrediger getbd={this.getBody} preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} dz={this.dropZone} titreChange={this.titreChange} imgLoaded={this.imgLoaded} currentArticle={this.state.currentArticle}/> :
                                         pagemap === "Aperçu" ?
                                             <Auteurarticleapercu preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} currentArticle={this.state.currentArticle} /> :
                                         pagemap === "Poster un article" ?

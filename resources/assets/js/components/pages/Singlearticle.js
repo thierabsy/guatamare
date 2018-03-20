@@ -50,7 +50,7 @@ class Singlearticle extends Component {
                                         <span className="span1"><i className="fas fa-edit"></i> Auteur</span>
                                         <span className="span2"><i className="fas fa-clock"></i> 04-04-2018</span>
                                     </div>
-                                    <img src={`${ urlPath }/img/${page.categorie}${index+1}.jpg`} className="" />
+                                    <img src={`${ urlPath }/img/${page.categorie}${index+1}.jpg`} className="mainImage" />
                                     <div className="text">
                                         <p className="articlebody" >{page.fullarticle}</p>
                                         <p className="articlebody" >{page.fullarticle}</p>

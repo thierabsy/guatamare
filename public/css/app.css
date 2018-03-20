@@ -1486,7 +1486,7 @@ ul.navbar-nav li a {
   margin-right: 10px;
 }
 
-.singlearticle .articleContent img {
+.singlearticle .articleContent img.mainImage {
   width: 100%;
   height: 350px;
   margin: 10px 0;
@@ -2001,6 +2001,18 @@ button.btnlinks:hover {
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
+.resumeview .pageheader {
+  text-align: center;
+}
+
+.resumeview .pageheader .svg-inline--fa {
+  margin-left: 5px;
+}
+
+.resumeview .pageheader .card-img-top {
+  height: 150px !important;
+}
+
 .auteurarticles .pageheader {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2023,7 +2035,15 @@ button.btnlinks:hover {
 }
 
 .auteurarticles .pageheader .card .card-img-top {
-  height: 150px;
+  height: 150px !important;
+}
+
+.auteurarticles .pageheader .card .card-body.text {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(white), to(transparent));
+  background: linear-gradient(to bottom, white, white, transparent);
+  z-index: 2;
+  border: 1px solid lightgray;
+  margin: -30px 10px 0;
 }
 
 .auteurarticles .pageheader:after {
@@ -2042,6 +2062,15 @@ button.btnlinks:hover {
 .ignore img {
   width: 100%;
   height: 300px;
+  border: 1px solid rgba(69, 90, 100, 0.8);
+  margin-top: 5px;
+}
+
+.ignore span.imgchoice {
+  background: gainsboro;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .subNavItems {

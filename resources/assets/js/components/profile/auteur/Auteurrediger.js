@@ -8,8 +8,8 @@ import 'react-quill/dist/quill.snow.css';
 import { panelistes } from '../../data/panelistes';
 import FileUpload from '../FileUpload';
 
-const Auteurrediger = ({titreChange, imgLoaded, dz, preview, currentArticle}) => { 
-    // console.log(titreChange)
+const Auteurrediger = ({titreChange, imgLoaded, dz, preview, getbd, currentArticle}) => { 
+    // console.log(getContents(): Delta)
     
     return (
         <div className="auteurprofil">
@@ -68,7 +68,7 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, currentArticle}) =>
                     <label htmlFor="mainimage">Choisir l'image principal</label>
                     {/* <input type="file" className="form-control" id="mainimage" name="mainimage" onChange={ e => imgLoaded(e) } /> */}
                     <FileUpload dz={dz} >
-                        Upload an image
+                        <span className="imgchoice"> <i className="fas fa-upload" /> {preview ? "Changer l'image" : "Choisir une image ou Glisser et déposer ici"} </span>
                         { preview && <img src={preview} />} 
                     </FileUpload>
                     <span> Format: jpg ou png</span>
@@ -83,8 +83,8 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, currentArticle}) =>
                         name="articlebody" 
                         placeholder="Votre article ici ........."
                         className="form-control"
-                        ref={ input => currentArticle.articlebody = input }
-                        onChange={ e => titreChange(e) }
+                        value={ currentArticle.articlebody }
+                        onChange={ value => getbd(value) }
                     />                    
                 </div>
                 {/* <input type="hidden" value={{ csrf_token() }} name="_token" /> */}

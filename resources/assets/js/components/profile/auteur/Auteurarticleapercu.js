@@ -13,8 +13,8 @@ const Auteurarticleapercu = ({currentArticle, preview})=> {
                 <Auteurfullarticle fa={ currentArticle } preview={preview}   />
                 <hr />
                 <div className="btnlinks text-center">
-                    <Link to="#"><button className="btn btn-primary btnlinks"><i className="fas fa-edit"></i> Modifier </button></Link>
-                    <Link to="#"><button className="btn btn-success btnlinks"><i className="fas fa-share-square"></i> Poster </button></Link>
+                    <Link to="?action=Rédiger%20un%20article"><button className="btn btn-primary btnlinks"><i className="fas fa-edit"></i> Modifier </button></Link>
+                    <Link to="?action=Poster%20un%20article"><button className="btn btn-success btnlinks"><i className="fas fa-share-square"></i> Suivant </button></Link>
                 </div> 
             </div>
         );

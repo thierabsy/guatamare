@@ -16,7 +16,7 @@ const Auteurposter = ({ap, preview}) => {
             <p>Une fois envoyé, vous ne pourrez plus modifier l'article.</p>
             <div className="articleposter">
                 <div className="card" >
-                    <img className="card-img-top" src={preview} />
+                    <img className="card-img-top" src={preview || `${urlPath}/img/economie.jpg`} className="card-img-top"  />
                     <div className="card-body text">
                         <h3> { ap.titre } </h3>
                         <p className="card-text" > { ap.resume } </p>
