@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/data', function (){
-    $var = [2];
-    return response()->json($var);
+    // $var = [2];
+    $v2 = ["Hi from Laravel", "How are u!"];
+    return response()->json($v2);
 });

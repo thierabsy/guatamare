@@ -8,6 +8,7 @@ import Offrespartenaires from '../homepage/Offrespartenaires';
 import Singlearticleslider from './Singlearticleslider';
 import Convertisseurdevise from '../shared/Convertisseurdevise';
 import Sidebarslider from '../sliders/Sidebarslider';
+import Sidebarad1 from '../ads/Sidebarad1';
 import { urlPath } from '../path';
 
 class Singlearticle extends Component {
@@ -85,9 +86,8 @@ class Singlearticle extends Component {
 
                         </div>
                         <div className="col col-sm-12 col-md-3 right sidebarslider">
+                            <Sidebarad1 />
                             <Convertisseurdevise />
-                            {/*************** SIDEBARSLIDER *******************/}
-                            
                             <Sidebarslider />
 
                             {/*************** SIDEBARSLIDER *******************/}

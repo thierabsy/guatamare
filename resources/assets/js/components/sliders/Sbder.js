@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import { urlPath } from '../path';
 
-import { mainsliders } from '../data/mainsliders';
+import { ongslider } from '../data/ongslider';
 
 class Sbder extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class Sbder extends Component {
     previous() {
         this.slider.slickPrev()
     }
+
     render() {
         let settings = {
             infinite: true,
@@ -26,6 +27,17 @@ class Sbder extends Component {
             arrows: false,
             autoplay: true
         };
+        let ong = ongslider.map((ong, i) => {
+            return (
+                <div className="ong" key={1}>
+                    <div className="pwrapper"> 
+                        <a href={ong.link}>
+                            <img src={`${urlPath}/img/${ong.img}`} title={ong.name} alt={ong.name} />
+                        </a>
+                    </div>
+                </div>
+            )
+        })
         return (
             <div className="row sidebarslider" >
                 <div className="sbslider">
@@ -33,41 +45,7 @@ class Sbder extends Component {
                         <h5><span>PARTENAIRES</span> </h5>
                     </div> 
                     <Slider ref={sbs => this.slider = sbs } {...settings} className="sliderwrapper" >
-                        <div className="ong">
-                        <div className="pwrapper"> 
-                            <a href="#">
-                            <img src={`${urlPath}/img/ong1.png`} />
-                            </a>
-                            </div>
-                        </div>
-                        <div className="ong">
-                        <div className="pwrapper"> 
-                            <a href="#">
-                            {/* <img src={`${urlPath}/img/ong2.png`} /> */}
-                            </a>
-                            </div>
-                        </div>
-                        <div className="ong">
-                        <div className="pwrapper">
-                            <a href="#">
-                            <img src={`${urlPath}/img/ong3.jpg`} />
-                            </a>
-                            </div>
-                        </div>
-                        <div className="ong">
-                            <div className="pwrapper">
-                                <a href="#">
-                                    <img src={`${urlPath}/img/ong4.png`} />
-                                </a>
-                            </div>
-                        </div>
-                        <div className="ong">
-                        <div className="pwrapper">
-                            <a href="#">
-                            <img src={`${urlPath}/img/ong5.jpg`} /> 
-                            </a>
-                            </div>
-                        </div>
+                       { ong }
                     </Slider>
                     <div className="prevnext" >
                         <button className='btx prev' onClick={this.previous}> <i className="fas fa-angle-left"></i> </button>

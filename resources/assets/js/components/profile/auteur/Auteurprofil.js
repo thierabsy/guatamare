@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { urlPath } from '../../path';
-
+import FileUpload from '../FileUpload';
+import ColorPicker from '../ColorPicker';
 
 let submitProfil = (e)=>{
     e.preventDefault()
@@ -12,7 +13,7 @@ let inputChange = (e)=>{
     
 }
 
-const Auteurprofil = (props) => {
+const Auteurprofil = ({dz, preview, handlePicker, showPicker, pickedColor, color}) => {
         return (
             <div className="auteurprofil">
                 <form action="" onSubmit={submitProfil}>
@@ -37,9 +38,19 @@ const Auteurprofil = (props) => {
                         <textarea rows="3" className="form-control" id="bio" name="bio" placeholder="Entrez votre biographie"></textarea>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="color"> Color </label>
-                        <input type="color" className="form-control" value="" id="color" name="color" placeholder="Entrez votre couleur préférée" />
+                        <label htmlFor="fonction"> Avatar (Image) </label> <span>*</span>
+                        {/* <input type="file" className="form-control" id="avatar" name="avatar" /> */}
+                        <FileUpload dz={dz} >
+                            <span className="imgchoice"> <i className="fas fa-upload" /> {preview ? "Changer l'image" : "Choisir une image ou Glisser et déposer ici"} </span>
+                            { preview && <img src={preview} className="logo" />} 
+                        </FileUpload>
                     </div>
+                    <ColorPicker 
+                        showPicker={showPicker} 
+                        handlePicker={handlePicker} 
+                        pickedColor={pickedColor}
+                        color={color} 
+                    />
                     <div className="form-group">
                         <label>Réseaux sociaux</label>
                         <div className="input-group mb-3">

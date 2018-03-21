@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import renderHTML from 'react-render-html';
 import { urlPath } from '../../path';
 
+let d = new Date();
+let today = d.getDate();
+let month = d.getMonth()+1;
+let year = d.getFullYear();
+
 const Auteurfullarticle = ({fa, preview}) => {
     return(
         <div className="fullarticle">
@@ -13,7 +18,7 @@ const Auteurfullarticle = ({fa, preview}) => {
                     <h3 className="title" >{ fa.titre } </h3>
                     <div className="articleauteur">
                         <span className="span1"><i className="fas fa-edit"></i> Auteur</span>
-                        <span className="span2"><i className="fas fa-clock"></i> 04-04-2018</span>
+                        <span className="span2"><i className="fas fa-clock"></i>  { today }-{ month }-{ year } </span>
                     </div>
                     <img src={preview || `${urlPath}/img/economie.jpg`} className="mainImage" />
                     <div className="text">

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { urlPath } from '../../path';
 
 import { autnavitems } from '../../data/autnavitems';
+import { adsnavitems } from '../../data/adsnavitems';
 
 let AutNavItems = ({ap})=>  autnavitems.map((item, index) => {
                             let col = item.color;
@@ -13,13 +14,15 @@ let AutNavItems = ({ap})=>  autnavitems.map((item, index) => {
                                 </div>
                             )  
                         })
+
 const AuteurNav = ({activepage}) => {
 
         return (
             <div className="auteurcard">
-                <div className="list-group">
+                <div className="list-group auteur">
                    <AutNavItems ap={activepage} />
                 </div>
+                <hr />
                 <div className="allersite a2">
                     <Link to="../" target="_blank" >
                         <span>GUATAMARE</span> <br />

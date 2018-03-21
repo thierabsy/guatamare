@@ -1515,6 +1515,14 @@ ul.navbar-nav li a {
   font-size: 14px;
 }
 
+.sidebarad1 img {
+  width: 100%;
+  max-width: 260px;
+  height: 180px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .videowrapper {
   position: relative;
 }
@@ -1951,6 +1959,11 @@ ul.navbar-nav li a {
 
 .list-group .list-group-item a {
   color: #455a64;
+  display: block;
+}
+
+.list-group .list-group-item a:hover {
+  text-decoration: none;
 }
 
 .list-group .list-group-item.activeNav {
@@ -2066,11 +2079,93 @@ button.btnlinks:hover {
   margin-top: 5px;
 }
 
+.ignore img.logo {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
 .ignore span.imgchoice {
   background: gainsboro;
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.pubcote h3,
+.pubbanner h3 {
+  text-align: center;
+}
+
+.pubcote .imgCote,
+.pubbanner .imgCote {
+  width: 310px;
+  height: 210px;
+  display: block;
+  margin: 10px 150px;
+}
+
+.pubcote .imgBanner,
+.pubbanner .imgBanner {
+  width: 780px;
+  height: 120px;
+  display: block;
+  margin: 10px;
+}
+
+.pubcote .btnWrapper button,
+.pubbanner .btnWrapper button {
+  text-align: center;
+  padding: 3px 20px;
+}
+
+.smile {
+  text-align: center;
+  font-weight: bold;
+  -webkit-transition: -webkit-transform 3s;
+  transition: -webkit-transform 3s;
+  transition: transform 3s;
+  transition: transform 3s, -webkit-transform 3s;
+}
+
+.smile:hover .si1 {
+  -webkit-transform: translate(120px, -14px);
+          transform: translate(120px, -14px);
+  background: yellowgreen !important;
+  color: yellowgreen !important;
+}
+
+.smile:hover .si2 {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.smile:hover .si3 {
+  -webkit-transform: rotate(-393deg) !important;
+          transform: rotate(-393deg) !important;
+}
+
+.smile .smileicon.si1 {
+  color: yellow;
+  font-size: 100px;
+  background: white;
+  border-radius: 55px;
+}
+
+.smile .smileicon.si2 {
+  color: green;
+  font-size: 140px;
+}
+
+.smile .smileicon.si3 {
+  color: orange;
+  font-size: 100px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.smile .bb {
+  display: block;
 }
 
 .subNavItems {

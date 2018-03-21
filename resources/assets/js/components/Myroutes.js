@@ -9,6 +9,7 @@ import Footer from './shared/Footer';
 import Singlearticle from './pages/Singlearticle'; 
 import Auteur from './profile/Auteur';
 import Admin from './profile/Admin';
+import Publicite from './profile/Publicite';
 
 const Myroutes = ()=>{
     return (
@@ -18,6 +19,7 @@ const Myroutes = ()=>{
                     <div className="topbar" />
                     <Route exact={true} path="/profil" component={ Auteur } />
                     <Route path="/admin" component={ Admin } />
+                    <Route path="/publicite" component={ Publicite } />
                     <Route exact={true} path="/" component={Homepage} />
                     <Route path="/kiosque" component={Kiosque} />
                     <Route path="/categorie/:pages/:article" component={Singlearticle} />

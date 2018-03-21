@@ -19,6 +19,7 @@ const AdminNav = ({type}) => {
                 <div className="list-group">
                    <AdminNavItems apg={type} />
                 </div>
+                <hr />
                 <div className="allersite a2">
                     <Link to="../" target="_blank" >
                         <span>GUATAMARE</span> <br />

@@ -29,3 +29,6 @@ Route::get('/profil', function () {
 Route::get('/admin', function () {
     return view('welcome');
 });
+Route::get('/publicite', function () {
+    return view('welcome');
+});

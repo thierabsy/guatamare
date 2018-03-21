@@ -4,11 +4,13 @@ import {urlPath} from '../../path';
 
 import { panelistes } from '../../data/panelistes';
 
+
+
 let aut_card  = panelistes
                     .filter(a => a.id === 123)
                     .map((nb, index)=> {
                         return(
-                            <div key={index} className="cardTopWrapper">
+                            <div key={index} className="cardTopWrapper" onMouseMove={(e)=> console.log(e.clientX) } >
                                 <div className="cardTop">
                                     <img src={`${ urlPath }/img/${nb.img}`} />
                                     <h4> { nb.name } </h4>
