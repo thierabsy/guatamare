@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
+import moment from "moment";
 
 import AnnonceurCard from './publicite/AnnonceurCard';
 import Auteuralertes from './auteur/Auteuralertes';
@@ -11,6 +12,7 @@ import AnnonceurPub from './publicite/AnnonceurPub';
 import AnnonceurKiosque from './publicite/AnnonceurKiosque';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
+import Smiler from './Smiler';
 
 export default class Publicite extends Component {
     constructor(props){
@@ -30,7 +32,18 @@ export default class Publicite extends Component {
             imagePreviewUrlMag: [],
             cover: false,
             color: "rgba(255,255,255,1)",
-            data: []
+            data: [],
+            magazine: {
+                nom: "Time",
+                editeur: "Media 1",
+                periode_start: "",
+                periode_end: "",
+                prix: 1000,
+            },
+            dates: {
+                start_date: moment(),
+                end_date: moment().add(1, "month")
+            }
         }
         this.titreChange = this.titreChange.bind(this);
         this.imgLoaded = this.imgLoaded.bind(this);
@@ -42,6 +55,8 @@ export default class Publicite extends Component {
         this.dropZoneMag = this.dropZoneMag.bind(this);
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
+        this.dateDebut = this.dateDebut.bind(this);
+        this.dateFin = this.dateFin.bind(this);
     }
     componentDidMount(){
         let $this = this;
@@ -50,12 +65,13 @@ export default class Publicite extends Component {
                 data: res.data
             })
         })
+        setInterval(this.dateDebut(), 250)
     }
 
     titreChange(e){
         this.setState({
-            currentArticle: { 
-                ...this.state.currentArticle,
+            magazine: { 
+                ...this.state.magazine,
                 [e.target.name]: e.target.value
             }
         })
@@ -110,13 +126,41 @@ export default class Publicite extends Component {
    pickedColor(color){
         this.setState({ color: color.hex })
     }
+    dateDebut(date){
+        this.setState({
+            dates: {
+                ...this.state.dates,
+                start_date: date
+            }
+        }),
+        this.setState({
+                magazine: { 
+                    ...this.state.magazine,
+                    periode_start: moment(this.state.dates.start_date).format("L")
+                }
+            })
+    }
+    dateFin(date){
+        this.setState({
+            dates: {
+                ...this.state.dates,
+                end_date: date
+            },
+            magazine: { 
+                ...this.state.magazine,
+                periode_end: moment(this.state.dates.end_date).format("L")
+            }
+        })
+    }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
-        let hours = new Date().getHours();
-        console.log(hours)
+        console.log(this.state.dates.start_date, this.state.magazine.periode_start)
+        console.log(this.state.dates.end_date, this.state.magazine.periode_end)
+        // console.log(moment(this.state.dates.start_date).format("L"))
+        // console.log(this.state.magazine.periode_start)
         let coverStyle = subcategorie === "Couverture" && {
             backgroundImage: `url(${this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview })` ,
             backgroundSize: "cover",
@@ -175,20 +219,17 @@ export default class Publicite extends Component {
                                                 previewK={this.state.imagePreviewUrlMag[0] && this.state.imagePreviewUrlMag[0].preview} 
                                                 dz={this.dropZoneMag} 
                                                 color={this.state.color}
+                                                mag={this.state.magazine}
+                                                titreChange={this.titreChange}
+                                                dateDebut={this.dateDebut}
+                                                dateFin={this.dateFin}
+                                                date={this.state.dates}
                                             /> :
-                                            <div className="smile">
+                                            <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />
                                                 <i className="fas fa-smile smileicon si2" />
                                                 <i className="fas fa-smile smileicon si3" />
-                                                <span className="bb" > { hours < 13 && hours > 6  ? 
-                                                                                "Bonjour" :
-                                                                         hours < 20 && hours >= 13  ? 
-                                                                                "Bon après-midi"
-                                                                            : 
-                                                                                "Bonsoir" 
-                                                                        } 
-                                                </span>
-                                            </div>
+                                            </Smiler>
                                             // <Auteuralertes />
                                     }
                                     {/* { this.state.data.map(i => <p> {i} </p>) } */}
