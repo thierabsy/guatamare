@@ -8,6 +8,7 @@ import Auteuralertes from './auteur/Auteuralertes';
 import Annonceurprofil from './publicite/Annonceurprofil';
 import AnnonceurNav from './publicite/AnnonceurNav';
 import AnnonceurPub from './publicite/AnnonceurPub';
+import AnnonceurKiosque from './publicite/AnnonceurKiosque';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
 
@@ -26,6 +27,7 @@ export default class Publicite extends Component {
             imagePreviewUrlBanner: [],
             imagePreviewUrlCote: [],
             imagePreviewUrlCover: [],
+            imagePreviewUrlMag: [],
             cover: false,
             color: "rgba(255,255,255,1)",
             data: []
@@ -37,6 +39,7 @@ export default class Publicite extends Component {
         this.dropZoneBanner = this.dropZoneBanner.bind(this);
         this.dropZoneCote = this.dropZoneCote.bind(this);
         this.dropZoneCover = this.dropZoneCover.bind(this);
+        this.dropZoneMag = this.dropZoneMag.bind(this);
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
     }
@@ -94,6 +97,11 @@ export default class Publicite extends Component {
            cover: true
        })
    }
+   dropZoneMag(files){
+       this.setState({
+           imagePreviewUrlMag: files
+       })
+   }
    handlePicker(color){
         this.setState({
             showPicker: !this.state.showPicker
@@ -116,8 +124,6 @@ export default class Publicite extends Component {
             backgroundPosition: "fixed",
             paddingTop: "120px"
         }
-        // let pgb = document.getElementById("profilbody");
-        // {   subcategorie === "Couverture" && (pgb.style.backgroundolor = "red")}
         return (
             <div className="profilpage" >
                 <div className="profilheader profil">
@@ -163,6 +169,12 @@ export default class Publicite extends Component {
                                                 color={this.state.color}
                                                 subcategorie={subcategorie}
                                                 page={pagemap}
+                                            /> :
+                                        pagemap === "Magazine" ?
+                                            <AnnonceurKiosque
+                                                previewK={this.state.imagePreviewUrlMag[0] && this.state.imagePreviewUrlMag[0].preview} 
+                                                dz={this.dropZoneMag} 
+                                                color={this.state.color}
                                             /> :
                                             <div className="smile">
                                                 <i className="fas fa-smile smileicon si1" />

@@ -1297,7 +1297,7 @@ ul.navbar-nav li a {
   padding: 10px;
 }
 
-.magazines .kiosqueswrapper .mag {
+.mag {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1313,7 +1313,7 @@ ul.navbar-nav li a {
           box-shadow: inset 0 0 15px #455a64;
 }
 
-.magazines .kiosqueswrapper .mag .magTitle {
+.mag .magTitle {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
@@ -1321,23 +1321,23 @@ ul.navbar-nav li a {
   font-family: 'Roboto', sans-serif;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper {
+.mag .maginnerwrapper {
   position: relative;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .imgwrapper {
+.mag .maginnerwrapper .imgwrapper {
   border: 1px solid #455a64;
   width: 250px;
   height: 300px;
   position: relative;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .imgwrapper img {
+.mag .maginnerwrapper .imgwrapper img {
   width: 100%;
   height: 100%;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .imgwrapper span {
+.mag .maginnerwrapper .imgwrapper span {
   position: absolute;
   top: 0;
   left: 0;
@@ -1348,20 +1348,20 @@ ul.navbar-nav li a {
   font-size: 11px;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .imgwrapper span.mois {
+.mag .maginnerwrapper .imgwrapper span.mois {
   background: green;
   -webkit-box-shadow: 1px 1px white, 2px 2px green;
           box-shadow: 1px 1px white, 2px 2px green;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .imgwrapper span.hebdo {
+.mag .maginnerwrapper .imgwrapper span.hebdo {
   background: red;
   margin-left: 0;
   -webkit-box-shadow: 1px 1px white, 2px 2px red;
           box-shadow: 1px 1px white, 2px 2px red;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText {
+.mag .maginnerwrapper .magText {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1371,32 +1371,32 @@ ul.navbar-nav li a {
   border-top: 1px solid #455a64;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details {
+.mag .maginnerwrapper .magText .details {
   width: 33.33%;
   text-align: center;
   border-right: 1px solid #455a64;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details span {
+.mag .maginnerwrapper .magText .details span {
   display: block;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details .span1 {
+.mag .maginnerwrapper .magText .details .span1 {
   text-decoration: underline;
   color: gray;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details .span2 {
+.mag .maginnerwrapper .magText .details .span2 {
   color: #455a64;
   font-weight: bold;
   line-height: 1;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details a {
+.mag .maginnerwrapper .magText .details a {
   color: #455a64;
 }
 
-.magazines .kiosqueswrapper .mag .maginnerwrapper .magText .details a:hover {
+.mag .maginnerwrapper .magText .details a:hover {
   text-decoration: none;
 }
 

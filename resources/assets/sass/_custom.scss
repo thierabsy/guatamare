@@ -1200,82 +1200,82 @@ ul.navbar-nav{
     }
     .kiosqueswrapper{
         padding: 10px;
-        .mag{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            border: 1px solid gainsboro;
-            box-shadow: inset 0 0 15px $blue3;
-            .magTitle{
-                text-align: center;
-                font-size: 16px;
-                font-weight: bold;
-                color: $blue3;
-                font-family: 'Roboto', sans-serif;
+    }
+}
+.mag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid gainsboro;
+    box-shadow: inset 0 0 15px $blue3;
+    .magTitle{
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: $blue3;
+        font-family: 'Roboto', sans-serif;
+    }
+    .maginnerwrapper{
+        position: relative;
+        .imgwrapper{
+            border: 1px solid $blue3;
+            width: 250px;
+            height: 300px;
+            position: relative;
+            img{
+                width: 100%;
+                height: 100%;
             }
-            .maginnerwrapper{
-                position: relative;
-                .imgwrapper{
-                    border: 1px solid $blue3;
-                    width: 250px;
-                    height: 300px;
-                    position: relative;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                    }
-                    span {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        color: white;
-                        padding: 0 1px;
-                        font-style: italic;
-                        font-weight: bold;
-                        font-size: 11px;
-                        &.mois{
-                            background: green;
-                            box-shadow: 1px 1px white, 2px 2px green;
-                        }
-                        &.hebdo{
-                            background: red;
-                            margin-left: 0;
-                            box-shadow: 1px 1px white, 2px 2px red;
-                        }
-                    }
+            span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: white;
+                padding: 0 1px;
+                font-style: italic;
+                font-weight: bold;
+                font-size: 11px;
+                &.mois{
+                    background: green;
+                    box-shadow: 1px 1px white, 2px 2px green;
                 }
-                span{
+                &.hebdo{
+                    background: red;
+                    margin-left: 0;
+                    box-shadow: 1px 1px white, 2px 2px red;
+                }
+            }
+        }
+        span{
 
+        }
+        .magText{
+            display: flex;
+            max-width: 283px;
+            border-left:  1px solid $blue3;
+            border-bottom:  1px solid $blue3;
+            border-top:  1px solid $blue3;
+            .details{
+                width: 33.33%;
+                text-align: center;
+                border-right: 1px solid $blue3;
+                span{
+                    display: block
                 }
-                .magText{
-                    display: flex;
-                    max-width: 283px;
-                    border-left:  1px solid $blue3;
-                    border-bottom:  1px solid $blue3;
-                    border-top:  1px solid $blue3;
-                    .details{
-                        width: 33.33%;
-                        text-align: center;
-                        border-right: 1px solid $blue3;
-                        span{
-                            display: block
-                        }
-                        .span1{
-                            text-decoration: underline;
-                            color: gray;
-                        }
-                        .span2{
-                            color: $blue3;
-                            font-weight: bold;
-                            line-height: 1;
-                        }
-                        a{
-                            color: $blue3;
-                            &:hover{
-                                text-decoration: none;
-                            }
-                        }
+                .span1{
+                    text-decoration: underline;
+                    color: gray;
+                }
+                .span2{
+                    color: $blue3;
+                    font-weight: bold;
+                    line-height: 1;
+                }
+                a{
+                    color: $blue3;
+                    &:hover{
+                        text-decoration: none;
                     }
                 }
             }
