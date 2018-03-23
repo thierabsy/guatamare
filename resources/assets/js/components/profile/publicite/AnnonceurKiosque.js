@@ -62,10 +62,11 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                     dateRange={dateRange}
                                 /> */}
                                 
+                                <label className="form-input-label">Période</label>
                                 <div className="row">
                                     <div className="col col-sm-6">
-                                        <div className="form-group">
-                                            <label className="form-input-label">Début</label>
+                                        <div className="form-group" style={{display: "flex"}} >
+                                            <label className="form-input-label">Entre</label>
                                             <DatePickerComponent 
                                                 mag={mag}
                                                 dateRange={dateDebut}
@@ -76,8 +77,8 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                         </div>
                                     </div>
                                     <div className="col col-sm-6">
-                                        <div className="form-group">
-                                            <label className="form-input-label">Fin</label>
+                                        <div className="form-group" style={{display: "flex"}} >
+                                            <label className="form-input-label">Et</label>
                                             <DatePickerComponent 
                                                 mag={mag}
                                                 dateRange={dateFin}

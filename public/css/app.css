@@ -2229,6 +2229,35 @@ button.btnlinks:hover {
   outline: none;
 }
 
+.react-datepicker__header {
+  background: rgba(69, 90, 100, 0.8) !important;
+  color: gainsboro;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header {
+  color: gainsboro !important;
+  text-transform: uppercase;
+}
+
+.react-datepicker__month-year-option {
+  background: #455a64 !important;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+}
+
+.react-datepicker__month-year-option:hover {
+  background: rgba(69, 90, 100, 0.8) !important;
+}
+
+.react-datepicker__input-container input {
+  width: 144px;
+  margin-left: 5px;
+}
+
+.react-datepicker__day.react-datepicker__day--fri.react-datepicker__day--selected.react-datepicker__day--today {
+  background: #455a64;
+}
+
 .subNavItems {
   display: -webkit-box;
   display: -ms-flexbox;

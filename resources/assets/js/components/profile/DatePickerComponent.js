@@ -15,6 +15,7 @@ const DatePickerComponent = ({date, dateRange, id, cn}) => {
                 minDate={moment().subtract(6, "month")}
                 maxDate={moment().add(6, "month")}
                 showMonthYearDropdown
+                locale="fr-fr"
                 className={cn}
                 id={id}
             />
