@@ -56,7 +56,9 @@ export default class Publicite extends Component {
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
         this.dateDebut = this.dateDebut.bind(this);
+        this.dateDebutt = this.dateDebutt.bind(this);
         this.dateFin = this.dateFin.bind(this);
+        this.dateFinn = this.dateFinn.bind(this);
     }
     componentDidMount(){
         let $this = this;
@@ -65,7 +67,8 @@ export default class Publicite extends Component {
                 data: res.data
             })
         })
-        setInterval(this.dateDebut(), 250)
+        let dc = document.getElementById("start_id").value
+        console.log("value", dc)
     }
 
     titreChange(e){
@@ -133,19 +136,28 @@ export default class Publicite extends Component {
                 start_date: date
             }
         }),
-        this.setState({
-                magazine: { 
-                    ...this.state.magazine,
-                    periode_start: moment(this.state.dates.start_date).format("L")
-                }
-            })
+       setTimeout(()=>  this.dateDebutt(), 1)
     }
+    dateDebutt(){
+        this.setState({
+            magazine: { 
+                ...this.state.magazine,
+                periode_start: document.getElementById("start_id").value
+            }
+        })
+    }
+
     dateFin(date){
         this.setState({
             dates: {
                 ...this.state.dates,
                 end_date: date
-            },
+            }
+        }),
+        setTimeout(()=>  this.dateFinn(), 1)
+    }
+    dateFinn(){
+        this.setState({
             magazine: { 
                 ...this.state.magazine,
                 periode_end: moment(this.state.dates.end_date).format("L")
@@ -157,8 +169,8 @@ export default class Publicite extends Component {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
-        console.log(this.state.dates.start_date, this.state.magazine.periode_start)
-        console.log(this.state.dates.end_date, this.state.magazine.periode_end)
+        // console.log(this.state.dates.start_date, this.state.magazine.periode_start)
+        // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
         // console.log(moment(this.state.dates.start_date).format("L"))
         // console.log(this.state.magazine.periode_start)
         let coverStyle = subcategorie === "Couverture" && {

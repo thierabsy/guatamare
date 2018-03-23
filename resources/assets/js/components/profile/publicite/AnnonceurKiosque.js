@@ -10,7 +10,7 @@ import DatePickerComponent from '../DatePickerComponent';
 
 const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, dateDebut, dateFin}) => {
         // let disable = previewK ? "true" : "false";
-        console.log(mag.start_date);
+        // console.log(mag.start_date);
         
         return (
             <div className="banner">
@@ -70,6 +70,8 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                                 mag={mag}
                                                 dateRange={dateDebut}
                                                 date={date.start_date}
+                                                id={"start_id"}
+                                                cn={"start_cn"}
                                             />
                                         </div>
                                     </div>
@@ -80,6 +82,8 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                                 mag={mag}
                                                 dateRange={dateFin}
                                                 date={date.end_date}
+                                                id={"end_id"}
+                                                cn={"end_cn"}
                                             />
                                         </div>
                                     </div>

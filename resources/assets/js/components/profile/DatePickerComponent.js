@@ -3,7 +3,7 @@ import moment from "moment";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DatePickerComponent = ({date, dateRange}) => {
+const DatePickerComponent = ({date, dateRange, id, cn}) => {
     let hours = new Date().getHours();
     return(
         <div className="datepickercomponent">
@@ -15,6 +15,8 @@ const DatePickerComponent = ({date, dateRange}) => {
                 minDate={moment().subtract(6, "month")}
                 maxDate={moment().add(6, "month")}
                 showMonthYearDropdown
+                className={cn}
+                id={id}
             />
         </div>
     )
