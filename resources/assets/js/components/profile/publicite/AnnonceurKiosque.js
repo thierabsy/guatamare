@@ -3,6 +3,7 @@ import React from 'react';
 import FileUpload from '../FileUpload';
 import Smiler from '../Smiler';
 import DatePickerComponent from '../DatePickerComponent';
+import BtnSubmit from '../BtnSubmit';
 
 // let magPreview = (
         
@@ -130,27 +131,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                             
                         </div>
                         <hr />
-                            {
-                                previewK ?
-                                    <div className="btnWrapper">
-                                        <button 
-                                            type="submit" 
-                                            className="btn btn-success" 
-                                        >
-                                            <i className="fab fa-telegram-plane" /> Envoyer
-                                        </button>
-                                    </div>
-                                :
-                                    <div className="btnWrapper">
-                                        <button 
-                                            type="submit" 
-                                            className="btn btn-success" 
-                                            disabled={true} 
-                                        >
-                                            <i className="fab fa-telegram-plane" /> Envoyer
-                                        </button>
-                                    </div>
-                                }
+                        <BtnSubmit condition={previewK} />
                     </form>
                 </div>
             </div>

@@ -67,8 +67,6 @@ export default class Publicite extends Component {
                 data: res.data
             })
         })
-        let dc = document.getElementById("start_id").value
-        console.log("value", dc)
     }
 
     titreChange(e){
@@ -172,7 +170,8 @@ export default class Publicite extends Component {
         // console.log(this.state.dates.start_date, this.state.magazine.periode_start)
         // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
         // console.log(moment(this.state.dates.start_date).format("L"))
-        // console.log(this.state.magazine.periode_start)
+        console.log(this.state.magazine)
+        console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
             backgroundImage: `url(${this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview })` ,
             backgroundSize: "cover",

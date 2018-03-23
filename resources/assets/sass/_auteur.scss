@@ -333,7 +333,7 @@ button{
         width: 310px;
         height: 210px;
         display: block;
-        margin: 10px 150px;
+        // margin: 10px 150px;
     }
     .imgBanner{
         width: 780px;
@@ -395,6 +395,9 @@ button{
             transform: translateY(-100px) rotate(360deg);
             opacity: 0; 
         }
+        &.pubcote{
+            box-shadow: 270px -48px 48px -30px;
+        }
     }
     svg.svg-inline--fa.fa-newspaper.fa-w-18.smileicon {
         color: $blue3;
@@ -422,8 +425,11 @@ button{
         outline: none;
     }
 }
+.react-datepicker{
+    border: 1px solid $blue3;
+}
 .react-datepicker__header{
-    background: $blue4 !important;
+    background: #4e626c linear-gradient(90deg, black, #4e626c, transparent, transparent, #4e626c, #4e626c, #4e626c, black) !important;
     color: gainsboro;
 }
 .react-datepicker__current-month, 
@@ -434,14 +440,19 @@ button{
 .react-datepicker__month-year-option {
     background: $blue3 !important;
     border-bottom: 1px dotted rgba(0,0,0,.3);
+    text-transform: capitalize;
     &:hover{
-        background: $blue4 !important;
+        background: #4e626c linear-gradient(90deg, black, #4e626c, transparent, transparent, #4e626c, #4e626c, #4e626c, black) !important;
     }
 }
 .react-datepicker__input-container input {
     width: 144px;
     margin-left: 5px;
 }
-.react-datepicker__day.react-datepicker__day--fri.react-datepicker__day--selected.react-datepicker__day--today{
-    background: $blue3;
+.react-datepicker__day.react-datepicker__day--fri.react-datepicker__day--selected.react-datepicker__day--today,
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range{
+    background: $blue3 !important;
+}
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
+    border-bottom-color: black !important;
 }

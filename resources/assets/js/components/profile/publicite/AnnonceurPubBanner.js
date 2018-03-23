@@ -1,14 +1,15 @@
 import React from 'react';
 
 import FileUpload from '../FileUpload';
+import BtnSubmit from '../BtnSubmit';
 
 
 const AnnonceurPubBanner = ({previewB, dz}) => {
         return (
             <div className="banner">
                 <div className="pubbanner" >
-                    <h3>Annonce en haut (Bannière large)</h3> 
-                    <h5 style={{marginBottom:"0px", marginTop: "10px" }} >Choisir Image</h5> 
+                    <h3 style={{ fontWeight:"bold" }}>Annonce en haut (Bannière large)</h3> 
+                    <h5 style={{marginBottom:"0px", marginTop: "10px", fontWeight:"bold" }} >Choisir Image</h5> 
                     <span className="taille" >(Taille: 710x190)</span>
                     <form action="">
                         <FileUpload dz={dz}>
@@ -31,9 +32,7 @@ const AnnonceurPubBanner = ({previewB, dz}) => {
                             </div>
                         </div>
                         <hr />
-                        <div className="btnWrapper">
-                            <button type="submit" className="btn btn-success"><i className="fab fa-telegram-plane" /> Envoyer</button>
-                        </div>
+                        <BtnSubmit condition={previewB} />
                     </form>
                 </div>
             </div>
