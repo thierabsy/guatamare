@@ -26,6 +26,40 @@
   }
 }
 
+@-webkit-keyframes golfBall {
+  0% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+
+  30% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}
+
+@keyframes golfBall {
+  0% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+
+  30% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}
+
 body {
   background: gainsboro;
   background: radial-gradient(ellipse at center, transparent 22%, gainsboro 78%, transparent);
@@ -1834,7 +1868,6 @@ ul.navbar-nav li a {
 }
 
 .profilheader {
-  background: url(http://localhost:8000/img/items.jpg);
   position: relative;
 }
 
@@ -1846,6 +1879,12 @@ ul.navbar-nav li a {
 
 .profilheader.admin {
   background: url(http://localhost:8000/img/pattern13.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.profilheader.hpublicite {
+  background: url(http://localhost:8000/img/items.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -2185,6 +2224,8 @@ button.btnlinks:hover {
           transform: rotateY(180deg);
   -webkit-transition: 2s;
   transition: 2s;
+  -webkit-animation: golfBall 5s infinite ease-in-out;
+          animation: golfBall 5s infinite ease-in-out;
 }
 
 .smile svg.svg-inline--fa.fa-golf-ball.fa-w-13.smileicon.si2:hover {
@@ -2218,6 +2259,11 @@ button.btnlinks:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.btn-success.disabled,
+.btn-success:disabled {
+  cursor: not-allowed;
 }
 
 .react-datepicker__input-container input {
@@ -2275,6 +2321,42 @@ button.btnlinks:hover {
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
   border-bottom-color: black !important;
+}
+
+.react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle,
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before,
+.react-datepicker__year-read-view--down-arrow::before,
+.react-datepicker__month-read-view--down-arrow::before,
+.react-datepicker__month-year-read-view--down-arrow::before {
+  border-top-color: black !important;
+}
+
+.boutiquewrapper .leftbody {
+  min-height: 200px;
+  height: 90%;
+  margin: 10px;
+  border: 1px dotted rgba(69, 90, 100, 0.8);
+}
+
+.boutiquewrapper .leftbody.lb1 {
+  height: 96%;
+}
+
+.boutiquewrapper .leftbody .sinon {
+  text-align: center;
+}
+
+.boutiquewrapper .leftbody .sinon .smileicon {
+  font-size: 70px;
+}
+
+.boutiquewrapper .leftbody .col.col-sm-6.col-md-12,
+.boutiquewrapper .leftbody .col.col-sm-12.col-md-6 {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
 }
 
 .subNavItems {

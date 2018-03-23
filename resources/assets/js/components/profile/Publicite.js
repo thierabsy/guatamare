@@ -13,6 +13,7 @@ import AnnonceurKiosque from './publicite/AnnonceurKiosque';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
 import Smiler from './Smiler';
+import AnnonceurBoutique from './publicite/AnnonceurBoutique';
 
 export default class Publicite extends Component {
     constructor(props){
@@ -25,12 +26,6 @@ export default class Publicite extends Component {
                 image: 'Image A',
                 articlebody: 'Body A'
             },
-            imagePreviewUrl: [],
-            imagePreviewUrlBanner: [],
-            imagePreviewUrlCote: [],
-            imagePreviewUrlCover: [],
-            imagePreviewUrlMag: [],
-            cover: false,
             color: "rgba(255,255,255,1)",
             data: [],
             magazine: {
@@ -43,9 +38,30 @@ export default class Publicite extends Component {
             dates: {
                 start_date: moment(),
                 end_date: moment().add(1, "month")
-            }
+            },
+            boutique: {
+                nom: "",
+                adresse: "",
+                email: "",
+                telephone: "",
+                image1: "",
+                image2: "",
+                image3: "",
+                catalogue: "",
+
+            },
+            imagePreviewUrl: [],
+            imagePreviewUrlBanner: [],
+            imagePreviewUrlCote: [],
+            imagePreviewUrlCover: [],
+            imagePreviewUrlMag: [],
+            imagePreviewUrlBtk1: [],
+            imagePreviewUrlBtk2: [],
+            imagePreviewUrlBtk3: [],
+            cover: false
         }
         this.titreChange = this.titreChange.bind(this);
+        this.boutiqueChange = this.boutiqueChange.bind(this);
         this.imgLoaded = this.imgLoaded.bind(this);
         this.getBody = this.getBody.bind(this);
         this.dropZone = this.dropZone.bind(this);
@@ -53,6 +69,10 @@ export default class Publicite extends Component {
         this.dropZoneCote = this.dropZoneCote.bind(this);
         this.dropZoneCover = this.dropZoneCover.bind(this);
         this.dropZoneMag = this.dropZoneMag.bind(this);
+        this.dropZoneBtk1 = this.dropZoneBtk1.bind(this);
+        this.dropZoneBtk2 = this.dropZoneBtk2.bind(this);
+        this.dropZoneBtk2 = this.dropZoneBtk2.bind(this);
+        this.dropZoneBtk3 = this.dropZoneBtk3.bind(this);
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
         this.dateDebut = this.dateDebut.bind(this);
@@ -73,6 +93,14 @@ export default class Publicite extends Component {
         this.setState({
             magazine: { 
                 ...this.state.magazine,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+    boutiqueChange(e){
+        this.setState({
+            boutique: { 
+                ...this.state.boutique,
                 [e.target.name]: e.target.value
             }
         })
@@ -117,6 +145,21 @@ export default class Publicite extends Component {
    dropZoneMag(files){
        this.setState({
            imagePreviewUrlMag: files
+       })
+   }
+   dropZoneBtk1(files){
+       this.setState({
+           imagePreviewUrlBtk1: files
+       })
+   }
+   dropZoneBtk2(files){
+       this.setState({
+           imagePreviewUrlBtk2: files
+       })
+   }
+   dropZoneBtk3(files){
+       this.setState({
+           imagePreviewUrlBtk3: files
        })
    }
    handlePicker(color){
@@ -170,6 +213,7 @@ export default class Publicite extends Component {
         // console.log(this.state.dates.start_date, this.state.magazine.periode_start)
         // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
         // console.log(moment(this.state.dates.start_date).format("L"))
+        console.log("btk1", this.state.imagePreviewUrlBtk1)
         console.log(this.state.magazine)
         console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
@@ -181,7 +225,7 @@ export default class Publicite extends Component {
         }
         return (
             <div className="profilpage" >
-                <div className="profilheader profil">
+                <div className="profilheader profil hpublicite">
                    <div className="overlayer">
                         <div className="container">
                             <Topheader />
@@ -235,6 +279,17 @@ export default class Publicite extends Component {
                                                 dateDebut={this.dateDebut}
                                                 dateFin={this.dateFin}
                                                 date={this.state.dates}
+                                            /> :
+                                        pagemap === "Boutique" ?
+                                            <AnnonceurBoutique
+                                                previewBtk1={this.state.imagePreviewUrlBtk1[0] && this.state.imagePreviewUrlBtk1[0].preview} 
+                                                previewBtk2={this.state.imagePreviewUrlBtk2[0] && this.state.imagePreviewUrlBtk2[0].preview} 
+                                                previewBtk3={this.state.imagePreviewUrlBtk3[0] && this.state.imagePreviewUrlBtk3[0].preview} 
+                                                dz1={this.dropZoneBtk1} 
+                                                dz2={this.dropZoneBtk2} 
+                                                dz3={this.dropZoneBtk3} 
+                                                btk={this.state.boutique}
+                                                boutiqueChange={this.boutiqueChange}
                                             /> :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />

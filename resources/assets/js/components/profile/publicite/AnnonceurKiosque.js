@@ -100,7 +100,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="siteweb">www.</span>
                                         </div>
-                                        <input type="text" id="siteweb" className="form-control" placeholder="siteweb" aria-label="siteweb" aria-describedby="siteweb" />
+                                        <input type="text" id="siteweb" className="form-control" placeholder="siteweb.com/mon-magazine" aria-label="siteweb" aria-describedby="siteweb" />
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                             <div className="magText">
                                                 <div className="details"><span className="span1">Editeur</span>  <span className="span2"> { mag.editeur } </span></div>
                                                 <div className="details"><span className="span1">Période</span> <span className="span2">@ { mag.periode_start }<br/>@ { mag.periode_end }</span></div>
-                                                <div className="details"><span className="span1">Détails</span><a href="www.google.com" target="_blank"><span className="span2">Info <i className="fas fa-info-circle"></i> </span></a> </div>
+                                                <div className="details"><span className="span1">Détails</span><a href="http://www.google.com" target="_blank"><span className="span2">Info <i className="fas fa-info-circle"></i> </span></a> </div>
                                             </div>
                                         </div>
                                     </div>

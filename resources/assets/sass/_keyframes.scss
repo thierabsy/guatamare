@@ -10,3 +10,16 @@
         color: green;
     }
 }
+
+@keyframes golfBall{
+    0%{
+        transform: translateY(-10px);
+    }
+    30%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+}
+
