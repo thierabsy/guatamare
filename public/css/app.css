@@ -2266,6 +2266,50 @@ button.btnlinks:hover {
   cursor: not-allowed;
 }
 
+.leftbodybtk .leftbody div:first-of-type {
+  height: 100%;
+}
+
+.leftbodybtk .leftbody:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.leftbodybtk .leftbody:first-child .ignore {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.leftbodybtk .leftbody:first-child .ignore .sinon {
+  height: 50%;
+}
+
+.leftbodybtk .leftbody:first-child .ignore img {
+  height: 94%;
+}
+
+.leftbodybtk .leftbody:first-child .ignore img.btk2 {
+  height: 88%;
+}
+
+.colimg2 {
+  margin-bottom: 20px;
+}
+
 .react-datepicker__input-container input {
   padding: 2px;
   text-align: center;
@@ -2341,10 +2385,6 @@ button.btnlinks:hover {
   border: 1px dotted rgba(69, 90, 100, 0.8);
 }
 
-.boutiquewrapper .leftbody.lb1 {
-  height: 96%;
-}
-
 .boutiquewrapper .leftbody .sinon {
   text-align: center;
 }
@@ -2357,6 +2397,102 @@ button.btnlinks:hover {
 .boutiquewrapper .leftbody .col.col-sm-12.col-md-6 {
   padding-right: 10px !important;
   padding-left: 10px !important;
+}
+
+.btkpreview .btkwelcome {
+  text-align: center !important;
+  margin-bottom: 40px;
+}
+
+.btkpreview .btkwelcome img {
+  width: 500px !important;
+  height: 100px !important;
+}
+
+.btkpreview .btkleft .col.col-sm-12.col-md-6 {
+  padding-right: 5px;
+}
+
+.btkpreview .btkleft .col.col-sm-6.col-md-12 {
+  padding-left: 0;
+}
+
+.btkpreview .btkleft .img {
+  width: 100%;
+  height: 100%;
+  border: 3px solid gainsboro;
+}
+
+.btkpreview .btkleft .img.img1 {
+  height: 99%;
+}
+
+.btkpreview .btkleft .img.img2 {
+  height: 245px;
+}
+
+.btkpreview .btkleft .img.img2:first-child {
+  margin-bottom: 5px;
+}
+
+.btkpreview .btkright .list-group .list-group-item h5 {
+  margin-bottom: 0;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 15px;
+}
+
+.btkpreview .btkright .list-group .list-group-item.lgiflex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btkpreview .btkright .list-group .list-group-item.lgiflex .lgiright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.btkpreview .btkright .list-group .list-group-item .lgileft {
+  font-weight: bolder;
+}
+
+.btkpreview .btkright .list-group .list-group-item.logoitem {
+  text-align: center !important;
+}
+
+.btkpreview .btkright .list-group .list-group-item.logoitem .logo {
+  width: 100px !important;
+  height: 100px !important;
+  margin-top: -50px !important;
+  background: white;
+  padding: 3px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btkpreview .btkright .list-group .produits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 5px;
+}
+
+.btkpreview .btkright .list-group .produits .produit {
+  padding: 0px 5px;
+  background: #455a64;
+  color: gainsboro;
+  margin: 2px;
+  border-radius: 10px;
 }
 
 .subNavItems {
@@ -2387,6 +2523,10 @@ button.btnlinks:hover {
 }
 
 .subNavItems .activeSubNav {
+  background: #17a2b8;
+}
+
+.activeSubNav {
   background: #17a2b8;
 }
 

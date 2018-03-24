@@ -417,9 +417,40 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .btn-success.disabled, .btn-success:disabled{
     cursor: not-allowed;
+}
+.leftbodybtk{
+    .leftbody{
+        div:first-of-type {
+            height: 100%;
+        }
+        &:first-child{
+            display: flex;
+            height: 100%;
+            .ignore{
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .sinon{
+                    height: 50%;
+                }
+                img{
+                    height: 94%;
+                    &.btk2{
+                        height: 88%;
+                    }
+                }
+            }
+        }
+    }
+}
+.colimg2{
+    margin-bottom: 20px;
 }
 
 // DATE PICKER
@@ -476,7 +507,7 @@ button{
         margin: 10px;
         border: 1px dotted $blue4;
         &.lb1{
-            height: 96%;
+            // height: 96%;
         }
         .sinon{
             text-align: center;
@@ -490,6 +521,91 @@ button{
         .col.col-sm-12.col-md-6{
             padding-right: 10px !important;
             padding-left: 10px !important;
+        }
+    }
+}
+
+.btkpreview{
+    .btkwelcome{
+        text-align: center !important;
+        margin-bottom: 40px;
+        img{
+            width: 500px !important;
+            height: 100px !important;
+        }
+    }
+    .btkleft{
+        .col.col-sm-12.col-md-6 {
+            padding-right: 5px;
+            // padding-right: 0;
+        }
+        .col.col-sm-6.col-md-12 {
+            padding-left: 0;
+        }
+        .img{
+            width: 100%;
+            height: 100%;
+            border: 3px solid gainsboro;
+            &.img1{
+                height: 99%;
+            }
+            &.img2{
+                height: 245px;
+                &:first-child{
+                    margin-bottom: 5px;
+                } 
+            }
+        }
+
+    }
+    .btkright{
+        .list-group{
+            .list-group-item{
+                h5{
+                    margin-bottom: 0;
+                    font-weight: bolder;
+                    text-align: center;
+                    font-size: 15px;
+                }
+                &.lgiflex{
+                    display: flex;
+                    // flex-wrap: wrap;
+                    .lgiright{
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                }
+                .lgileft{
+                    font-weight: bolder;
+                }
+                .lgiright{
+                }
+            &.logoitem{
+                text-align: center !important;
+                .logo{
+                    width: 100px !important;
+                    height: 100px !important;
+                    margin-top: -50px !important;
+                    background: white;
+                    padding: 3px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+        .produits{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 5px;
+            .produit{
+                padding: 0px 5px;
+                background: $blue3;
+                color: gainsboro;
+                margin: 2px;
+                border-radius: 10px;
+            }
+        }
         }
     }
 }

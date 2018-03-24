@@ -2,20 +2,28 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { urlPath } from '../../path';
 
-import { adssubnavitems } from '../../data/adssubnavitems';
+let btksubnavitems = [
+    {
+        subname: "Paramétres"
+    },
+    {
+        subname: "Aperçu"
+    }
+]
 
-let AnnonceurSubNavItems = ({ap, sn})=> {
-    let sbc = adssubnavitems.map((nav, i) =>    <div key={i} className={ sn === nav.subname ? "subNavItem activeSubNav" : "subNavItem"}>
+let BoutiqueSubNavItems = ({ap, sn})=> {
+    let sbc = btksubnavitems.map((nav, i) =>    <div key={i} className={ sn === nav.subname ? "subNavItem activeSubNav" : "subNavItem"}>
                                                     <NavLink to={`?action=${ap}&subcategorie=${nav.subname}`}> {nav.subname} </NavLink>
-                                                    { sn === nav.subname && <span>Taille: { nav.taille } </span>}
                                                 </div>
             ) 
     return sbc
 }
-const AnnonceurSubnav = ({tp, subcat}) => {
+const AnnonceurSubnav = ({tp, sn}) => {
         return (
             <div className="subNavItems">
-                <AnnonceurSubNavItems ap={tp} sn={subcat} /> 
+                <BoutiqueSubNavItems 
+                    ap={tp} 
+                    sn={sn} /> 
             </div>
         );
     }

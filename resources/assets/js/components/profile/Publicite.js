@@ -47,6 +47,7 @@ export default class Publicite extends Component {
                 image1: "",
                 image2: "",
                 image3: "",
+                produits: "",
                 catalogue: "",
 
             },
@@ -70,9 +71,11 @@ export default class Publicite extends Component {
         this.dropZoneCover = this.dropZoneCover.bind(this);
         this.dropZoneMag = this.dropZoneMag.bind(this);
         this.dropZoneBtk1 = this.dropZoneBtk1.bind(this);
+        this.dzBtk1 = this.dzBtk1.bind(this);
         this.dropZoneBtk2 = this.dropZoneBtk2.bind(this);
-        this.dropZoneBtk2 = this.dropZoneBtk2.bind(this);
+        this.dzBtk2 = this.dzBtk2.bind(this);
         this.dropZoneBtk3 = this.dropZoneBtk3.bind(this);
+        this.dzBtk3 = this.dzBtk3.bind(this);
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
         this.dateDebut = this.dateDebut.bind(this);
@@ -150,17 +153,44 @@ export default class Publicite extends Component {
    dropZoneBtk1(files){
        this.setState({
            imagePreviewUrlBtk1: files
-       })
+       }),
+       setTimeout(this.dzBtk1, 1)
+   }
+   dzBtk1(){
+        this.setState({
+            boutique: {
+                ...this.state.boutique,
+                image1: this.state.imagePreviewUrlBtk1[0]
+            }
+        })
    }
    dropZoneBtk2(files){
        this.setState({
            imagePreviewUrlBtk2: files
-       })
+       }),
+       setTimeout(this.dzBtk2, 1)
+   }
+   dzBtk2(){
+        this.setState({
+            boutique: {
+                ...this.state.boutique,
+                image2: this.state.imagePreviewUrlBtk2[0]
+            }
+        })
    }
    dropZoneBtk3(files){
        this.setState({
            imagePreviewUrlBtk3: files
-       })
+       }),
+       setTimeout(this.dzBtk3, 1)
+   }
+   dzBtk3(){
+        this.setState({
+            boutique: {
+                ...this.state.boutique,
+                image3: this.state.imagePreviewUrlBtk3[0]
+            }
+        })
    }
    handlePicker(color){
         this.setState({
@@ -214,7 +244,8 @@ export default class Publicite extends Component {
         // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
         // console.log(moment(this.state.dates.start_date).format("L"))
         console.log("btk1", this.state.imagePreviewUrlBtk1)
-        console.log(this.state.magazine)
+        // console.log(this.state.magazine)
+        console.log("boutique", this.state.boutique)
         console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
             backgroundImage: `url(${this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview })` ,
@@ -290,6 +321,8 @@ export default class Publicite extends Component {
                                                 dz3={this.dropZoneBtk3} 
                                                 btk={this.state.boutique}
                                                 boutiqueChange={this.boutiqueChange}
+                                                subcat={subcategorie}
+                                                tp={pagemap}
                                             /> :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />
