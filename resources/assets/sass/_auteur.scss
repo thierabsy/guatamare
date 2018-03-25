@@ -617,3 +617,24 @@ button{
         }
     }
 }
+
+.outilsvideos{
+    .singlevideo{
+        text-align: center;
+
+        h4{
+
+        }
+        p{
+
+        }
+        .videowrapper{
+            width: 70%;
+            margin: 0 auto;
+            iframe{
+                width: 100%;
+                height: 350px;
+            }
+        }
+    }
+}

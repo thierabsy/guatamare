@@ -909,8 +909,8 @@ ul.navbar-nav{
             }
         }
         .p2{
-            border-left: 1px solid gainsboro;
-            border-right: 1px solid gainsboro;
+            border-left: 1px dotted gainsboro;
+            border-right: 1px dotted gainsboro;
            h2{
 
            } 
@@ -1354,7 +1354,7 @@ ul.navbar-nav{
     }
 }
 // SLIDERS
-.date {
+.text .date {
     margin-top: 9px;
     border-top: 1px dotted rgba(0,0,0,.2);
 }

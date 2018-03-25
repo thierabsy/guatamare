@@ -13,6 +13,8 @@ import AdminPages from './admin/AdminPages';
 import { urlPath } from '../path';
 import AdminSubnav from './admin/AdminSubnav';
 import Topheader from './Topheader';
+import Smiler from './Smiler';
+import Outils from './outils/Outils';
 
 export default class Admin extends Component {
     constructor(props){
@@ -45,7 +47,10 @@ export default class Admin extends Component {
                    <div className="container maincontainer">
                         <div className="row">
                             <div className="col col-sm-12 col-md-3">
-                                <AdminNav type={type} />
+                                <AdminNav 
+                                    type={type} 
+                                    actiontype={"type"} 
+                                />
                             </div>
                             <div className="col col-sm-12 col-md-9">
                                 <div className="auteurright">
@@ -53,8 +58,19 @@ export default class Admin extends Component {
                                     <hr />
                                     <AdminSubnav tp={type} subcat={subcategorie} />
                                     <hr />
-                                   <AdminPages type={type} subcategorie={subcategorie} />
                                    
+                                   {
+                                       type === "Outils" ?
+                                       <Outils
+                                            page={type} 
+                                            subcategorie={subcategorie}
+                                            actiontype={"type"} 
+                                       />   :
+                                        <AdminPages 
+                                            type={type} 
+                                            subcategorie={subcategorie} 
+                                        />
+                                   }
                                     
                                     {/* {
                                         pagemap === "Profil" ?

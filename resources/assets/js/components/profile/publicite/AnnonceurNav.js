@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { urlPath } from '../../path';
 
 import { adsnavitems } from '../../data/adsnavitems';
+import OutilsNav from '../outils/OutilsNav';
 
 let AdsNavItems = ({ap})=>  adsnavitems.map((item, index) => {
     let col = item.color;
@@ -13,12 +14,16 @@ let AdsNavItems = ({ap})=>  adsnavitems.map((item, index) => {
     )  
 })
 
-const AnnonceurNav = ({activepage}) => {
+const AnnonceurNav = ({activepage, actiontype}) => {
         return (
             <div className="auteurcard">
                 <div className="list-group ads">
                    <AdsNavItems ap={activepage} />
                 </div>
+                <hr />
+                <OutilsNav
+                    actiontype={actiontype}
+                />
                 <hr />
                 <div className="allersite a2">
                     <Link to="../" target="_blank" >

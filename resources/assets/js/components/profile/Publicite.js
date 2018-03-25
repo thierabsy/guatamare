@@ -14,6 +14,7 @@ import { urlPath } from '../path';
 import Topheader from './Topheader';
 import Smiler from './Smiler';
 import AnnonceurBoutique from './publicite/AnnonceurBoutique';
+import Outils from './outils/Outils';
 
 export default class Publicite extends Component {
     constructor(props){
@@ -269,7 +270,10 @@ export default class Publicite extends Component {
                    <div className="container maincontainer">
                         <div className="row">
                             <div className="col col-sm-12 col-md-3">
-                                <AnnonceurNav activepage={pagemap} />
+                                <AnnonceurNav 
+                                    activepage={pagemap} 
+                                    actiontype={"action"} 
+                                />
                             </div>
                             <div className="col col-sm-12 col-md-9">
                                 <div className="auteurright">
@@ -324,6 +328,12 @@ export default class Publicite extends Component {
                                                 boutiqueChange={this.boutiqueChange}
                                                 subcat={subcategorie}
                                                 tp={pagemap}
+                                            /> :
+                                        pagemap === "Outils" ?
+                                            <Outils 
+                                                subcategorie={subcategorie}
+                                                page={pagemap}
+                                                actiontype={"action"} 
                                             /> :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />

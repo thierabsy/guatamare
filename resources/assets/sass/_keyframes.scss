@@ -14,12 +14,23 @@
 @keyframes golfBall{
     0%{
         transform: translateY(-10px);
+        color: green;
+    }
+    25%{
+        color: red;
     }
     30%{
         transform: translateY(0px);
     }
     50%{
         transform: translateY(-10px);
+        color: green;
+    }
+    60%{
+        color: red;
+    }
+    80%{
+        color: green;
     }
 }
 

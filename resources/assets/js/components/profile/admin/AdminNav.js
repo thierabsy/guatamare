@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { urlPath } from '../../path';
 
 import { adminnavitems } from '../../data/adminnavitems';
+import OutilsNav from '../outils/OutilsNav';
 
 let AdminNavItems = ({apg})=>  adminnavitems.map((item, index) => {
                             let col = item.color;
@@ -12,13 +13,17 @@ let AdminNavItems = ({apg})=>  adminnavitems.map((item, index) => {
                                 </div>
                             )  
                         })
-const AdminNav = ({type}) => {
+const AdminNav = ({type, actiontype}) => {
 
         return (
             <div className="auteurcard">
                 <div className="list-group">
                    <AdminNavItems apg={type} />
                 </div>
+                <hr />
+                <OutilsNav 
+                    actiontype={actiontype}
+                />
                 <hr />
                 <div className="allersite a2">
                     <Link to="../" target="_blank" >

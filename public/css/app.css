@@ -30,6 +30,11 @@
   0% {
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
+    color: green;
+  }
+
+  25% {
+    color: red;
   }
 
   30% {
@@ -40,6 +45,15 @@
   50% {
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
+    color: green;
+  }
+
+  60% {
+    color: red;
+  }
+
+  80% {
+    color: green;
   }
 }
 
@@ -47,6 +61,11 @@
   0% {
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
+    color: green;
+  }
+
+  25% {
+    color: red;
   }
 
   30% {
@@ -57,6 +76,15 @@
   50% {
     -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
+    color: green;
+  }
+
+  60% {
+    color: red;
+  }
+
+  80% {
+    color: green;
   }
 }
 
@@ -999,8 +1027,8 @@ ul.navbar-nav li a {
 }
 
 .footer .footertop .p2 {
-  border-left: 1px solid gainsboro;
-  border-right: 1px solid gainsboro;
+  border-left: 1px dotted gainsboro;
+  border-right: 1px dotted gainsboro;
 }
 
 .footer .footertop .p2 ul li {
@@ -1516,7 +1544,7 @@ ul.navbar-nav li a {
   right: 2px;
 }
 
-.date {
+.text .date {
   margin-top: 9px;
   border-top: 1px dotted rgba(0, 0, 0, 0.2);
 }
@@ -2529,6 +2557,20 @@ button.btnlinks:hover {
   color: gainsboro;
   margin: 2px;
   border-radius: 10px;
+}
+
+.outilsvideos .singlevideo {
+  text-align: center;
+}
+
+.outilsvideos .singlevideo .videowrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.outilsvideos .singlevideo .videowrapper iframe {
+  width: 100%;
+  height: 350px;
 }
 
 .subNavItems {
