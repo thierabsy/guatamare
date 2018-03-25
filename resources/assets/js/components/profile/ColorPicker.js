@@ -11,10 +11,23 @@ const ColorPicker = ({handlePicker, showPicker, pickedColor, color}) => {
     }
     return(
         <div className="form-group">
-            <label htmlFor="color" style={{display: "block"}} > Color </label>
-            {/* <input type="color" className="form-control" value="" id="color" name="color" placeholder="Entrez votre couleur préférée" /> */}
-            <button onClick={ () => handlePicker()} className="btn" style={ btnstyle } >{ showPicker && "OK!" } </button>
-            { showPicker && <SketchPicker color={color} id="color" name="color" onChange={ color => pickedColor(color) } /> }
+            <label 
+                htmlFor="color" 
+                style={{display: "block"}} > Color 
+            </label>
+            <button 
+                onClick={ () => handlePicker()} 
+                className="btn" 
+                style={ btnstyle } >{ showPicker && "OK!" } 
+            </button>
+            { showPicker && 
+                <SketchPicker 
+                    color={color} 
+                    id="color" 
+                    name="color" 
+                    onChange={ color => pickedColor(color) } 
+                /> 
+            }
         </div>
     )
 }

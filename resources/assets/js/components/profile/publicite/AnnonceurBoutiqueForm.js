@@ -39,9 +39,9 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                     <h3>Entrez les informations sur votre boutique</h3> 
                     <form action="">
                         <div className="row">
-                            <div className="col col-sm-12 col-md-6">
+                            <div className="col col-sm-12 col-md-4">
                                 <div className="form-group">
-                                    <label className="form-input-label" htmlFor="nom" style={{marginTop: "10px" }}>Nom de votre boutique</label>
+                                    <label className="form-input-label" htmlFor="nom">Nom de votre boutique</label>
                                     <input 
                                         type="text" 
                                         id="nom" 
@@ -53,9 +53,9 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                                     />
                                 </div>
                             </div>
-                            <div className="col col-sm-12 col-md-6">
+                            <div className="col col-sm-12 col-md-5">
                                 <div className="form-group">
-                                    <label className="form-input-label" htmlFor="adresse" style={{marginTop: "10px" }}>Adresse</label>
+                                    <label className="form-input-label" htmlFor="adresse" >Adresse</label>
                                     <input 
                                         type="text" 
                                         id="adresse" 
@@ -67,11 +67,25 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                                     />
                                 </div>
                             </div>
+                            <div className="col col-sm-12 col-md-3">
+                                <div className="form-group">
+                                    <label className="form-input-label" htmlFor="telephone">Ville</label>
+                                    <input 
+                                        type="text" 
+                                        id="ville" 
+                                        name="ville"
+                                        className="form-control alttext" 
+                                        placeholder="Lieu"
+                                        onChange={ (e) => boutiqueChange(e) }
+                                        value={ btk.ville }
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col col-sm-12 col-md-6">
                                 <div className="form-group">
-                                    <label className="form-input-label" htmlFor="email" style={{marginTop: "10px" }}>Adresse e-mail</label>
+                                    <label className="form-input-label" htmlFor="email">Adresse e-mail</label>
                                     <input 
                                         type="text" 
                                         id="email" 
@@ -85,7 +99,7 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                             </div>
                             <div className="col col-sm-12 col-md-6">
                                 <div className="form-group">
-                                    <label className="form-input-label" htmlFor="telephone" style={{marginTop: "10px" }}>Téléphone</label>
+                                    <label className="form-input-label" htmlFor="telephone" >Téléphone</label>
                                     <input 
                                         type="text" 
                                         id="telephone" 
@@ -99,7 +113,7 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                             </div>
                         </div>
                         <div className="form-group">
-                            <label className="form-input-label" htmlFor="produits" style={{marginTop: "10px" }}>Vos Produits et Services (séparés par une virgule)</label>
+                            <label className="form-input-label" htmlFor="produits">Vos Produits et Services (séparés par une virgule)</label>
                             <input 
                                 type="text" 
                                 id="produits" 

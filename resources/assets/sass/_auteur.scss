@@ -560,7 +560,10 @@ button{
     }
     .btkright{
         .list-group{
+            box-shadow: 0 0 5px;
+            border-radius: 5px;
             .list-group-item{
+                padding: 10px 10px;
                 h5{
                     margin-bottom: 0;
                     font-weight: bolder;
@@ -582,15 +585,20 @@ button{
                 }
             &.logoitem{
                 text-align: center !important;
+                background: $blue3;
                 .logo{
                     width: 100px !important;
                     height: 100px !important;
-                    margin-top: -50px !important;
+                    margin-top: -60px !important;
                     background: white;
                     padding: 3px;
                     border-radius: 10px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
                 }
+            }
+            &.nosproduits{
+                background: $blue3;
+                color: gainsboro;
             }
         }
         .produits{

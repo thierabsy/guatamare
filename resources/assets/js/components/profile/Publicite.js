@@ -44,6 +44,7 @@ export default class Publicite extends Component {
                 adresse: "",
                 email: "",
                 telephone: "",
+                ville: "",
                 image1: "",
                 image2: "",
                 image3: "",

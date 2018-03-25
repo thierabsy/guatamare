@@ -56,6 +56,14 @@ const AnnonceurBoutiquePreview = ({btk}) => {
                                         </div>
                                         <div className="list-group-item lgiflex">
                                             <div className="lgileft">
+                                                Ville:
+                                            </div>
+                                            <div className="lgiright">
+                                                { btk.ville }
+                                            </div>
+                                        </div>
+                                        <div className="list-group-item lgiflex">
+                                            <div className="lgileft">
                                                 Téléphone:
                                             </div>
                                             <div className="lgiright">
@@ -73,7 +81,7 @@ const AnnonceurBoutiquePreview = ({btk}) => {
                                     </div>
                                     <hr />
                                     <div className="list-group">
-                                        <div className="list-group-item">
+                                        <div className="list-group-item nosproduits">
                                             <h5>Nos Produits/Services</h5>
                                         </div>
                                         <div className="list-group-item produits">
