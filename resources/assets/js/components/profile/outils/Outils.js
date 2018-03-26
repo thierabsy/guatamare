@@ -17,7 +17,9 @@ const AnnonceurPub = ({ subcategorie, page, actiontype}) => {
                         <OutilsVideos 
                             actiontype={actiontype}  
                         /> :
-                    <Smiler /> 
+                    <Smiler>
+                        <i className="fas fa-coffee" />
+                    </Smiler>
                 }
             </div>
         );

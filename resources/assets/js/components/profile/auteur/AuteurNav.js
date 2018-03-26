@@ -4,6 +4,7 @@ import { urlPath } from '../../path';
 
 import { autnavitems } from '../../data/autnavitems';
 import { adsnavitems } from '../../data/adsnavitems';
+import OutilsNav from '../outils/OutilsNav';
 
 let AutNavItems = ({ap})=>  autnavitems.map((item, index) => {
                             let col = item.color;
@@ -15,13 +16,17 @@ let AutNavItems = ({ap})=>  autnavitems.map((item, index) => {
                             )  
                         })
 
-const AuteurNav = ({activepage}) => {
+const AuteurNav = ({activepage, actiontype}) => {
 
         return (
             <div className="auteurcard">
                 <div className="list-group auteur">
                    <AutNavItems ap={activepage} />
                 </div>
+                <hr />
+                <OutilsNav
+                    actiontype={actiontype}
+                />
                 <hr />
                 <div className="allersite a2">
                     <Link to="../" target="_blank" >

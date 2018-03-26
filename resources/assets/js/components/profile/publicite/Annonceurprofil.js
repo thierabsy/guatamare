@@ -29,14 +29,14 @@ const Annonceurprofil = ({dz, preview, handlePicker, showPicker, pickedColor, co
                     <div className="form-group">
                         <label htmlFor="pays"> Pays </label> <span>*</span>
                         <input type="country" className="form-control" id="pays" name="pays" placeholder="Sélectionnez votre pays" />
-                    </div>
+                    </div> 
                     <div className="form-group">
                         <label htmlFor="fonction"> Secteur </label> <span>*</span>
-                        <input type="text" className="form-control" id="fonction" name="fonction" placeholder="Entrez votre fonction" />
+                        <input type="text" className="form-control" id="secteur" name="secteur" placeholder="Entrez votre secteur d'activité" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="fonction"> Description de votre structure </label> <span>*</span>
-                        <textarea rows="3" className="form-control" id="bio" name="bio" placeholder="Entrez votre biographie"></textarea>
+                        <textarea rows="3" className="form-control" id="description" name="description" placeholder="Entrez votre description"></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="fonction"> Logo </label> <span>*</span>

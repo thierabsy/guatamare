@@ -73,3 +73,16 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
         outline: none;
     }
 }
+
+// NEW ITEM MODAL OVERLAY
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+    background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.modifications{
+    text-align: center !important;
+    button.btn.btn-default.btn-large{
+        border-radius: 0 !important;
+        box-shadow: 0 0 2px;
+    }
+}

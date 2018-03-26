@@ -92,7 +92,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                 </div>
                                <div className="form-group">
                                     <label className="form-input-label" htmlFor="alttext">Texte alternatif à l'image</label>
-                                    <input type="text" id="alttext" name="altext" className="alttext form-control" placeholder="Texte de remplacement" />
+                                    <input type="text" id="alttext" name="alttext" className="alttext form-control" placeholder="Texte de remplacement" />
                                 </div>
                                 <div className="form-group">
                                     <label className="form-input-label">Lien de redirection</label>
@@ -100,7 +100,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="siteweb">www.</span>
                                         </div>
-                                        <input type="text" id="siteweb" className="form-control" placeholder="siteweb.com/mon-magazine" aria-label="siteweb" aria-describedby="siteweb" />
+                                        <input type="text" name="siteweb" id="siteweb" className="form-control" placeholder="siteweb.com/mon-magazine" aria-label="siteweb" aria-describedby="siteweb" />
                                     </div>
                                 </div>
                             </div>

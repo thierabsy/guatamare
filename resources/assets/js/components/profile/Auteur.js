@@ -13,6 +13,7 @@ import Auteurposter from './auteur/Auteurposter';
 import AuteurNav from './auteur/AuteurNav';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
+import Outils from './outils/Outils';
 // import { Quill } from 'quill';
 
 export default class Auteur extends Component {
@@ -89,10 +90,11 @@ export default class Auteur extends Component {
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
+        let subcategorie = pageContent.subcategorie;
         // console.log(this.state.currentArticle.articlebody);
         // console.log(this.state.currentArticle);
-        console.log("Laravel data: ", this.state.data);
-        console.log(this.state.color);
+        // console.log("Laravel data: ", this.state.data);
+        // console.log(this.state.color);
         // console.log(this.state.currentArticle.image);
         // console.log(this.state.imagePreviewUrl);
         // console.log(this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview);
@@ -110,7 +112,10 @@ export default class Auteur extends Component {
                    <div className="container maincontainer">
                         <div className="row">
                             <div className="col col-sm-12 col-md-3">
-                                <AuteurNav activepage={pagemap} />
+                                <AuteurNav 
+                                    activepage={pagemap} 
+                                    actiontype={"action"} 
+                                />
                             </div>
                             <div className="col col-sm-12 col-md-9">
                                 <div className="auteurright">
@@ -134,7 +139,12 @@ export default class Auteur extends Component {
                                             <Auteurarticleapercu preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} currentArticle={this.state.currentArticle} /> :
                                         pagemap === "Poster un article" ?
                                             <Auteurposter preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} ap={ this.state.currentArticle } /> :
-
+                                        pagemap === "Outils" ?
+                                            <Outils 
+                                                subcategorie={subcategorie}
+                                                page={pagemap}
+                                                actiontype={"action"} 
+                                            />:
                                             <Auteuralertes />
                                     }
                                     {/* { this.state.data.map(i => <p> {i} </p>) } */}

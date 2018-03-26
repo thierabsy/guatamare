@@ -1917,24 +1917,28 @@ ul.navbar-nav li a {
 
 .profilheader {
   position: relative;
+  background-attachment: fixed;
 }
 
 .profilheader.profil {
   background: url(http://localhost:8000/img/welcome4.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .profilheader.admin {
   background: url(http://localhost:8000/img/pattern13.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .profilheader.hpublicite {
   background: url(http://localhost:8000/img/items.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .profilheader .overlayer {
@@ -2223,6 +2227,7 @@ button.btnlinks:hover {
   transition: -webkit-transform 3s;
   transition: transform 3s;
   transition: transform 3s, -webkit-transform 3s;
+  margin: 20px;
 }
 
 .smile:hover .si1 {
@@ -2291,6 +2296,27 @@ button.btnlinks:hover {
   color: #455a64;
   font-weight: bold;
   margin-top: -8px;
+}
+
+.smile svg.svg-inline--fa.fa-cart-plus.fa-w-18.smileicon.s2,
+.smile svg.svg-inline--fa.fa-coffee.fa-w-20 {
+  color: #17a2b8;
+  padding: 10px;
+  margin: 10px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  font-size: 120px;
+  -webkit-transition: ease-out 500ms;
+  transition: ease-out 500ms;
+}
+
+.smile svg.svg-inline--fa.fa-cart-plus.fa-w-18.smileicon.s2:hover,
+.smile svg.svg-inline--fa.fa-coffee.fa-w-20:hover {
+  -webkit-transform: rotate(720deg);
+          transform: rotate(720deg);
+  background: #17a2b8;
+  color: white;
 }
 
 .smile .bb {
@@ -2668,6 +2694,20 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
 
 .th-inner.table-header-column input:focus {
   outline: none;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.modifications {
+  text-align: center !important;
+}
+
+.modifications button.btn.btn-default.btn-large {
+  border-radius: 0 !important;
+  -webkit-box-shadow: 0 0 2px;
+          box-shadow: 0 0 2px;
 }
 
 /*!

@@ -53,6 +53,13 @@ export default class Publicite extends Component {
                 catalogue: "",
 
             },
+            profil: {
+                name: "",
+                email: "",
+                pays: "",
+                secteur: "",
+
+            },
             imagePreviewUrl: [],
             imagePreviewUrlBanner: [],
             imagePreviewUrlCote: [],

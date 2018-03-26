@@ -104,20 +104,24 @@
 }
 .profilheader{
     position: relative;
+    background-attachment: fixed;
     &.profil{
         background: url(http://localhost:8000/img/welcome4.jpg);
         background-size: cover;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     &.admin{
         background: url(http://localhost:8000/img/pattern13.jpg);
         background-size: cover;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     &.hpublicite{
         background: url(http://localhost:8000/img/items.jpg);
         background-size: cover;
         background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .overlayer{
         width: 100%;
@@ -360,6 +364,7 @@ button{
     text-align: center;
     font-weight: bold;
     transition: transform 3s;
+    margin: 20px;
     &:hover{
         .si1{
             transform: translate(120px, -14px);
@@ -408,6 +413,21 @@ button{
         color: $blue3;
         font-weight: bold;
         margin-top: -8px;
+    }
+    svg.svg-inline--fa.fa-cart-plus.fa-w-18.smileicon.s2,
+    svg.svg-inline--fa.fa-coffee.fa-w-20 {
+        color: #17a2b8;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        border-radius: 50%;
+        font-size: 120px;
+        transition: ease-out 500ms;
+        &:hover{
+            transform: rotate(720deg);
+            background: #17a2b8;
+            color: white;
+        }
     }
     .bb{
         display: block;
