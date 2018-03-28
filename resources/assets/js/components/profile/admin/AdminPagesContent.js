@@ -21,6 +21,7 @@ export default class AdminPagesContent extends Component {
         // this.createCustomModalBod = this.createCustomModalBod.bind(this);
         this.updateData = this.updateData.bind(this);
         this.Saved = this.Saved.bind(this);
+        this.onAddRow = this.onAddRow.bind(this);
     }
 componentDidMount(){
     this.setState({
@@ -30,9 +31,11 @@ componentDidMount(){
 handleSave(save) {
     // Custom your onSave event here,
     // it's not necessary to implement this function if you have no any process before save
-    alert("Insert Modal")
+    // alert("Insert Modal")
     console.log('SYTEK', 'This is my custom function for save event');
     save();
+    // this.state.stateArticles.push(save)
+    setTimeout(()=> console.log(this.state.stateArticles), 1)
     }
 updateData() {
     this.props.onUpdate(console.log("DATA CHANGED"));
@@ -64,6 +67,28 @@ createCustomModalFooter(closeModal, save){
 Saved(){
     console.log(this.state.stateArticles[0])
 }
+getSelectedRowKeys() {
+    //Here is your answer
+    console.log(this.refs.table.state.selectedRowKeys)
+  }
+onAddRow(row) {
+    //Here is your answer
+    // this.state.stateArticles.unshift(row)
+    this.setState({
+        stateArticles: [
+            ...this.state.stateArticles,
+            this.state.stateArticles.unshift(row)
+        ]
+    })
+    console.log(row)
+    console.log(this.state.stateArticles)
+  }
+// onAddRow(row) {
+//     this.products.push(row);
+//     this.setState({
+//       stateArticles: this.products
+//     });
+//   }
 render() {
     // let pageContent = queryString.parse(this.props.location.search);
     // let type = pageContent.type;
@@ -77,14 +102,24 @@ render() {
         noDataText: 'Pas de données ...',
         insertModalFooter: this.createCustomModalFooter,
         // insertModalBody: this.createCustomModalBody
+        onAddRow: this.onAddRow,
+        insertText: 'Ajouter',
+        deleteText: 'Supprimer',
+        exportCSVText: 'Export (CSV)'
     };
     const selectRow = {
         mode: 'checkbox', //radio or checkbox
         bgColor: 'rgba(69, 90, 100, 0.5)',
-        showOnlySelected: true
+        showOnlySelected: true,
+        clickToExpand: true
       };
       const cellEditProp = {
-        mode: 'click'
+        mode: 'click',
+        blurToSave: true,
+      };
+      const selectRowProp = {
+        mode: "checkbox",
+        clickToSelect: true
       };
     return (
         <div>
@@ -92,7 +127,9 @@ render() {
                 <button className="btn btn-default btn-large" onClick={() => this.Saved()} >ENREGISTRER LES MODIFICATIONS</button>
             </div>
             <hr />
+            <button onClick={this.getSelectedRowKeys.bind(this)}>Get selected row keys</button>
             <BootstrapTable 
+                selectRow={selectRowProp} ref='table'
                 data={this.state.stateArticles} 
                 striped 
                 hover 
@@ -100,7 +137,7 @@ render() {
                 deleteRow
                 selectRow={ selectRow }
                 exportCSV
-                csvFileName='table-export'
+                csvFileName='table-export.csv'
                 printToolBar={true}
                 headerStyle={{ background: 'rgba(69, 90, 100, 0.8)', color: 'white' }}
                 pagination
@@ -129,13 +166,15 @@ render() {
                     dataField='categorie'
                     editable={{ type: 'select', options: { values: status }}}
                     // onChange={() => this.updateData()}
+                    hidden // Hide column in table
+                    export // Export hidden field
                     dataSort> Status
                 </TableHeaderColumn>
-                {/* <TableHeaderColumn 
+                <TableHeaderColumn 
                     dataField=''
-                    editable={ { type: 'checkbox', options: { values: 'Y:N' } } }
+                    // dataFormat={(cell, row)=>(<span>{cell.toString()}</span>)}
                     dataSort> Action
-                </TableHeaderColumn> */}
+                </TableHeaderColumn>
             </BootstrapTable>
         </div>
     );

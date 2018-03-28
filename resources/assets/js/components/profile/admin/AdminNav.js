@@ -9,7 +9,7 @@ let AdminNavItems = ({apg})=>  adminnavitems.map((item, index) => {
                             let col = item.color;
                             return(
                                 <div key={index} className={ apg === item.name ? "oneitem list-group-item activeNav" : "oneitem list-group-item"} style={{borderLeft:"10px solid" + col }}>
-                                    <NavLink to={`?type=${item.name}`}><i className={`fas fa-${item.icon}`} ></i> {item.name} </NavLink>
+                                    <NavLink to={`?type=${item.name}`}><i className={`fas fa-${item.icon} text-truncate`} ></i> {item.name} </NavLink>
                                 </div>
                             )  
                         })
