@@ -18,6 +18,10 @@ export const  adminnavitems = [
                 subname: "Draft",
                 sublink: ""
             },
+            {
+                subname: "economie",
+                sublink: ""
+            },
         ]
     },
     {

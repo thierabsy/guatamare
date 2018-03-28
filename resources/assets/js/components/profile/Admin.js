@@ -16,15 +16,46 @@ import Topheader from './Topheader';
 import Smiler from './Smiler';
 import Outils from './outils/Outils';
 
+import { articles } from '../data/articles';
+
 export default class Admin extends Component {
     constructor(props){
         super(props);
         this.state = {
-            currentArticle: {}
-        }
+            currentArticle: {},
+            stateArticles: [],
+        },
+        this.clickSet = this.clickSet.bind(this)
+        this.clickUnset = this.clickUnset.bind(this)
+        this.csTimer = this.csTimer.bind(this)
     }
    
     componentDidMount(){
+        // let data = articles.filter(a => a.categorie === this.state.subcategorie)
+        this.setState({
+            stateArticles: articles,
+            filtre: queryString.parse(this.props.location.search).subcategorie,
+        })
+    }
+    clickSet(){
+            this.setState({
+                filtre: queryString.parse(this.props.location.search).subcategorie,
+            })
+        // let data = articles.filter(a => a.categorie === queryString.parse(this.props.location.search).subcategorie)
+        setTimeout(()=> this.csTimer(), 1)
+    }
+    csTimer(){
+        let data = articles.filter(a => a.categorie === this.state.filtre)
+        console.log("f:",data)
+        // console.log("fr",filterr)
+        this.setState({
+            stateArticles: data
+        })
+    }
+    clickUnset(){
+        this.setState({
+            stateArticles: articles
+        })
     }
 
     render() {
@@ -50,13 +81,19 @@ export default class Admin extends Component {
                                 <AdminNav 
                                     type={type} 
                                     actiontype={"type"} 
+                                    
                                 />
                             </div>
                             <div className="col col-sm-12 col-md-9">
                                 <div className="auteurright">
                                     <h3 className="text-center lead">{ type ? type.toUpperCase()  : "BIENVENUE" }</h3>
                                     <hr />
-                                    <AdminSubnav tp={type} subcat={subcategorie} />
+                                    <AdminSubnav 
+                                        tp={type} 
+                                        subcat={subcategorie} 
+                                        clickSet={this.clickSet} 
+                                        clickUnset={this.clickUnset} 
+                                    />
                                     <hr />
                                    
                                    {
@@ -69,6 +106,7 @@ export default class Admin extends Component {
                                         <AdminPages 
                                             type={type} 
                                             subcategorie={subcategorie} 
+                                            data={this.state.stateArticles} 
                                         />
                                    }
                                     

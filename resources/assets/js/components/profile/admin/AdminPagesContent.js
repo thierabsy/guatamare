@@ -14,7 +14,9 @@ export default class AdminPagesContent extends Component {
         super(props);
         this.state = {
             currentArticle: {},
-            stateArticles: []
+            stateArticles: [],
+            // type : this.props.type,
+            // subcategorie : this.props.subcategorie,
         }
         this.handleSave = this.handleSave.bind(this);
         this.createCustomModalFooter = this.createCustomModalFooter.bind(this);
@@ -24,18 +26,24 @@ export default class AdminPagesContent extends Component {
         this.onAddRow = this.onAddRow.bind(this);
     }
 componentDidMount(){
+    // let marticles = 
+    // this.setState({
+    //     stateArticles: articles.filter(a => a.categorie === this.subcategorie || null)
+    // })
+    // let data = articles.filter(a => a.categorie === this.state.subcategorie)
+    let data = this.props.data
     this.setState({
-        stateArticles: articles
+        stateArticles: data
     })
 }
 handleSave(save) {
     // Custom your onSave event here,
     // it's not necessary to implement this function if you have no any process before save
     // alert("Insert Modal")
-    console.log('SYTEK', 'This is my custom function for save event');
+    // console.log('SYTEK', 'This is my custom function for save event');
     save();
     // this.state.stateArticles.push(save)
-    setTimeout(()=> console.log(this.state.stateArticles), 1)
+    // setTimeout(()=> console.log(this.state.stateArticles), 1)
     }
 updateData() {
     this.props.onUpdate(console.log("DATA CHANGED"));
@@ -89,13 +97,17 @@ onAddRow(row) {
 //       stateArticles: this.products
 //     });
 //   }
-render() {
+
+render(props) {
     // let pageContent = queryString.parse(this.props.location.search);
     // let type = pageContent.type;
     // let subcategorie = pageContent.subcategorie;
-    console.log(this.state.stateArticles)
+    // console.log(this.state.stateArticles)
+    // console.log(this.props.type, this.props.subcategorie)
     // console.log(this.state.stateArticles.categorie.has("Désactivé"))
-    
+    let filtered = this.state.stateArticles.filter(a => a.categorie === "economie")
+    // console.log(filtered)
+    let datas = this.props.data;
     const status = [ 'Activé', 'Désactivé', 'Draft', 'Ancien' ];
      
     const options = {
@@ -127,10 +139,11 @@ render() {
                 <button className="btn btn-default btn-large" onClick={() => this.Saved()} >ENREGISTRER LES MODIFICATIONS</button>
             </div>
             <hr />
-            <button onClick={this.getSelectedRowKeys.bind(this)}>Get selected row keys</button>
+            {/* <button onClick={this.getSelectedRowKeys.bind(this)}>Get selected row keys</button> */}
             <BootstrapTable 
                 selectRow={selectRowProp} ref='table'
-                data={this.state.stateArticles} 
+                data={datas} 
+                // data={this.state.stateArticles} 
                 striped 
                 hover 
                 insertRow
@@ -166,7 +179,7 @@ render() {
                     dataField='categorie'
                     editable={{ type: 'select', options: { values: status }}}
                     // onChange={() => this.updateData()}
-                    hidden // Hide column in table
+                    // hidden // Hide column in table
                     export // Export hidden field
                     dataSort> Status
                 </TableHeaderColumn>

@@ -5,10 +5,14 @@ import { urlPath } from '../../path';
 import { adminnavitems } from '../../data/adminnavitems';
 import AdminPagesContent from './AdminPagesContent';
 
-const AdminPages = ({type, subcategorie}) => {
+const AdminPages = ({type, subcategorie, data}) => {
         return (
             <div className="">
-                <AdminPagesContent />
+                <AdminPagesContent 
+                    type={type} 
+                    subcategorie={subcategorie} 
+                    data={data} 
+                />
             </div>
         );
     }
