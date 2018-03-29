@@ -17,6 +17,12 @@ const AdminNav = ({type, actiontype}) => {
 
         return (
             <div className="auteurcard">
+                <div className="list-group auteur">
+                    <div className={ type === "Messages" ? "oneitem list-group-item activeNav disabled" : "oneitem list-group-item disabled"} style={{borderLeft:"10px solid #4e626c" }}>
+                        <NavLink to="?type=Messages"><i className="fas fa-envelope" ></i> Messages <span class="badge badge-info">0</span> </NavLink>
+                    </div>
+                </div>
+                <hr />
                 <div className="list-group">
                    <AdminNavItems apg={type} />
                 </div>

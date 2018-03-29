@@ -13,6 +13,7 @@ import Auteurposter from './auteur/Auteurposter';
 import AuteurNav from './auteur/AuteurNav';
 import { urlPath } from '../path';
 import Topheader from './Topheader';
+import Smiler from './Smiler';
 import Outils from './outils/Outils';
 // import { Quill } from 'quill';
 
@@ -139,6 +140,12 @@ export default class Auteur extends Component {
                                             <Auteurarticleapercu preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} currentArticle={this.state.currentArticle} /> :
                                         pagemap === "Poster un article" ?
                                             <Auteurposter preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} ap={ this.state.currentArticle } /> :
+                                        pagemap === "Messages" ?
+                                            <Smiler>
+                                                <i className="fab fa-grav smileicon si2" />
+                                                <h5> En développement!!!</h5>
+                                            </Smiler>
+                                                :
                                         pagemap === "Outils" ?
                                             <Outils 
                                                 subcategorie={subcategorie}

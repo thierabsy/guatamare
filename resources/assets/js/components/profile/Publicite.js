@@ -342,6 +342,12 @@ export default class Publicite extends Component {
                                                 page={pagemap}
                                                 actiontype={"action"} 
                                             /> :
+                                        pagemap === "Messages" ?
+                                            <Smiler>
+                                                <i className="fab fa-grav smileicon si2" />
+                                                <h5> En développement!!!</h5>
+                                            </Smiler>
+                                                :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />
                                                 <i className="fas fa-smile smileicon si2" />
