@@ -23,7 +23,7 @@ class CreatePubProfilsTable extends Migration
             $table->text('description');
             $table->string('logo');
             $table->string('color');
-            $table->json('reseaux');
+            $table->string('reseaux');
             $table->string('catalogue');
             $table->timestamps();
         });

@@ -23,7 +23,7 @@ class CreateAuteurProfilsTable extends Migration
             $table->string('bio');
             $table->string('avatar');
             $table->string('color');
-            $table->json('reseaux');
+            $table->string('reseaux');
             $table->string('slider');
             $table->timestamps();
         });
