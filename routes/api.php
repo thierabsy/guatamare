@@ -34,4 +34,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     // $dt = toArray($data, $data2);
 //     return response()->json($mydata1);
 // });
-Route::get('/data/{id}', 'AccueilController@index');
+Route::get('/data', 'AccueilController@index');
+Route::get('/data/categorie/{pages}', 'PagesController@index');
+Route::get('/data/categorie/{pages}/{articles}', 'SinglearticleController@index');
+Route::get('/data/kiosque', 'KiosqueController@index');
+Route::get('/data/auteur', 'AuteurController@index');
+Route::get('/data/admin', 'AdminController@index');
+Route::get('/data/publicite', 'PubliciteController@index');

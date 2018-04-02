@@ -475,6 +475,8 @@ ul.navbar-nav li a {
   color: gainsboro;
   font-weight: bold;
   border-radius: 15px;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .articles .articlesgroup2 .left {
@@ -506,6 +508,7 @@ ul.navbar-nav li a {
   color: gainsboro;
   font-weight: bold;
   border-radius: 15px;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .articles .articlesgroup2 .left .verticalarticle .text h3 {

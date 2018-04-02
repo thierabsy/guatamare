@@ -9,7 +9,13 @@ use App\Auteur_profil;
 
 class AccueilController extends Controller
 {
-    public function index($id)
+    public function index()
+    {
+        $mydata2 = "Accueil Page";
+        return response()->json($mydata2);
+    }
+
+    public function data($id)
     {
         // $data = Article::where('user_id', $id)->get();
         $data = Article::get();
