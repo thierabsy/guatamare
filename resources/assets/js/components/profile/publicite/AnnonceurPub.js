@@ -6,6 +6,7 @@ import AnnonceurPubBanner from './AnnonceurPubBanner';
 import AnnonceurPubCote from './AnnonceurPubCote';
 import AnnonceurPubCover from './AnnonceurPubCover';
 import Auteuralertes from '../auteur/Auteuralertes';
+import Smiler from '../Smiler';
 
 const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, page, dz, dzbanner, dzcote, dzcover}) => {
         return (
@@ -30,7 +31,10 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                             previewCv={previewCover}
                             dz={dzcover} 
                         /> :
-                    <Auteuralertes />
+                        <Smiler>
+                            <i className="fab fa-fly smileicon si2" />
+                            <h5> Choisissez une des catégories ci-dessus</h5>
+                        </Smiler>
                 }
             </div>
         );

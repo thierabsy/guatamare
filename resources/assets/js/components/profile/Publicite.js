@@ -58,6 +58,13 @@ export default class Publicite extends Component {
                 email: "",
                 pays: "",
                 secteur: "",
+                description: "",
+                logo: "",
+                color: "",
+                linkedin: "",
+                facebook: "",
+                twitter: "",
+                catalogue: "",
 
             },
             imagePreviewUrl: [],
@@ -70,6 +77,7 @@ export default class Publicite extends Component {
             imagePreviewUrlBtk3: [],
             cover: false
         }
+        this.profilChange = this.profilChange.bind(this);
         this.titreChange = this.titreChange.bind(this);
         this.boutiqueChange = this.boutiqueChange.bind(this);
         this.imgLoaded = this.imgLoaded.bind(this);
@@ -91,6 +99,8 @@ export default class Publicite extends Component {
         this.dateDebutt = this.dateDebutt.bind(this);
         this.dateFin = this.dateFin.bind(this);
         this.dateFinn = this.dateFinn.bind(this);
+
+        this.postPubProfil = this.postPubProfil.bind(this);
     }
     componentDidMount(){
         let $this = this;
@@ -101,6 +111,16 @@ export default class Publicite extends Component {
         })
     }
 
+    profilChange(e){
+        this.setState({
+            profil: { 
+                ...this.state.profil,
+                [e.target.name]: e.target.value,
+                logo: this.state.imagePreviewUrl[0],
+                catalogue: catalogue.files[0]
+            }
+        })
+    }
     titreChange(e){
         this.setState({
             magazine: { 
@@ -135,7 +155,11 @@ export default class Publicite extends Component {
     }
    dropZone(files){
        this.setState({
-           imagePreviewUrl: files
+           imagePreviewUrl: files,
+           profil: { 
+            ...this.state.profil,
+            logo: files[0]
+        }
        })
    }
    dropZoneBanner(files){
@@ -207,7 +231,17 @@ export default class Publicite extends Component {
         })
     }
    pickedColor(color){
-        this.setState({ color: color.hex })
+        this.setState({ 
+            color: color.hex,
+            boutique: {
+                ...this.state.boutique,
+                color: color.hex
+            }, 
+            profil: {
+                ...this.state.profil,
+                color: color.hex
+            } 
+        })
     }
     dateDebut(date){
         this.setState({
@@ -244,6 +278,36 @@ export default class Publicite extends Component {
             }
         })
     }
+/*
+ * Form submit methods
+*/
+    postPubProfil(){
+        const pubProfil = new FormData();
+        pubProfil.append("data", this.state.profil);
+        console.log(pubProfil);
+        axios({
+            url: "http://localhost:8000/api/data/publicite/profil",
+            method: "POST",
+            data: pubProfil,
+            config: { 
+                headers: {
+                    'Content-Type': 'multipart/form-data' 
+            }   }
+        }).then(
+            res => console.log(res)
+        )
+    }
+
+    // {
+    //     nom: this.state.profil.name,
+    //     email: this.state.profil.email,
+    //     pays: this.state.profil.pays,
+    //     secteur: this.state.profil.secteur,
+    //     description: this.state.profil.description,
+    //     color: this.state.profil.color,
+    //     reseaux: this.state.profil.reseaux,
+    //     catalogue: this.state.profil.color
+    // }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
@@ -252,10 +316,10 @@ export default class Publicite extends Component {
         // console.log(this.state.dates.start_date, this.state.magazine.periode_start)
         // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
         // console.log(moment(this.state.dates.start_date).format("L"))
-        console.log("btk1", this.state.imagePreviewUrlBtk1)
+        // console.log("btk1", this.state.imagePreviewUrlBtk1)
         // console.log(this.state.magazine)
-        console.log("boutique", this.state.boutique)
-        console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
+        console.log("profil", this.state.profil)
+        // console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
             backgroundImage: `url(${this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview })` ,
             backgroundSize: "cover",
@@ -294,6 +358,8 @@ export default class Publicite extends Component {
                                                 handlePicker={this.handlePicker}
                                                 showPicker={this.state.showPicker}
                                                 pickedColor={this.pickedColor}
+                                                postPubProfil={this.postPubProfil}
+                                                profilChange={this.profilChange}
                                                 color={this.state.color}
                                             /> :
                                         pagemap === "Pubs" ?
@@ -342,6 +408,12 @@ export default class Publicite extends Component {
                                                 page={pagemap}
                                                 actiontype={"action"} 
                                             /> :
+                                        pagemap === "Messages" ?
+                                            <Smiler>
+                                                <i className="fab fa-grav smileicon si2" />
+                                                <h5> En développement!!!</h5>
+                                            </Smiler>
+                                                :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />
                                                 <i className="fas fa-smile smileicon si2" />
