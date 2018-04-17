@@ -19,8 +19,8 @@ const Annonceurprofil = ({dz, preview, handlePicker, showPicker, pickedColor, co
             <div className="auteurprofil">
                 <form action="" onSubmit={submitProfil}>
                     <div className="form-group">
-                        <label htmlFor="name" className="form-label">Nom et Prénom(s)</label> <span>*</span>
-                        <input type="text" className="form-control" onChange={(e) => profilChange(e)} id="name" name="name" placeholder="Entrez votre nom et prénom(s)" />
+                        <label htmlFor="nom" className="form-label">Nom</label> <span>*</span>
+                        <input type="text" className="form-control" onChange={(e) => profilChange(e)} id="nom" name="nom" placeholder="Entrez votre nom et prénom(s)" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email"> Email </label> <span>*</span>

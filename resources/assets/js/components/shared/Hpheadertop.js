@@ -56,18 +56,23 @@ class Hpheadertop extends Component {
                                     <div className="icontext">
                                         <i className="fas fa-envelope" ></i>
                                         <span>NEWSLETTER</span> 
+                                        <div className="modalConnect"  >
+                                            <form>
+                                                <input type="text" className="form-control" id="identifiant" placeholder="Nom" />
+                                                <input type="email" className="form-control" id="email" placeholder="E-mail" />
+                                                <button type="submit" className="btn  btn-block newsleter">S'INSCRIRE</button>
+                                            </form>
+                                        </div> 
                                     </div>
                                 </li>
                                 <li>
                                     <div className="icontext" >
                                         <i className="fas fa-user"></i>
                                         <span className="text-truncate" >SE CONNECTER</span>
-                                        <div className="modalConnect"  >
-                                            <form>
-                                                <input type="text" className="form-control" id="identifiant" placeholder="Identifiant" />
-                                                <input type="password" className="form-control" id="password" placeholder="Password" />
-                                                <button type="submit" className="btn  btn-block">Se Connecter</button>
-                                            </form>
+                                        <div className="modalConnect type"  >
+                                            <Link to="/auteur"> <button className="btn btn-block btn-info">Auteur</button> </Link>
+                                            <Link to="/publicite"> <button className="btn btn-block btn-success">Annonceur</button> </Link>
+                                            <Link to="/admin"> <button className="btn btn-block adminBtn">Admin</button> </Link>
                                             <div className="contacterNous">Contacter nous pour un compte <span>info@guatamare.com</span></div>
                                         </div> 
                                     </div>

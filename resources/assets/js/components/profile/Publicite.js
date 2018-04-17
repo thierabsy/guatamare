@@ -54,8 +54,9 @@ export default class Publicite extends Component {
 
             },
             profil: {
-                name: "",
+                nom: "",
                 email: "",
+                user_id: "pub123",
                 pays: "",
                 secteur: "",
                 description: "",
@@ -280,22 +281,22 @@ export default class Publicite extends Component {
     }
 /*
  * Form submit methods
-*/
-    postPubProfil(){
-        const pubProfil = new FormData();
-        pubProfil.append("data", this.state.profil);
-        console.log(pubProfil);
-        axios({
-            url: "http://localhost:8000/api/data/publicite/profil",
-            method: "POST",
-            data: pubProfil,
+ * 
+ * ,
             config: { 
                 headers: {
                     'Content-Type': 'multipart/form-data' 
             }   }
-        }).then(
-            res => console.log(res)
-        )
+*/
+    postPubProfil(){
+        let data = new FormData();
+        for(let key in this.state.profil){
+            data.append(key , this.state.profil[key]);
+        }
+        
+        let url= "http://localhost:8000/api/data/publicite/profil";
+        axios.post(url, data)
+            .then(res => console.log(res))
     }
 
     // {
@@ -352,7 +353,7 @@ export default class Publicite extends Component {
                                     <hr />
                                     {
                                         pagemap === "Profil" ?
-                                            <Annonceurprofil 
+                                            <Annonceurprofil
                                                 preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
                                                 dz={this.dropZone} 
                                                 handlePicker={this.handlePicker}

@@ -15,16 +15,18 @@ class CreatePubProfilsTable extends Migration
     {
         Schema::create('pub_profils', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
-            $table->string('nom');
-            $table->string('email');
-            $table->string('pays');
-            $table->string('secteur');
-            $table->text('description');
-            $table->string('logo');
-            $table->string('color');
-            $table->string('reseaux');
-            $table->string('catalogue');
+            $table->string('user_id')->nullable();
+            $table->string('nom')->nullable();
+            $table->string('email')->nullable();
+            $table->string('pays')->nullable();
+            $table->string('secteur')->nullable();
+            $table->text('description')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('color')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('catalogue')->nullable();
             $table->timestamps();
         });
     }

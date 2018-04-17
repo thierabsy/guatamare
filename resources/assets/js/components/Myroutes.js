@@ -17,7 +17,7 @@ const Myroutes = ()=>{
             <BrowserRouter >
                 <div>
                     <div className="topbar" />
-                    <Route exact={true} path="/profil" component={ Auteur } />
+                    <Route exact={true} path="/auteur" component={ Auteur } />
                     <Route path="/admin" component={ Admin } />
                     <Route path="/publicite" component={ Publicite } />
                     <Route exact={true} path="/" component={Homepage} />

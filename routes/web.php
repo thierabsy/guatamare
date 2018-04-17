@@ -23,7 +23,7 @@ Route::get('/categorie/{pages}/{article}', function () {
 Route::get('/kiosque', function () {
     return view('welcome');
 });
-Route::get('/profil', function () {
+Route::get('/auteur', function () {
     return view('welcome');
 });
 Route::get('/admin', function () {
@@ -32,3 +32,12 @@ Route::get('/admin', function () {
 Route::get('/publicite', function () {
     return view('welcome');
 });
+
+Route::get('/data', 'AccueilController@index');
+Route::get('/data/categorie/{pages}', 'PagesController@index');
+Route::get('/data/categorie/{pages}/{articles}', 'SinglearticleController@index');
+Route::get('/data/kiosque', 'KiosqueController@index');
+Route::get('/data/auteur', 'AuteurController@index');
+Route::get('/data/admin', 'AdminController@index');
+Route::get('/data/publicite', 'PubliciteController@index');
+Route::post('/data/publicite/profil', 'PubliciteController@profil');
