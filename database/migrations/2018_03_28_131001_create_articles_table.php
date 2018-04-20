@@ -20,9 +20,9 @@ class CreateArticlesTable extends Migration
             $table->string('categorie');
             $table->text('resume');
             $table->string('image');
-            $table->longText('contenu');
-            $table->string('status');
-            $table->string('slider');
+            $table->longText('articlebody');
+            $table->string('status')->default('draft');
+            $table->string('slider')->default('na');
             $table->timestamps();
         });
     }

@@ -13,34 +13,34 @@ let inputChange = (e)=>{
     
 }
 
-const Auteurprofil = ({dz, preview, handlePicker, showPicker, pickedColor, color}) => {
+const Auteurprofil = ({dz, dzAvatar, dzCv, cv, preview, handlePicker, showPicker, pickedColor, color, profilChange, postAuteurProfil}) => {
         return (
             <div className="auteurprofil">
                 <form action="" onSubmit={submitProfil}>
                     <div className="form-group">
                         <label htmlFor="name" className="form-label">Nom et Prénom(s)</label> <span>*</span>
-                        <input type="text" className="form-control" id="name" name="name" placeholder="Entrez votre nom et prénom(s)" />
+                        <input type="text" className="form-control" id="nom" name="nom" placeholder="Entrez votre nom et prénom(s)" onChange={(e)=> profilChange(e)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email"> Email </label> <span>*</span>
-                        <input type="email" className="form-control" id="email" name="email" placeholder="Entrez votre email" />
+                        <input type="email" className="form-control" id="email" name="email" placeholder="Entrez votre email" onChange={(e)=> profilChange(e)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="pays"> Pays </label> <span>*</span>
-                        <input type="country" className="form-control" id="pays" name="pays" placeholder="Sélectionnez votre pays" />
+                        <input type="country" className="form-control" id="pays" name="pays" placeholder="Sélectionnez votre pays" onChange={(e)=> profilChange(e)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="fonction"> Fonction </label> <span>*</span>
-                        <input type="text" className="form-control" id="fonction" name="fonction" placeholder="Entrez votre fonction" />
+                        <input type="text" className="form-control" id="fonction" name="fonction" placeholder="Entrez votre fonction" onChange={(e)=> profilChange(e)} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="fonction"> Biographie </label> <span>*</span>
-                        <textarea rows="3" className="form-control" id="bio" name="bio" placeholder="Entrez votre biographie"></textarea>
+                        <textarea rows="3" className="form-control" id="bio" name="bio" placeholder="Entrez votre biographie" onChange={(e)=> profilChange(e)}></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="fonction"> Avatar (Image) </label> <span>*</span>
                         {/* <input type="file" className="form-control" id="avatar" name="avatar" /> */}
-                        <FileUpload dz={dz} >
+                        <FileUpload dz={dzAvatar} >
                             <span className="imgchoice"> <i className="fas fa-upload" /> {preview ? "Changer l'image" : "Choisir une image ou Glisser et déposer ici"} </span>
                             { preview && <img src={preview} className="logo" />} 
                         </FileUpload>
@@ -57,26 +57,28 @@ const Auteurprofil = ({dz, preview, handlePicker, showPicker, pickedColor, color
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="linkedin">www.linkedin.com/in/</span>
                             </div>
-                            <input type="text" id="linkedin" className="form-control" placeholder="linkedin" aria-label="linkedin" aria-describedby="linkedin" />
+                            <input type="text" id="linkedin" name="linkedin" className="form-control" placeholder="linkedin" aria-label="linkedin" aria-describedby="linkedin" onChange={(e)=> profilChange(e)} />
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="facebook">www.facebook.com/</span>
                             </div>
-                            <input type="text" id="facebook" className="form-control" placeholder="Facebook" aria-label="Facebook" aria-describedby="facebook" />
+                            <input type="text" id="facebook" name="facebook" className="form-control" placeholder="Facebook" aria-label="Facebook" aria-describedby="facebook" onChange={(e)=> profilChange(e)} />
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="twitter">@</span>
                             </div>
-                            <input type="text" id="twitter" className="form-control" placeholder="Twitter" aria-label="Twitter" aria-describedby="twitter" />
+                            <input type="text" id="twitter" name="twitter" className="form-control" placeholder="Twitter" aria-label="Twitter" aria-describedby="twitter" onChange={(e)=> profilChange(e)} />
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="file"> Votre CV </label>
-                        <input type="file" className="form-control" id="cv" name="file" placeholder="Entrez votre couleur préférée" />
+                        <label htmlFor="fonction"> Votre CV (au format pdf) </label> <span>*</span>
+                        <FileUpload dz={dzCv} >
+                            <span className="imgchoice"> <i className="fas fa-upload" /> {cv !== "" ? "Changer votre cv" : "Choisir votre cv ou Glisser et déposer ici"} </span>
+                        </FileUpload>
                     </div>
-                    <button type="submit" className="btn btn-success btnlinks"><i className="fas fa-save"></i> Enregistrer </button>
+                    <button type="submit" className="btn btn-success btnlinks" onClick={(e)=> postAuteurProfil(e)}><i className="fas fa-save"></i> Enregistrer </button>
                 </form>
             </div>
         );

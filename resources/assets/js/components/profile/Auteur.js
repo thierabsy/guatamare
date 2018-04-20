@@ -23,22 +23,45 @@ export default class Auteur extends Component {
         this.state = {
             currentArticle: {
                 titre: 'Titre A',
-                catégorie: 'Catégorie A',
+                user_id: "pub123",
+                categorie: 'Catégorie A',
                 resume: 'Resume A',
                 image: 'Image A',
                 articlebody: 'Body A'
             },
+            profil: {
+                nom: "",
+                email: "",
+                user_id: "pub123",
+                pays: "",
+                fonction: "",
+                bio: "",
+                avatar: "",
+                color: "",
+                linkedin: "",
+                facebook: "",
+                twitter: "",
+                cv: "",
+            },
             imagePreviewUrl: [],
+            imagePreviewUrlAvatar: [],
             showPicker: false,
             color: "rgba(255,255,255,1)",
             data: []
         }
         this.titreChange = this.titreChange.bind(this);
+        this.profilChange = this.profilChange.bind(this);
+
         this.imgLoaded = this.imgLoaded.bind(this);
         this.getBody = this.getBody.bind(this);
         this.dropZone = this.dropZone.bind(this);
+        this.dropZoneCv = this.dropZoneCv.bind(this);
+        this.dropZoneAvatar = this.dropZoneAvatar.bind(this);
         this.handlePicker = this.handlePicker.bind(this);
         this.pickedColor = this.pickedColor.bind(this);
+
+        this.postAuteurProfil = this.postAuteurProfil.bind(this);
+        this.postAuteurArticle = this.postAuteurArticle.bind(this);
     }
     componentDidMount(){
         let $this = this;
@@ -54,6 +77,14 @@ export default class Auteur extends Component {
         this.setState({
             currentArticle: { 
                 ...this.state.currentArticle,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+    profilChange(e){
+        this.setState({
+            profil: { 
+                ...this.state.profil,
                 [e.target.name]: e.target.value
             }
         })
@@ -76,7 +107,28 @@ export default class Auteur extends Component {
     }
    dropZone(files){
        this.setState({
-           imagePreviewUrl: files
+           imagePreviewUrl: files,
+           currentArticle: {
+            ...this.state.currentArticle,
+            image: files[0]
+           }
+       })
+   }
+   dropZoneCv(files){
+       this.setState({
+           profil: {
+            ...this.state.profil,
+            cv: files[0]
+           }
+       })
+   }
+   dropZoneAvatar(files){
+       this.setState({
+            imagePreviewUrlAvatar: files,
+            profil: {
+                ...this.state.profil,
+                avatar: files[0]
+            }
        })
    }
    handlePicker(color){
@@ -85,21 +137,48 @@ export default class Auteur extends Component {
         })
     }
     pickedColor(color){
-         this.setState({ color: color.hex })
-     }
+         this.setState({ 
+            color: color.hex,
+            profil: {
+                ...this.state.profil,
+                color: color.hex
+            }
+        })
+    }
+    postAuteurProfil(e){
+        e.preventDefault();
+        let data = new FormData();
+        for(let key in this.state.profil){
+            data.append(key , this.state.profil[key]);
+        }
+        let url= urlPath+"/api/data/auteur/profil";
+        axios.post(url, data)
+            .then(res => console.log(res))
+    }
+    postAuteurArticle(e){
+        e.preventDefault();
+        let data = new FormData();
+        for(let key in this.state.currentArticle){
+            data.append(key , this.state.currentArticle[key]);
+        }
+        let url= urlPath+"/api/data/auteur/article";
+        axios.post(url, data)
+            .then(res => console.log(res))
+    }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
-        // console.log(this.state.currentArticle.articlebody);
-        // console.log(this.state.currentArticle);
+        console.log("article", this.state.currentArticle);
+        // console.log("profil aut", this.state.profil);
+        // console.log("cv", this.state.profil.cv);
         // console.log("Laravel data: ", this.state.data);
         // console.log(this.state.color);
         // console.log(this.state.currentArticle.image);
         // console.log(this.state.imagePreviewUrl);
         // console.log(this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview);
-        return (
+        return ( 
             <div className="profilpage" >
                 <div className="profilheader profil">
                    <div className="overlayer">
@@ -125,21 +204,37 @@ export default class Auteur extends Component {
                                     {
                                         pagemap === "Profil" ?
                                             <Auteurprofil 
-                                                preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
+                                                preview={this.state.imagePreviewUrlAvatar[0] && this.state.imagePreviewUrlAvatar[0].preview} 
                                                 dz={this.dropZone}
+                                                dzAvatar={this.dropZoneAvatar}
+                                                dzCv={this.dropZoneCv}
                                                 handlePicker={this.handlePicker}
                                                 showPicker={this.state.showPicker}
                                                 pickedColor={this.pickedColor}
                                                 color={this.state.color}
+                                                cv={this.state.profil.cv}
+                                                profilChange={this.profilChange}
+                                                postAuteurProfil={this.postAuteurProfil}
                                             /> :
                                         pagemap === "Mes Articles" ?
                                             <Auteurarticles /> :
                                         pagemap === "Rédiger un article" ?
-                                            <Auteurrediger getbd={this.getBody} preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} dz={this.dropZone} titreChange={this.titreChange} imgLoaded={this.imgLoaded} currentArticle={this.state.currentArticle}/> :
+                                            <Auteurrediger 
+                                                getbd={this.getBody} 
+                                                preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
+                                                dz={this.dropZone} 
+                                                titreChange={this.titreChange} 
+                                                imgLoaded={this.imgLoaded} 
+                                                currentArticle={this.state.currentArticle}/> :
                                         pagemap === "Aperçu" ?
-                                            <Auteurarticleapercu preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} currentArticle={this.state.currentArticle} /> :
+                                            <Auteurarticleapercu 
+                                                preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
+                                                currentArticle={this.state.currentArticle} /> :
                                         pagemap === "Poster un article" ?
-                                            <Auteurposter preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} ap={ this.state.currentArticle } /> :
+                                            <Auteurposter 
+                                                preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
+                                                postAuteurArticle={this.postAuteurArticle}
+                                                ap={ this.state.currentArticle } /> :
                                         pagemap === "Messages" ?
                                             <Smiler>
                                                 <i className="fab fa-grav smileicon si2" />

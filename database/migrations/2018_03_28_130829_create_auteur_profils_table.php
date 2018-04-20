@@ -16,15 +16,18 @@ class CreateAuteurProfilsTable extends Migration
         Schema::create('auteur_profils', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('name');
+            $table->string('nom');
             $table->string('email');
             $table->string('pays');
             $table->string('fonction');
             $table->string('bio');
             $table->string('avatar');
             $table->string('color');
-            $table->string('reseaux');
-            $table->string('slider');
+            $table->string('facebook');
+            $table->string('linkedin');
+            $table->string('twitter');
+            $table->string('cv');
+            $table->boolean('slider')->default(false);
             $table->timestamps();
         });
     }

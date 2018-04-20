@@ -11,7 +11,7 @@ import AnnonceurNav from './publicite/AnnonceurNav';
 import AnnonceurPub from './publicite/AnnonceurPub';
 import AnnonceurKiosque from './publicite/AnnonceurKiosque';
 import { urlPath } from '../path';
-import Topheader from './Topheader';
+import Topheader from './Topheader'; 
 import Smiler from './Smiler';
 import AnnonceurBoutique from './publicite/AnnonceurBoutique';
 import Outils from './outils/Outils';
@@ -30,11 +30,15 @@ export default class Publicite extends Component {
             color: "rgba(255,255,255,1)",
             data: [],
             magazine: {
-                nom: "Time",
-                editeur: "Media 1",
+                nom: "...",
+                user_id: "K015",
+                image: "",
+                editeur: "...",
                 periode_start: "",
                 periode_end: "",
-                prix: 1000,
+                alttext: "",
+                siteweb: "",
+                prix: 0,
             },
             dates: {
                 start_date: moment(),
@@ -42,6 +46,7 @@ export default class Publicite extends Component {
             },
             boutique: {
                 nom: "",
+                user_id: "A007",
                 adresse: "",
                 email: "",
                 telephone: "",
@@ -50,7 +55,6 @@ export default class Publicite extends Component {
                 image2: "",
                 image3: "",
                 produits: "",
-                catalogue: "",
 
             },
             profil: {
@@ -68,6 +72,14 @@ export default class Publicite extends Component {
                 catalogue: "",
 
             },
+            annonce: {
+                user_id: "A123",
+                type: "",
+                img: "",
+                alttext: "",
+                status: "",
+                siteweb: ""
+            },
             imagePreviewUrl: [],
             imagePreviewUrlBanner: [],
             imagePreviewUrlCote: [],
@@ -76,8 +88,10 @@ export default class Publicite extends Component {
             imagePreviewUrlBtk1: [],
             imagePreviewUrlBtk2: [],
             imagePreviewUrlBtk3: [],
-            cover: false
+            cover: false,
+            apercuAnnonce: false
         }
+        this.annonceChange = this.annonceChange.bind(this);
         this.profilChange = this.profilChange.bind(this);
         this.titreChange = this.titreChange.bind(this);
         this.boutiqueChange = this.boutiqueChange.bind(this);
@@ -101,7 +115,12 @@ export default class Publicite extends Component {
         this.dateFin = this.dateFin.bind(this);
         this.dateFinn = this.dateFinn.bind(this);
 
+        this.showAnnonce = this.showAnnonce.bind(this);
+
         this.postPubProfil = this.postPubProfil.bind(this);
+        this.postPubAnnonce = this.postPubAnnonce.bind(this);
+        this.postPubMagazine = this.postPubMagazine.bind(this);
+        this.postPubBoutique = this.postPubBoutique.bind(this);
     }
     componentDidMount(){
         let $this = this;
@@ -119,6 +138,14 @@ export default class Publicite extends Component {
                 [e.target.name]: e.target.value,
                 logo: this.state.imagePreviewUrl[0],
                 catalogue: catalogue.files[0]
+            }
+        })
+    }
+    annonceChange(e){
+        this.setState({
+            annonce: { 
+                ...this.state.annonce,
+                [e.target.name]: e.target.value
             }
         })
     }
@@ -158,30 +185,49 @@ export default class Publicite extends Component {
        this.setState({
            imagePreviewUrl: files,
            profil: { 
-            ...this.state.profil,
-            logo: files[0]
-        }
+                ...this.state.profil,
+                logo: files[0]
+            }
        })
    }
    dropZoneBanner(files){
        this.setState({
-           imagePreviewUrlBanner: files
+           imagePreviewUrlBanner: files,
+           annonce: { 
+                ...this.state.annonce,
+                img: files[0],
+                type: queryString.parse(this.props.location.search).subcategorie
+            }
        })
    }
    dropZoneCote(files){
        this.setState({
-           imagePreviewUrlCote: files
+           imagePreviewUrlCote: files,
+           annonce: { 
+                ...this.state.annonce,
+                img: files[0],
+                type: queryString.parse(this.props.location.search).subcategorie
+            }
        })
    }
    dropZoneCover(files){
        this.setState({
            imagePreviewUrlCover: files,
-           cover: true
+           cover: true,
+           annonce: { 
+                ...this.state.annonce,
+                img: files[0],
+                type: queryString.parse(this.props.location.search).subcategorie
+            }
        })
    }
    dropZoneMag(files){
-       this.setState({
-           imagePreviewUrlMag: files
+        this.setState({
+           imagePreviewUrlMag: files,
+           magazine: { 
+                ...this.state.magazine,
+                image: files[0]
+           }
        })
    }
    dropZoneBtk1(files){
@@ -223,7 +269,7 @@ export default class Publicite extends Component {
             boutique: {
                 ...this.state.boutique,
                 image3: this.state.imagePreviewUrlBtk3[0]
-            }
+            } 
         })
    }
    handlePicker(color){
@@ -257,10 +303,11 @@ export default class Publicite extends Component {
         this.setState({
             magazine: { 
                 ...this.state.magazine,
-                periode_start: document.getElementById("start_id").value
+                periode_start: moment(this.state.dates.start_date).format("YYYY-MM-DD")
             }
         })
     }
+    // periode_start: document.getElementById("start_id").value
 
     dateFin(date){
         this.setState({
@@ -275,51 +322,60 @@ export default class Publicite extends Component {
         this.setState({
             magazine: { 
                 ...this.state.magazine,
-                periode_end: moment(this.state.dates.end_date).format("L")
+                periode_end: moment(this.state.dates.end_date).format("YYYY-MM-DD")
             }
         })
     }
-/*
- * Form submit methods
- * 
- * ,
-            config: { 
-                headers: {
-                    'Content-Type': 'multipart/form-data' 
-            }   }
-*/
+    showAnnonce(){
+        this.setState({
+            apercuAnnonce: !this.state.apercuAnnonce
+        })
+    }
     postPubProfil(){
         let data = new FormData();
         for(let key in this.state.profil){
             data.append(key , this.state.profil[key]);
         }
-        
-        let url= "http://localhost:8000/api/data/publicite/profil";
+        let url= urlPath+"/api/data/publicite/profil";
         axios.post(url, data)
             .then(res => console.log(res))
     }
-
-    // {
-    //     nom: this.state.profil.name,
-    //     email: this.state.profil.email,
-    //     pays: this.state.profil.pays,
-    //     secteur: this.state.profil.secteur,
-    //     description: this.state.profil.description,
-    //     color: this.state.profil.color,
-    //     reseaux: this.state.profil.reseaux,
-    //     catalogue: this.state.profil.color
-    // }
+    postPubAnnonce(){
+        let data = new FormData();
+        for(let key in this.state.annonce){
+            data.append(key , this.state.annonce[key]);
+        }
+        let url= urlPath+"/api/data/publicite/annonce";
+        axios.post(url, data)
+            .then(res => console.log(res))
+    }
+    postPubMagazine(e){
+        e.preventDefault();
+        let data = new FormData();
+        for(let key in this.state.magazine){
+            data.append(key , this.state.magazine[key]);
+        }
+        let url= urlPath+"/api/data/publicite/magazine";
+        axios.post(url, data)
+            .then(res => console.log(res))
+    }
+    postPubBoutique(e){
+        e.preventDefault();
+        let data = new FormData();
+        for(let key in this.state.boutique){
+            data.append(key , this.state.boutique[key]);
+        }
+        let url= urlPath+"/api/data/publicite/boutique";
+        axios.post(url, data)
+            .then(res => console.log(res))
+    }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
-        // console.log(this.state.dates.start_date, this.state.magazine.periode_start)
-        // console.log(this.state.dates.end_date, this.state.magazine.periode_end)
-        // console.log(moment(this.state.dates.start_date).format("L"))
-        // console.log("btk1", this.state.imagePreviewUrlBtk1)
-        // console.log(this.state.magazine)
-        console.log("profil", this.state.profil)
+        console.log("boutique", this.state.boutique);
+        // console.log("img", this.state.annonce.img || this.state.annonce.img.preview )
         // console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
             backgroundImage: `url(${this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview })` ,
@@ -369,13 +425,18 @@ export default class Publicite extends Component {
                                                 dzbanner={this.dropZoneBanner} 
                                                 dzcote={this.dropZoneCote} 
                                                 dzcover={this.dropZoneCover} 
+                                                annonceChange={this.annonceChange} 
                                                 previewBanner={this.state.imagePreviewUrlBanner[0] && this.state.imagePreviewUrlBanner[0].preview} 
                                                 previewCote={this.state.imagePreviewUrlCote[0] && this.state.imagePreviewUrlCote[0].preview} 
                                                 previewCover={this.state.imagePreviewUrlCover[0] && this.state.imagePreviewUrlCover[0].preview} 
                                                 handlePicker={this.handlePicker}
                                                 showPicker={this.state.showPicker}
+                                                annonce={this.state.annonce}
+                                                showAnnonce={this.showAnnonce}
                                                 pickedColor={this.pickedColor}
+                                                postPubAnnonce={this.postPubAnnonce}
                                                 color={this.state.color}
+                                                apercuAnnonce={this.state.apercuAnnonce}
                                                 subcategorie={subcategorie}
                                                 page={pagemap}
                                             /> :
@@ -389,6 +450,7 @@ export default class Publicite extends Component {
                                                 dateDebut={this.dateDebut}
                                                 dateFin={this.dateFin}
                                                 date={this.state.dates}
+                                                postPubMagazine={this.postPubMagazine}
                                             /> :
                                         pagemap === "Boutique" ?
                                             <AnnonceurBoutique
@@ -400,6 +462,7 @@ export default class Publicite extends Component {
                                                 dz3={this.dropZoneBtk3} 
                                                 btk={this.state.boutique}
                                                 boutiqueChange={this.boutiqueChange}
+                                                postPubBoutique={this.postPubBoutique}
                                                 subcat={subcategorie}
                                                 tp={pagemap}
                                             /> :
@@ -414,7 +477,7 @@ export default class Publicite extends Component {
                                                 <i className="fab fa-grav smileicon si2" />
                                                 <h5> En développement!!!</h5>
                                             </Smiler>
-                                                :
+                                            :
                                             <Smiler>
                                                 <i className="fas fa-smile smileicon si1" />
                                                 <i className="fas fa-smile smileicon si2" />

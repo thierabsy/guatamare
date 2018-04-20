@@ -4,7 +4,7 @@ import FileUpload from '../FileUpload';
 import BtnSubmit from '../BtnSubmit';
 
 
-const AnnonceurPubCoverjs = ({previewCv, dz}) => {
+const AnnonceurPubCoverjs = ({previewCv, dz, annonceChange, showAnnonce}) => {
         return (
             <div className="banner">
                 <div className="pubbanner" >
@@ -12,15 +12,15 @@ const AnnonceurPubCoverjs = ({previewCv, dz}) => {
                     <h5 style={{marginBottom:"0px", marginTop: "10px", fontWeight:"bold" }}>Choisir Image</h5> 
                     <span className="taille" >(Taille: 1150x2000)</span>
                     <form action="">
-                        <FileUpload dz={dz}>
+                        <FileUpload dz={dz} onChange={(e) => annonceChange(e)}>
                             <span className="imgchoice" > <i className="fas fa-upload" /> {previewCv ? "Changer l'image" : "Choisir une image ou Glisser et déposer ici"} </span>
-                        </FileUpload>
+                        </FileUpload> 
                         { previewCv && <hr />}
                         { previewCv && <img src={previewCv} className="imgBanner" />}
                         { previewCv && <hr />}
                         <div className="form-group">
                             <label className="form-input-label" htmlFor="alttext" style={{marginTop: "20px" }}>Texte alternatif à l'image</label>
-                            <input type="text" id="alttext" className="alttext form-control" placeholder="Texte de remplacement" />
+                            <input type="text" id="alttext" name="alttext" className="alttext form-control" placeholder="Texte de remplacement" onChange={(e) => annonceChange(e)}/>
                         </div>
                         <div className="form-group">
                             <label className="form-input-label">Lien de redirection</label>
@@ -28,12 +28,12 @@ const AnnonceurPubCoverjs = ({previewCv, dz}) => {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="siteweb">www.</span>
                                 </div>
-                                <input type="text" id="siteweb" className="form-control" placeholder="siteweb" aria-label="siteweb" aria-describedby="siteweb" />
+                                <input type="text" id="siteweb" name="siteweb" className="form-control" placeholder="siteweb" aria-label="siteweb" aria-describedby="siteweb"  onChange={(e) => annonceChange(e)} />
                             </div>
                         </div>
                         <hr />
-                        <BtnSubmit condition={previewCv} />
                     </form>
+                        <BtnSubmit condition={previewCv}  btnAction={ showAnnonce }/>
                 </div>
             </div>
         );

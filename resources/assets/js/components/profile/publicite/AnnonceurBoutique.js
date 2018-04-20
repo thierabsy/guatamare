@@ -6,7 +6,7 @@ import AnnonceurBoutiqueForm from './AnnonceurBoutiqueForm';
 import AnnonceurSubnav from './AnnonceurSubnav';
 import AnnonceurBoutiquePreview from './AnnonceurBoutiquePreview';
 
-const AnnonceurBoutique = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3, btk, boutiqueChange,tp, subcat}) => {
+const AnnonceurBoutique = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3, btk, boutiqueChange,tp, subcat, postPubBoutique}) => {
         
     console.log("subcat: ", subcat)
     console.log("tp: ", tp)
@@ -27,6 +27,7 @@ const AnnonceurBoutique = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3
                             dz3={dz3}
                             btk={btk}
                             boutiqueChange={boutiqueChange}
+                            postPubBoutique={postPubBoutique}
                         /> :
                     subcat === "Aperçu" ?
                         <AnnonceurBoutiquePreview 

@@ -15,7 +15,7 @@ class CreatePubBoutiquesTable extends Migration
     {
         Schema::create('pub_boutiques', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
+            $table->string('user_id')->default('A007');
             $table->string('nom');
             $table->string('adresse');
             $table->string('ville');
@@ -25,7 +25,7 @@ class CreatePubBoutiquesTable extends Migration
             $table->string('image1');
             $table->string('image2');
             $table->string('image3');
-            $table->string('status');
+            $table->string('status')->default('inactive');
             $table->timestamps();
         });
     }

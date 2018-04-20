@@ -15,16 +15,16 @@ class CreatePubMagazinesTable extends Migration
     {
         Schema::create('pub_magazines', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user-id');
+            $table->string('user_id');
             $table->string('image');
             $table->string('nom');
             $table->string('editeur');
-            $table->string('prix');
+            $table->integer('prix')->default(0);
             $table->date('periode_start');
             $table->date('periode_end');
             $table->string('alttext');
             $table->string('siteweb');
-            $table->string('status');
+            $table->string('status')->default('inactive');
             $table->timestamps();
         });
     }

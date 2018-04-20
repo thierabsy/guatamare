@@ -29,30 +29,41 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, getbd, currentArtic
                 <div className="form-group">
                     <label htmlFor="fonction"> Catégorie </label> <br />
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="economie" name="economie" className="custom-control-input" />
+                        <input type="radio" id="economie" name="categorie" className="custom-control-input" value="economie" onChange={ e => titreChange(e) } />
                         <label className="custom-control-label" htmlFor="economie">Economie</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="culture" name="culture" className="custom-control-input"/>
+                        <input type="radio" id="culture" name="categorie" className="custom-control-input" value="culture" onChange={ e => titreChange(e) } />
                         <label className="custom-control-label" htmlFor="culture">Culture</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="tourisme" name="tourisme" className="custom-control-input"/>
+                        <input type="radio" id="tourisme" name="categorie" className="custom-control-input" value="tourisme" onChange={ e => titreChange(e) }/>
                         <label className="custom-control-label" htmlFor="tourisme">Tourisme</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="humanitaire" name="humanitaire" className="custom-control-input"/>
+                        <input type="radio" id="humanitaire" name="categorie" className="custom-control-input" value="humanitaire" onChange={ e => titreChange(e) }/>
                         <label className="custom-control-label" htmlFor="humanitaire">Humanitaire</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="societe" name="societe" className="custom-control-input"/>
+                        <input type="radio" id="societe" name="categorie" className="custom-control-input" value="societe" onChange={ e => titreChange(e) }/>
                         <label className="custom-control-label" htmlFor="societe">Société</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="panels" name="panels" className="custom-control-input"/>
+                        <input type="radio" id="panels" name="categorie" className="custom-control-input" value="panels" onChange={ e => titreChange(e) }/>
                         <label className="custom-control-label" htmlFor="panels">Panels</label>
                     </div>
                 </div>
+                {/* <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <label className="input-group-text" for="inputGroupSelect01">Options</label>
+                    </div>
+                    <select className="custom-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div> */}
                 <div className="form-group">
                     <label htmlFor="resume">Résumé</label>
                     <textarea  

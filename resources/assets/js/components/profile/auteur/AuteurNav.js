@@ -22,7 +22,7 @@ const AuteurNav = ({activepage, actiontype}) => {
             <div className="auteurcard">
                 <div className="list-group auteur">
                     <div className={ activepage === "Messages" ? "oneitem list-group-item activeNav disabled" : "oneitem list-group-item disabled"} style={{borderLeft:"10px solid #4e626c" }}>
-                        <NavLink to="?action=Messages"><i className="fas fa-envelope" ></i> Messages <span class="badge badge-info">0</span> </NavLink>
+                        <NavLink to="?action=Messages"><i className="fas fa-envelope" ></i> Messages <span className="badge badge-info">0</span> </NavLink>
                     </div>
                 </div>
                 <hr />

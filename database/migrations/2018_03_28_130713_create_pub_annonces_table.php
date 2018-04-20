@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePubAnnoncesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 
      *
      * @return void
      */
@@ -18,9 +18,9 @@ class CreatePubAnnoncesTable extends Migration
             $table->string('user_id');
             $table->string('type');
             $table->string('img');
-            $table->string('alttext');
-            $table->string('siteweb');
-            $table->string('status');
+            $table->string('alttext')->nullable();
+            $table->string('siteweb')->nullable();
+            $table->string('status')->default('inactive');
             $table->timestamps();
         });
     }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pub_boutique extends Model
 {
-    //
+    protected $guarded= ['id'];
 }

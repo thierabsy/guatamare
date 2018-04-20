@@ -29,7 +29,7 @@ let Product = ({dz, preview, imgClass, taille})=>{
     )
 }
 
-const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3, btk, boutiqueChange}) => {
+const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3, btk, boutiqueChange, postPubBoutique}) => {
         // let disable = previewK ? "true" : "false";
         // console.log(mag.start_date);
         
@@ -146,8 +146,8 @@ const AnnonceurBoutiqueForm = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2,
                             </div>
                         </div>
                         <hr />
-                        <BtnSubmit condition={previewBtk1 && previewBtk2 && previewBtk3} />
                     </form>
+                    <BtnSubmit condition={previewBtk1 && previewBtk2 && previewBtk3 } btnAction={ postPubBoutique } />
                 </div>
             </div>
         );

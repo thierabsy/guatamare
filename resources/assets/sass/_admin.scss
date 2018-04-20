@@ -51,6 +51,10 @@
 .modal-content{
     border: 1px solid rgb(78, 98, 108) !important;
 }
+button.btn.btn-success.my-save-btn-class {
+    background:  #4e626c linear-gradient(90deg, transparent, #4e626c,black) !important;
+    border-color:  #4e626c linear-gradient(90deg, transparent, #4e626c,black) !important;
+}
 
 .page-item.active .page-link {
     z-index: 1;

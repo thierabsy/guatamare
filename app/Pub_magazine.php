@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pub_magazine extends Model
 {
     //
+    protected $guarded= ['id'];
 }

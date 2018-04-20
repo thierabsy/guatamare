@@ -9,7 +9,7 @@ import BtnSubmit from '../BtnSubmit';
         
 //     )
 
-const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, dateDebut, dateFin}) => {
+const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, dateDebut, dateFin, postPubMagazine}) => {
         // let disable = previewK ? "true" : "false";
         // console.log(mag.start_date);
         
@@ -92,7 +92,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                 </div>
                                <div className="form-group">
                                     <label className="form-input-label" htmlFor="alttext">Texte alternatif à l'image</label>
-                                    <input type="text" id="alttext" name="alttext" className="alttext form-control" placeholder="Texte de remplacement" />
+                                    <input type="text" id="alttext" name="alttext" className="alttext form-control" placeholder="Texte de remplacement" onChange={ (e) => titreChange(e) }/>
                                 </div>
                                 <div className="form-group">
                                     <label className="form-input-label">Lien de redirection</label>
@@ -100,7 +100,7 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                         <div className="input-group-prepend">
                                             <span className="input-group-text" id="siteweb">www.</span>
                                         </div>
-                                        <input type="text" name="siteweb" id="siteweb" className="form-control" placeholder="siteweb.com/mon-magazine" aria-label="siteweb" aria-describedby="siteweb" />
+                                        <input type="text" name="siteweb" id="siteweb" className="form-control" placeholder="siteweb.com/mon-magazine" aria-label="siteweb" aria-describedby="siteweb" onChange={ (e) => titreChange(e) }/>
                                     </div>
                                 </div>
                             </div>
@@ -128,11 +128,10 @@ const AnnonceurKiosque = ({previewK, dz, mag, titreChange, dateRange, date, date
                                     </Smiler>
                                 }
                             </div>
-                            
                         </div>
                         <hr />
-                        <BtnSubmit condition={previewK} />
                     </form>
+                    <BtnSubmit condition={previewK} btnAction={ postPubMagazine } />
                 </div>
             </div>
         );

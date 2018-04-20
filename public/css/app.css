@@ -2705,6 +2705,12 @@ button.btnlinks:hover {
   border: 1px solid #4e626c !important;
 }
 
+button.btn.btn-success.my-save-btn-class {
+  background: #4e626c -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#4e626c), to(black)) !important;
+  background: #4e626c linear-gradient(90deg, transparent, #4e626c, black) !important;
+  border-color: #4e626c linear-gradient(90deg, transparent, #4e626c, black) !important;
+}
+
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
