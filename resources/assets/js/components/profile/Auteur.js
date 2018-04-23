@@ -15,6 +15,7 @@ import { urlPath } from '../path';
 import Topheader from './Topheader';
 import Smiler from './Smiler';
 import Outils from './outils/Outils';
+import Posted from './Posted';
 // import { Quill } from 'quill';
 
 export default class Auteur extends Component {
@@ -47,7 +48,8 @@ export default class Auteur extends Component {
             imagePreviewUrlAvatar: [],
             showPicker: false,
             color: "rgba(255,255,255,1)",
-            data: []
+            data: [],
+            posted: false
         }
         this.titreChange = this.titreChange.bind(this);
         this.profilChange = this.profilChange.bind(this);
@@ -152,8 +154,18 @@ export default class Auteur extends Component {
             data.append(key , this.state.profil[key]);
         }
         let url= urlPath+"/api/data/auteur/profil";
+        let self = this;
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     postAuteurArticle(e){
         e.preventDefault();
@@ -162,8 +174,18 @@ export default class Auteur extends Component {
             data.append(key , this.state.currentArticle[key]);
         }
         let url= urlPath+"/api/data/auteur/article";
+        let self = this;
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     
     render() {
@@ -180,6 +202,7 @@ export default class Auteur extends Component {
         // console.log(this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview);
         return ( 
             <div className="profilpage" >
+                { this.state.posted && <Posted />}
                 <div className="profilheader profil">
                    <div className="overlayer">
                         <div className="container">

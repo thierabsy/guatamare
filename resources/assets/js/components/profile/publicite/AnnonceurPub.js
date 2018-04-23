@@ -67,7 +67,7 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                             <p style={{ borderBottom: "1px dotted darkgray" }}>
                                 <strong>Site de redirection: </strong> <br /> { annonce.siteweb && "www."+annonce.siteweb }
                             </p>
-                            <button className="btn btn-info" onClick={() => postPubAnnonce()} >ENVOYER</button>
+                            <button className="btn btn-info" onClick={() => {postPubAnnonce(); showAnnonce()}}  >ENVOYER</button>
                         </div>
                     </div>
                     </div>

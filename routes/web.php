@@ -40,4 +40,8 @@ Route::get('/data/kiosque', 'KiosqueController@index');
 Route::get('/data/auteur', 'AuteurController@index');
 Route::get('/data/admin', 'AdminController@index');
 Route::get('/data/publicite', 'PubliciteController@index');
-Route::post('/data/publicite/profil', 'PubliciteController@profil');
+// Route::group(['middleware' => ['auth', 'can:annonceur']], function(){
+    
+//     Route::post('/data/publicite/profil', 'PubliciteController@profil');
+// })
+

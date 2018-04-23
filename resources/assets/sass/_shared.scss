@@ -155,3 +155,22 @@
         }
     }
 }
+
+.Posted{
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    background: $green;
+    padding: 10px 20px;
+    color: white;
+    z-index: 1000;
+    border-radius: 5px;
+    animation: posted 1s;
+    animation-delay: 5s;
+    .icon{
+        padding-top:20px;
+    }
+    .text{
+        font-size: 13px;
+    }
+}

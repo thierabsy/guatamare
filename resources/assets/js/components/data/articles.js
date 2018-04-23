@@ -4,7 +4,7 @@ export const articles = [
         categorie: "economie",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        topimg: "http://localhost:8000/img/economie.jpg"
+        topimg: "economie.jpg"
     },
     {
         title: "Lorem ipsum dolor sit amet 2",

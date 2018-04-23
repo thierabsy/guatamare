@@ -16,6 +16,11 @@ class PubliciteController extends Controller
         $mydata1 = "Publicité";
         return response()->json(["rep"=> $mydata1, "nb"=> 1]);
     }
+    public function getpub()
+    {
+        $mypub = Pub_annonce::all();
+        return response()->json(["pub" => $mypub]);
+    }
     public function profil(Request $request) 
     {
         // dd($request->logo);

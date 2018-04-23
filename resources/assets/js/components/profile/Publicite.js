@@ -15,6 +15,7 @@ import Topheader from './Topheader';
 import Smiler from './Smiler';
 import AnnonceurBoutique from './publicite/AnnonceurBoutique';
 import Outils from './outils/Outils';
+import Posted from './Posted';
 
 export default class Publicite extends Component {
     constructor(props){
@@ -89,7 +90,8 @@ export default class Publicite extends Component {
             imagePreviewUrlBtk2: [],
             imagePreviewUrlBtk3: [],
             cover: false,
-            apercuAnnonce: false
+            apercuAnnonce: false,
+            posted: false
         }
         this.annonceChange = this.annonceChange.bind(this);
         this.profilChange = this.profilChange.bind(this);
@@ -121,16 +123,22 @@ export default class Publicite extends Component {
         this.postPubAnnonce = this.postPubAnnonce.bind(this);
         this.postPubMagazine = this.postPubMagazine.bind(this);
         this.postPubBoutique = this.postPubBoutique.bind(this);
+        
+        this.getpub = this.getpub.bind(this);
     }
     componentDidMount(){
-        let $this = this;
-        axios.get("/api/data").then(res => {
-            $this.setState({
-                data: res.data
+        this.getpub()
+    }
+    getpub(){
+        let url = urlPath+"/api/data/publicite/getpub";
+        let self = this;
+        axios.get(url)
+             .then(res => {
+                self.setState({
+                    data: res.data.pub
             })
         })
     }
-
     profilChange(e){
         this.setState({
             profil: { 
@@ -338,7 +346,16 @@ export default class Publicite extends Component {
         }
         let url= urlPath+"/api/data/publicite/profil";
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     postPubAnnonce(){
         let data = new FormData();
@@ -346,8 +363,24 @@ export default class Publicite extends Component {
             data.append(key , this.state.annonce[key]);
         }
         let url= urlPath+"/api/data/publicite/annonce";
+        let self = this;
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true,
+                    annonce: {
+                        ...self.state.annonce,
+                        img: "",
+                        siteweb: "",
+                        alttext: "",
+                    }
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     postPubMagazine(e){
         e.preventDefault();
@@ -356,8 +389,18 @@ export default class Publicite extends Component {
             data.append(key , this.state.magazine[key]);
         }
         let url= urlPath+"/api/data/publicite/magazine";
+        let self = this;
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     postPubBoutique(e){
         e.preventDefault();
@@ -366,15 +409,26 @@ export default class Publicite extends Component {
             data.append(key , this.state.boutique[key]);
         }
         let url= urlPath+"/api/data/publicite/boutique";
+        let self = this;
         axios.post(url, data)
-            .then(res => console.log(res))
+            .then(function(res){
+                self.setState({
+                    posted: true
+                })
+                setTimeout(() => {
+                    self.setState({
+                        posted: false
+                    })
+                }, 5000)
+            })
     }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
-        console.log("boutique", this.state.boutique);
+        // console.log("boutique", this.state.boutique);
+        console.log("getpub", this.state.data);
         // console.log("img", this.state.annonce.img || this.state.annonce.img.preview )
         // console.log(moment.duration(this.state.dates.end_date.diff(this.state.dates.start_date), 'weeks'))
         let coverStyle = subcategorie === "Couverture" && {
@@ -386,6 +440,8 @@ export default class Publicite extends Component {
         }
         return (
             <div className="profilpage" >
+                {/* <Posted /> */}
+                { this.state.posted && <Posted action={pagemap} /> }
                 <div className="profilheader profil hpublicite">
                    <div className="overlayer">
                         <div className="container">
