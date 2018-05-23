@@ -32,11 +32,15 @@ export const  adminnavitems = [
         icon: "bullhorn",
         subnav: [
             {
-                subname: "Banner",
+                subname: "Couverture",
                 sublink: ""
             },
             {
-                subname: "Cote 1",
+                subname: "Bannière",
+                sublink: ""
+            },
+            {
+                subname: "Côté",
                 sublink: ""
             },
             {

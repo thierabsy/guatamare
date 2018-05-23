@@ -6,8 +6,11 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 import { urlPath } from '../../path';
+import Confirm from '../Confirm';
 
 import { articles } from '../../data/articles';
+import AdminArticleSlctedArticle from './AdminArticleSlctedArticle';
+import AdminArticlePreview from './AdminArticlePreview';
 
 export default class AdminPagesContent extends Component {
     constructor(props){
@@ -15,8 +18,12 @@ export default class AdminPagesContent extends Component {
         this.state = {
             currentArticle: {},
             stateArticles: [],
-            // type : this.props.type,
-            // subcategorie : this.props.subcategorie,
+            selectedArticles: [],
+            selectedArticle: {},
+            spreview: false,
+            smodifier: false,
+            fermeBtn: false,
+            overlay: false
         }
         this.handleSave = this.handleSave.bind(this);
         this.createCustomModalFooter = this.createCustomModalFooter.bind(this);
@@ -24,6 +31,12 @@ export default class AdminPagesContent extends Component {
         this.updateData = this.updateData.bind(this);
         this.Saved = this.Saved.bind(this);
         this.onAddRow = this.onAddRow.bind(this);
+        // this.handleRowSelect = this.handleRowSelect.bind(this);
+        // this.annuler = this.annuler.bind(this);
+        this.fermer = this.fermer.bind(this);
+        this.overlayFermer = this.overlayFermer.bind(this);
+        this.showPreview = this.showPreview.bind(this);
+        this.showModifier = this.showModifier.bind(this);
     }
 componentDidMount(){
     // let marticles = 
@@ -91,6 +104,61 @@ onAddRow(row) {
     console.log(row)
     console.log(this.state.stateArticles)
   }
+  onRowClick(row) {
+    console.log("ROW CLICK", row)
+  }
+//   handleRowSelect(row) {
+//     // console.log("ROW SELECTED", row, isSelected, e)
+//     // let article = this.state.selectedArticles.findIndex(x => x.id==row.id)
+//     // console.log("ART-FI", article)
+//     // if(article === -1){
+//     //     this.setState({
+//     //         selectedArticles: [
+//     //             ...this.state.selectedArticles,
+//     //             row
+//     //         ]
+//     //     })
+//     // }else{
+//     //     console.log("Already exists!");
+//     //     // setTimeout(()=> {
+//     //         this.state.selectedArticles.splice(this.state.selectedArticles.indexOf(row), 1)
+//     //     // }, 500)
+//     // }
+//     this.setState({
+//         selectedArticle:row
+//     })
+//   }
+//   annuler(){
+//     this.setState({
+//         selectedArticle: {},
+//         overlay: false
+//     })
+//   }
+  fermer(){
+    this.setState({
+        spreview: "",
+        overlay: false
+    })
+  }
+  overlayFermer(){
+    this.setState({
+        spreview: "",
+        overlay: false
+    })
+  }
+  showPreview(id){
+    // this.props.search.pushState("serchhhhh");
+    this.setState({
+        spreview: "Preview",
+        overlay: true
+    })
+  }
+  showModifier(){
+    this.setState({
+        spreview: "Modifier",
+        overlay: true
+    })
+  }
 // onAddRow(row) {
 //     this.products.push(row);
 //     this.setState({
@@ -98,23 +166,39 @@ onAddRow(row) {
 //     });
 //   }
 
+
+
 render(props) {
     // let pageContent = queryString.parse(this.props.location.search);
     // let type = pageContent.type;
     // let subcategorie = pageContent.subcategorie;
-    // console.log(this.state.stateArticles)
+    // console.log("PROPS_hi", )
+    // console.log("SUBCAT", this.props.subcategorie)
+    // console.log("PAGE", this.props)
+    // console.log("PAGE_search", this.props.page.search)
+    // console.log("PAGE_ART", this.props.page.Article)
+
+    console.log("SEL_ART", this.state.selectedArticle)
     // console.log(this.props.type, this.props.subcategorie)
     // console.log(this.state.stateArticles.categorie.has("Désactivé"))
     let filtered = this.state.stateArticles.filter(a => a.categorie === "economie")
     // console.log(filtered)
     let datas = this.props.data;
-    const status = [ 'Activé', 'Désactivé', 'Draft', 'Ancien' ];
+    const status = ['active', 'desactive', 'draft', 'ancien' ];
+    const slider = ['non',
+                    'sl_main', 
+                    'sl_top3', 
+                    'sl_top2',  
+                    'sl_horizontalArticles', 
+                    'sl_topArticles', 
+                ];
      
     const options = {
         noDataText: 'Pas de données ...',
         insertModalFooter: this.createCustomModalFooter,
         // insertModalBody: this.createCustomModalBody
         onAddRow: this.onAddRow,
+        onRowClick: this.onRowClick,
         insertText: 'Ajouter',
         deleteText: 'Supprimer',
         exportCSVText: 'Export (CSV)'
@@ -122,27 +206,71 @@ render(props) {
     const selectRow = {
         mode: 'checkbox', //radio or checkbox
         bgColor: 'rgba(69, 90, 100, 0.5)',
+        onSelect:  this.props.handleRowSelect,
         showOnlySelected: true,
-        clickToExpand: true
+        clickToExpand: true,
+        clickToSelect: true
       };
       const cellEditProp = {
         mode: 'click',
         blurToSave: true,
       };
-      const selectRowProp = {
-        mode: "checkbox",
-        clickToSelect: true
-      };
+    //   const selectRowProp = {
+    //     mode: "checkbox",
+    //     clickToSelect: true
+    //   };
+    
     return (
-        <div>
+        <div className="SelectedArticle">
             <div className="modifications">
                 <button className="btn btn-default btn-large" onClick={() => this.Saved()} >ENREGISTRER LES MODIFICATIONS</button>
             </div>
+
+            { this.props.confirmation && 
+                <div>
+                    <audio src="confirm.wav" autoPlay={true} loop={true} />
+                    <Confirm 
+                        yesAction={this.props.updateAuteurArticle} 
+                        noAction={this.props.confirm}  
+                        subject={"article"}  
+                    />
+                </div>
+            }
+
+            {
+                this.state.overlay && <div className="overlayArticle" onClick={() => this.overlayFermer()} />
+            }
+
+            {
+                Object.keys(this.props.selectedArticle).length !== 0 && 
+                <div>
+                    <hr />
+                    <span className="articleNumero" > Article: <b>#{this.props.selectedArticle.id}</b> </span> 
+                    <div className="sSldtArticleRow">
+                        <AdminArticleSlctedArticle 
+                            // page={this.props.page.Article} 
+                            sltArt={this.props.selectedArticle} 
+                            fermeBtn={this.state.fermeBtn} 
+                            annuler={this.props.annuler} 
+                            confirm={this.props.confirm} 
+                            fermer={this.fermer} 
+                            showPreview={this.showPreview} 
+                            showModifier={this.showModifier} 
+                            spreview={this.state.spreview} 
+                            updateAuteurArticle={this.props.updateAuteurArticle} 
+                            titreChange={this.props.titreChange} 
+                            getbd={this.props.getbd} 
+                            preview={this.props.preview} 
+                            dz={this.props.dz} 
+                        />
+                    </div>
+                </div>
+            }
             <hr />
-            {/* <button onClick={this.getSelectedRowKeys.bind(this)}>Get selected row keys</button> */}
             <BootstrapTable 
-                selectRow={selectRowProp} ref='table'
-                data={datas} 
+                // selectRow={selectRowProp} 
+                ref='table'
+                data={this.props.articles} 
                 // data={this.state.stateArticles} 
                 striped 
                 hover 
@@ -157,26 +285,31 @@ render(props) {
                 columnFilter 
                 search={true}
                 searchPlaceholder='Taper pour filtrer...'
-                keyField='title'
+                keyField='id'
                 // maxHeight="450px" 
                 options={ options }
                 cellEdit={ cellEditProp }
                 scrollTop={ 'Bottom' }
                 version='4'>
                 <TableHeaderColumn 
-                    dataField='title' 
+                    dataField='id'
+                    width='60' 
+                    dataSort> #ID
+                </TableHeaderColumn>
+                <TableHeaderColumn 
+                    dataField='titre' 
                     dataSort> Titre
                 </TableHeaderColumn>
                 <TableHeaderColumn 
-                    dataField='topimg' 
-                    dataSort> Image
+                    dataField='user_id' 
+                    dataSort> Auteur
                 </TableHeaderColumn>
-                {/* <TableHeaderColumn 
+                <TableHeaderColumn 
                     dataField='categorie' 
                     dataSort> Catégorie
-                </TableHeaderColumn> */}
+                </TableHeaderColumn>
                 <TableHeaderColumn 
-                    dataField='categorie'
+                    dataField='status'
                     editable={{ type: 'select', options: { values: status }}}
                     // onChange={() => this.updateData()}
                     // hidden // Hide column in table
@@ -184,9 +317,17 @@ render(props) {
                     dataSort> Status
                 </TableHeaderColumn>
                 <TableHeaderColumn 
-                    dataField=''
+                    dataField='slider'
+                    editable={{ type: 'select', options: { values: slider }}}
+                    // onChange={() => this.updateData()}
+                    // hidden // Hide column in table
+                    export // Export hidden field
+                    dataSort> Slider
+                </TableHeaderColumn>
+                <TableHeaderColumn 
+                    dataField='created_at'
                     // dataFormat={(cell, row)=>(<span>{cell.toString()}</span>)}
-                    dataSort> Action
+                    dataSort> Date
                 </TableHeaderColumn>
             </BootstrapTable>
         </div>

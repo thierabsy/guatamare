@@ -24,19 +24,55 @@ export default class Admin extends Component {
         this.state = {
             currentArticle: {},
             stateArticles: [],
+            pubs: [],
+            articlesDb: [],
+            posted: false,
+            error: false
         },
         this.clickSet = this.clickSet.bind(this)
         this.clickUnset = this.clickUnset.bind(this)
         this.csTimer = this.csTimer.bind(this)
+
+        this.getpubs = this.getpubs.bind(this); 
+        this.getArticles = this.getArticles.bind(this); 
+
+        // this.successMsg = this.successMsg.bind(this); 
+        // this.failMsg = this.failMsg.bind(this); 
     }
    
     componentDidMount(){
         // let data = articles.filter(a => a.categorie === this.state.subcategorie)
+        let self = this;
+        // let pubsUrl = urlPath+"/api/data/publicite/getpub";
         this.setState({
             stateArticles: articles,
             filtre: queryString.parse(this.props.location.search).subcategorie,
         })
+        this.getpubs()
+        this.getArticles()
     }
+
+    getpubs(){
+        let url = urlPath+"/api/data/publicite";
+        let self = this;
+        axios.get(url)
+             .then(res => {
+                self.setState({
+                    pubs: res.data.pub
+            })
+        })
+    }
+    getArticles(){
+        let url2 = urlPath+"/api/data/auteur/index";
+        let self = this;
+        axios.get(url2)
+             .then(res => {
+                self.setState({
+                    articlesDb: res.data
+            })
+        })
+    }
+    
     clickSet(){
             this.setState({
                 filtre: queryString.parse(this.props.location.search).subcategorie,
@@ -58,11 +94,18 @@ export default class Admin extends Component {
         })
     }
 
+   
+
     render() {
 
         let pageContent = queryString.parse(this.props.location.search);
         let type = pageContent.type;
         let subcategorie = pageContent.subcategorie;
+
+        // console.log("PC", this.props.location.search='hi=ho');
+        // console.log("PC_hi", pageContent.hi);
+        console.log("pubs", this.state.pubs);
+        console.log("ARTICLES_DB", this.state.articlesDb);
 
         return (
             <div className="profilpage" >
@@ -110,10 +153,14 @@ export default class Admin extends Component {
                                         </Smiler>
                                             :
                                         <AdminPages 
-                                            type={type} 
+                                            type={this.type} 
+                                            search={this.props.location.search} 
                                             subcategorie={subcategorie} 
+                                            page={pageContent} 
                                             data={this.state.stateArticles} 
-                                        />
+                                            pubs={this.state.pubs} 
+                                            articles={this.state.articlesDb} 
+                                        /> 
                                    }
                                     
                                     {/* {

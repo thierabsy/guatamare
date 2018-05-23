@@ -183,35 +183,35 @@ export const articles = [
     },
     {
         title: "Lorem ipsum dolor sit amet",
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"
     },
     {
         title: "Lorem ipsum dolor sit amet",
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"
     },
     {
         title: "Lorem ipsum dolor sit amet ",
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"
     },
     {
         title: "Lorem ipsum dolor sit amet",
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"
     },
     {
         title: "Lorem ipsum dolor sit amet",
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         fullarticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"

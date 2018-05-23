@@ -4,7 +4,7 @@ import FileUpload from '../FileUpload';
 import BtnSubmit from '../BtnSubmit';
 
 
-const AnnonceurPubBanner = ({previewB, dz, annonceChange, showAnnonce}) => {
+const AnnonceurPubBanner = ({previewB, dz, annonceChange, showAnnonce, page}) => {
         return (
             <div className="banner">
                 <div className="pubbanner" >
@@ -33,7 +33,7 @@ const AnnonceurPubBanner = ({previewB, dz, annonceChange, showAnnonce}) => {
                         </div>
                         <hr />
                     </form>
-                        <BtnSubmit condition={previewB} btnAction={ showAnnonce } />
+                        <BtnSubmit condition={previewB} btnAction={ showAnnonce } page={page}  />
                 </div>
             </div>
         );

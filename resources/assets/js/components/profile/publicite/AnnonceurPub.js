@@ -22,6 +22,7 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                             dz={dzbanner}
                             annonceChange={annonceChange} 
                             showAnnonce={showAnnonce} 
+                            page={page}
                         /> :
                     subcategorie === "Côté" ?
                         <AnnonceurPubCote 
@@ -29,6 +30,7 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                             dz={dzcote} 
                             annonceChange={annonceChange} 
                             showAnnonce={showAnnonce} 
+                            page={page}
                         /> :
                     subcategorie === "Couverture" ?
                         <AnnonceurPubCover 
@@ -36,6 +38,7 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                             dz={dzcover} 
                             annonceChange={annonceChange} 
                             showAnnonce={showAnnonce} 
+                            page={page}
                         /> :
                         <Smiler>
                             <i className="fab fa-fly smileicon si2" />
@@ -50,7 +53,7 @@ const AnnonceurPub = ({previewBanner, previewCote, previewCover, subcategorie, p
                     <h5 className="text-center" style={{padding: "5px", background:"gainsboro", margin: "5px 10px"}}><strong> Récapitulatif de votre annonce </strong></h5>
                     <div className="row" style={{padding: "10px", background:"gainsboro", margin: "0 10px"}}>     
                         <div className="col col-sm-12 col-md-5 text-center" style={{borderRight: "1px solid darkgray"}} >
-                            <img src={ annonce.img.preview } style={{width: "100%"}} />
+                            { !annonce.img.preview ? <strong style={{color: "rgba(74, 170, 44, 0.9)"}} > ANNONCE ENVOYEE AVEC SUCCESS <br/> Si vous voulez passer une autre annonce <br/> CHOISISSEZ UNE NOUVELLE IMAGE</strong> : <img src={ annonce.img.preview } style={{width: "100%"}} alt= "Choisissez une nouvelle image"  /> }
                             <hr />
                             <p><strong>Taille de l'image: </strong> { annonce.type === "Couverture" ? "(1130x200px)" : annonce.type === "Bannière" ? "(780x120)" : "(310x200)" } </p>
                         </div>

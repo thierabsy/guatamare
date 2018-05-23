@@ -5,7 +5,7 @@ import Smiler from '../Smiler';
 import BtnSubmit from '../BtnSubmit';
 
 
-const AnnonceurPubCote = ({previewC, dz, annonceChange, showAnnonce}) => {
+const AnnonceurPubCote = ({previewC, dz, annonceChange, showAnnonce, page}) => {
         return (
             <div className="pubs">
                 <div className="pubcote" >
@@ -47,7 +47,7 @@ const AnnonceurPubCote = ({previewC, dz, annonceChange, showAnnonce}) => {
                     </div>
                     <hr />
                 </form>
-                    <BtnSubmit condition={previewC}  btnAction={ showAnnonce }/>
+                    <BtnSubmit condition={previewC}  btnAction={ showAnnonce } page={page} />
                 </div>
             </div>
         );

@@ -1043,6 +1043,9 @@ ul.navbar-nav{
         }
         .card-title{
             text-transform: capitalize;
+            max-height: 90px;
+            overflow: hidden;
+            font-size: 20px;
         }
         .card-body.text{
             background: linear-gradient(to bottom, white, white,transparent);

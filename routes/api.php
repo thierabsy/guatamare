@@ -48,5 +48,8 @@ Route::post('/data/publicite/annonce', 'PubliciteController@annonce');
 Route::post('/data/publicite/magazine', 'PubliciteController@magazine');
 Route::post('/data/publicite/boutique', 'PubliciteController@boutique');
 
+Route::get('/data/auteur/index', 'AuteurController@index');
 Route::post('/data/auteur/profil', 'AuteurController@profil');
 Route::post('/data/auteur/article', 'AuteurController@article');
+
+Route::put('/data/admin/{article?}', 'AdminController@article');

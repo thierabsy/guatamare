@@ -30,8 +30,8 @@ export const navbarItems = [
         color: "#ba68c8"
     },
     {
-        name: "Panels",
-        link: "panels",
+        name: "Santé",
+        link: "sante",
         color: "#2196f3"
     },
     {

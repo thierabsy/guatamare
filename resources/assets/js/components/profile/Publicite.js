@@ -91,7 +91,8 @@ export default class Publicite extends Component {
             imagePreviewUrlBtk3: [],
             cover: false,
             apercuAnnonce: false,
-            posted: false
+            posted: false,
+            error: false
         }
         this.annonceChange = this.annonceChange.bind(this);
         this.profilChange = this.profilChange.bind(this);
@@ -125,6 +126,8 @@ export default class Publicite extends Component {
         this.postPubBoutique = this.postPubBoutique.bind(this);
         
         this.getpub = this.getpub.bind(this);
+        this.successMsg = this.successMsg.bind(this);
+        this.failMsg = this.failMsg.bind(this);
     }
     componentDidMount(){
         this.getpub()
@@ -338,6 +341,26 @@ export default class Publicite extends Component {
         this.setState({
             apercuAnnonce: !this.state.apercuAnnonce
         })
+    }  
+    successMsg(res){
+        this.setState({
+            posted: true
+        })
+        setTimeout(() => {
+            this.setState({
+                posted: false
+            })
+        }, 5000)
+    }
+    failMsg(e){
+        this.setState({
+            error: true
+        })
+        setTimeout(() => {
+            this.setState({
+                error: false
+            })
+        }, 5000)
     }
     postPubProfil(){
         let data = new FormData();
@@ -346,16 +369,8 @@ export default class Publicite extends Component {
         }
         let url= urlPath+"/api/data/publicite/profil";
         axios.post(url, data)
-            .then(function(res){
-                self.setState({
-                    posted: true
-                })
-                setTimeout(() => {
-                    self.setState({
-                        posted: false
-                    })
-                }, 5000)
-            })
+            .then((res) => this.successMsg(res))
+            .catch((e) => this.failMsg(e))
     }
     postPubAnnonce(){
         let data = new FormData();
@@ -381,6 +396,7 @@ export default class Publicite extends Component {
                     })
                 }, 5000)
             })
+            .catch((e) => this.failMsg(e))
     }
     postPubMagazine(e){
         e.preventDefault();
@@ -391,16 +407,8 @@ export default class Publicite extends Component {
         let url= urlPath+"/api/data/publicite/magazine";
         let self = this;
         axios.post(url, data)
-            .then(function(res){
-                self.setState({
-                    posted: true
-                })
-                setTimeout(() => {
-                    self.setState({
-                        posted: false
-                    })
-                }, 5000)
-            })
+            .then((res) => this.successMsg(res))
+            .catch((e) => this.failMsg(e))
     }
     postPubBoutique(e){
         e.preventDefault();
@@ -411,16 +419,8 @@ export default class Publicite extends Component {
         let url= urlPath+"/api/data/publicite/boutique";
         let self = this;
         axios.post(url, data)
-            .then(function(res){
-                self.setState({
-                    posted: true
-                })
-                setTimeout(() => {
-                    self.setState({
-                        posted: false
-                    })
-                }, 5000)
-            })
+            .then((res) => this.successMsg(res))
+            .catch((e) => this.failMsg(e))
     }
     
     render() {
@@ -441,7 +441,8 @@ export default class Publicite extends Component {
         return (
             <div className="profilpage" >
                 {/* <Posted /> */}
-                { this.state.posted && <Posted action={pagemap} /> }
+                {/* { this.state.posted && <Posted action={pagemap} /> } */}
+                { (this.state.posted || this.state.error) && <Posted error={this.state.error} />}
                 <div className="profilheader profil hpublicite">
                    <div className="overlayer">
                         <div className="container">

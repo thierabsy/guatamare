@@ -25,7 +25,7 @@ export const pages = [
         topimg: "economie.jpg"
     },
     {
-        categorie: "panels",
+        categorie: "sante",
         toparticle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         topimg: "economie.jpg"
     },

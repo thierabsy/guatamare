@@ -28,6 +28,7 @@ const AnnonceurBoutique = ({previewBtk1, previewBtk2, previewBtk3, dz1, dz2, dz3
                             btk={btk}
                             boutiqueChange={boutiqueChange}
                             postPubBoutique={postPubBoutique}
+                            page={tp}
                         /> :
                     subcat === "Aperçu" ?
                         <AnnonceurBoutiquePreview 

@@ -4,7 +4,7 @@ import FileUpload from '../FileUpload';
 import BtnSubmit from '../BtnSubmit';
 
 
-const AnnonceurPubCoverjs = ({previewCv, dz, annonceChange, showAnnonce}) => {
+const AnnonceurPubCoverjs = ({previewCv, dz, annonceChange, showAnnonce, page}) => {
         return (
             <div className="banner">
                 <div className="pubbanner" >
@@ -33,7 +33,7 @@ const AnnonceurPubCoverjs = ({previewCv, dz, annonceChange, showAnnonce}) => {
                         </div>
                         <hr />
                     </form>
-                        <BtnSubmit condition={previewCv}  btnAction={ showAnnonce }/>
+                        <BtnSubmit condition={previewCv}  btnAction={ showAnnonce } page={page} />
                 </div>
             </div>
         );

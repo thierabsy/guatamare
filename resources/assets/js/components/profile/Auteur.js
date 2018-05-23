@@ -23,12 +23,12 @@ export default class Auteur extends Component {
         super(props);
         this.state = {
             currentArticle: {
-                titre: 'Titre A',
+                titre: localStorage.getItem("titre") || "",
                 user_id: "pub123",
-                categorie: 'Catégorie A',
-                resume: 'Resume A',
+                categorie: 'Catégorie',
+                resume: localStorage.getItem("resume") || "",
                 image: 'Image A',
-                articlebody: 'Body A'
+                articlebody: localStorage.getItem("articlebody") || "",
             },
             profil: {
                 nom: "",
@@ -49,7 +49,8 @@ export default class Auteur extends Component {
             showPicker: false,
             color: "rgba(255,255,255,1)",
             data: [],
-            posted: false
+            posted: false,
+            error: false
         }
         this.titreChange = this.titreChange.bind(this);
         this.profilChange = this.profilChange.bind(this);
@@ -67,12 +68,12 @@ export default class Auteur extends Component {
     }
     componentDidMount(){
         let $this = this;
-        axios.get("/api/data").then(res => {
+        axios.get("/api/data/auteur").then(res => {
             $this.setState({
                 data: res.data
             })
         })
-
+        // localStorage.setItem("titre", this.state.currentArticle.titre);
         }
 
     titreChange(e){
@@ -82,6 +83,7 @@ export default class Auteur extends Component {
                 [e.target.name]: e.target.value
             }
         })
+        localStorage.setItem([e.target.name], e.target.value);
     }
     profilChange(e){
         this.setState({
@@ -147,6 +149,28 @@ export default class Auteur extends Component {
             }
         })
     }
+//********** AFTER POST MESSAGE ******//
+    successMsg(res){
+        this.setState({
+            posted: true
+        })
+        setTimeout(() => {
+            this.setState({
+                posted: false
+            })
+        }, 5000)
+    }
+    failMsg(e){
+        this.setState({
+            error: true
+        })
+        setTimeout(() => {
+            this.setState({
+                error: false
+            })
+        }, 5000)
+    }
+//********** AFTER POST MESSAGE ******//
     postAuteurProfil(e){
         e.preventDefault();
         let data = new FormData();
@@ -156,16 +180,8 @@ export default class Auteur extends Component {
         let url= urlPath+"/api/data/auteur/profil";
         let self = this;
         axios.post(url, data)
-            .then(function(res){
-                self.setState({
-                    posted: true
-                })
-                setTimeout(() => {
-                    self.setState({
-                        posted: false
-                    })
-                }, 5000)
-            })
+            .then((res) => this.successMsg(res))
+            .catch((e) => this.failMsg(e))
     }
     postAuteurArticle(e){
         e.preventDefault();
@@ -176,23 +192,32 @@ export default class Auteur extends Component {
         let url= urlPath+"/api/data/auteur/article";
         let self = this;
         axios.post(url, data)
-            .then(function(res){
-                self.setState({
-                    posted: true
-                })
-                setTimeout(() => {
-                    self.setState({
-                        posted: false
-                    })
-                }, 5000)
-            })
+            .then((res) => this.successMsg(res))
+            .catch((e) => this.failMsg(e))
+
+        localStorage.setItem("titre", "");
+        localStorage.setItem("categorie", "");
+        localStorage.setItem("resume", "");
     }
+
+    // saveLocaleStorage(e){
+    //     localStorage.setItem("titre", this.state.currentArticle.titre);
+    //     localStorage.setItem("resume", this.state.currentArticle.resume);
+    //     localStorage.setItem("articlebody", this.state.currentArticle.articlebody);
+    // }
+    // saveLocaleStorage(e){
+    //     localStorage.getItem("titre");
+    //     localStorage.getItem("resume");
+    //     localStorage.getItem("articlebody");
+    // }
     
     render() {
         let pageContent = queryString.parse(this.props.location.search);
         let pagemap = pageContent.action;
         let subcategorie = pageContent.subcategorie;
         console.log("article", this.state.currentArticle);
+        console.log("localeStorage", localStorage.getItem("titre"));
+        console.log("DATA:::", this.state.data);
         // console.log("profil aut", this.state.profil);
         // console.log("cv", this.state.profil.cv);
         // console.log("Laravel data: ", this.state.data);
@@ -202,7 +227,7 @@ export default class Auteur extends Component {
         // console.log(this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview);
         return ( 
             <div className="profilpage" >
-                { this.state.posted && <Posted />}
+                { (this.state.posted || this.state.error) && <Posted error={this.state.error} />}
                 <div className="profilheader profil">
                    <div className="overlayer">
                         <div className="container">

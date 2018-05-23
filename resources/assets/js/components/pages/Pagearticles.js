@@ -13,6 +13,17 @@ class Pagearticles extends Component {
         super(props)
         this.next = this.next.bind(this)
         this.previous = this.previous.bind(this)
+        this.state= {
+            data: []
+        }
+    }
+    componentDidMount(){
+        let $this = this;
+        axios.get("/api/data/auteur").then(res => {
+        $this.setState({
+                data: res.data
+            })
+        })
     }
     next() {
         this.slider.slickNext()
@@ -32,21 +43,27 @@ class Pagearticles extends Component {
         };
         // let pageCategorie = props.match.params.categorie;
         // let pageCategorie = "economie";
+        console.log("DATA", this.state.data);
         let pageCategorie = (this.props.pageCategorie).toString().toLowerCase();
         let singlearticle = () => {
             return(
-                articles.filter(a => a.categorie === pageCategorie)
+                // articles.filter(a => a.categorie === pageCategorie)
+                this.state.data.filter(a => a.categorie === pageCategorie)
                     .map((page, index) => {
                         // if(page.categorie === pageCategorie){
-                            let link2 = page.title.split(" ").join("-").toLowerCase();
-                            console.log(link2);
+                            // let link2 = page.title.split(" ").join("-").toLowerCase();
+                            let link2 = page.titre.split(" ").join("-").toLowerCase();
+                            console.log(link2)
                             return(
                                 page.categorie !== "videos" ?
                                     <div key={index} className="card" >
-                                        <img src={`${urlPath}/img/${page.categorie}${index+1}.jpg`} className="card-img-top" />
+                                        {/* <img src={`${urlPath}/img/${page.categorie}${index+1}.jpg`} className="card-img-top" /> */}
+                                        <img src={`${urlPath}/storage/auteur/${page.image}`} className="card-img-top" />
                                         <div className="card-body text">
                                             <h3 className="card-title" >{page.categorie} {index+1} </h3>
-                                            <p className="card-text" >{page.toparticle}</p>
+                                            {/* <p className="card-text" >{page.toparticle}</p> */}
+                                            <p className="card-text" >{page.titre}</p>
+                                            {/* <Link to={`/categorie/${page.categorie}/${link2}`} > */}
                                             <Link to={`/categorie/${page.categorie}/${link2}`} >
                                                 <button className="btn">Lire...</button>
                                             </Link>

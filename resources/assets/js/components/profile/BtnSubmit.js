@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BtnSubmit = ({condition, btnAction}) => {
+const BtnSubmit = ({condition, btnAction, page}) => {
     return(
         <div className="BtnSubmit">
                 {condition ?
@@ -10,7 +10,7 @@ const BtnSubmit = ({condition, btnAction}) => {
                             className="btn btn-success" 
                             onClick={ (e)=> btnAction(e) }
                         >
-                            <i className="fab fa-telegram-plane" /> Aperçu
+                            <i className="fab fa-telegram-plane" /> { page==="Pubs" ? "Aperçu" : "Envoyer"}
                         </button>
                     </div>
                 :
@@ -20,7 +20,7 @@ const BtnSubmit = ({condition, btnAction}) => {
                             className="btn btn-success" 
                             disabled={true} 
                         >
-                            <i className="fab fa-telegram-plane" /> Aperçu
+                            <i className="fab fa-telegram-plane" /> { page==="Pubs" ? "Aperçu" : "Envoyer"}
                         </button>
                     </div>
                 }

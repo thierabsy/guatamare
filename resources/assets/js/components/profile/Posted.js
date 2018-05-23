@@ -1,18 +1,36 @@
 import React from 'react';
 
-const Posted = ({action}) => {
+const Posted = ({error}) => {
     return(
-        <div className="Posted">
+        <div className={ error ? "Posted error" : "Posted" } >
             <div className="row">
                 <div className="col col-sm-2 icon" >
-                    <i className="fas fa-check" /> 
+                    { error ? 
+                        <i className="fas fa-exclamation-triangle" /> 
+                    : 
+                        <i className="fas fa-check success_icon" /> 
+                    } 
                 </div>
                 <div className="col col-sm-10 text">
-                  <strong> Votre { action }</strong> <br/> a été envoyée avec succès. <br/>  MERCI!
+                    { error ? 
+                        <span>
+                            <strong> Votre requête</strong> <br/> 
+                                a échouée. <br/>  
+                                <strong> VEUILLEZ REMPLIR TOUS LES CHAMPS. </strong>
+                                <audio src="son_error.mp3" autoPlay={true} />
+                        </span> 
+                    :
+                        <span> 
+                            <strong> Votre requête </strong> <br/> 
+                                a été envoyée avec succès. <br/>  
+                                MERCI!!!
+                                <audio src="son_success.wav" autoPlay={true} />
+                        </span> 
+                    }
+                  {/* <strong> Votre { action }</strong> <br/> a été envoyée avec succès. <br/>  MERCI! */}
                 </div>
             </div>
-            <audio src="son.wav" autoPlay={true} />
-        </div>
+           </div>
     )
 }
 

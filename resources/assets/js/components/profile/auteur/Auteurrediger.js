@@ -49,8 +49,8 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, getbd, currentArtic
                         <label className="custom-control-label" htmlFor="societe">Société</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="panels" name="categorie" className="custom-control-input" value="panels" onChange={ e => titreChange(e) }/>
-                        <label className="custom-control-label" htmlFor="panels">Panels</label>
+                        <input type="radio" id="sante" name="categorie" className="custom-control-input" value="sante" onChange={ e => titreChange(e) }/>
+                        <label className="custom-control-label" htmlFor="sante">Santé</label>
                     </div>
                 </div>
                 {/* <div className="input-group mb-3">
@@ -105,20 +105,23 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, getbd, currentArtic
  );
 }
       
-   
+// [{ 'header': 1}, { 'header': 2}, { 'header': 3}, { 'header': 4}, {'font': []}],
 Auteurrediger.modules = {
     toolbar: [
-        [{ header: '1'}, { header: '2'}, { header: '3'}, { header: '4'}, {font: []}],
-        [{size: []}],
+        [{'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{'size': []}],
+        [{'font': [] }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
+        [{'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{'align': [] }],
+        [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
         ['link', 'image', 'video'],
         ['clean']
     ]
 };
 Auteurrediger.formats = [
     'header','font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list',
-    'bullet', 'link', 'image', 'video'
+    'bullet', 'indent', 'link', 'image', 'video', 'color', 'background', 'align'
 ];
 
 export default Auteurrediger;

@@ -11,7 +11,8 @@ class AuteurController extends Controller
 {
     public function index()
     {
-        $mydata1 = "Auteur";
+        // $mydata1 = "Auteur";
+        $mydata1 = Article::all();
         return response()->json($mydata1);
     }
 
@@ -32,21 +33,35 @@ class AuteurController extends Controller
             $filename= "no-image.jpg";
         };
         
-        $saveProfil = new Auteur_profil();
-        $saveProfil->user_id = $request->user_id;
-        $saveProfil->nom = $request->nom;
-        $saveProfil->email = $request->email;
-        $saveProfil->pays = $request->pays;
-        $saveProfil->fonction = $request->fonction;
-        $saveProfil->bio = $request->bio;
-        $saveProfil->avatar = $filename;
-        $saveProfil->color = $request->color;
-        $saveProfil->linkedin = $request->linkedin;
-        $saveProfil->facebook = $request->facebook;
-        $saveProfil->twitter = $request->twitter;
-        $saveProfil->cv = $cvAuteur;
-        $saveProfil->save();
-
+        // $saveProfil = new Auteur_profil();
+        // $saveProfil->user_id = $request->user_id;
+        // $saveProfil->nom = $request->nom;
+        // $saveProfil->email = $request->email;
+        // $saveProfil->pays = $request->pays;
+        // $saveProfil->fonction = $request->fonction;
+        // $saveProfil->bio = $request->bio;
+        // $saveProfil->avatar = $filename;
+        // $saveProfil->color = $request->color;
+        // $saveProfil->linkedin = $request->linkedin;
+        // $saveProfil->facebook = $request->facebook;
+        // $saveProfil->twitter = $request->twitter;
+        // $saveProfil->cv = $cvAuteur;
+        // $saveProfil->save();
+        $saveProfil = Auteur_profil::updateOrCreate(
+            ["user_id" => $request->user_id],
+            [   "nom" => $request->nom,
+                "email" => $request->email,
+                "pays" => $request->pays,
+                "fonction" => $request->fonction,
+                "bio" => $request->bio,
+                "avatar" => $filename,
+                "color" => $request->color,
+                "linkedin" => $request->linkedin,
+                "facebook" => $request->facebook,
+                "twitter" => $request->twitter,
+                "cv" => $cvAuteur
+            ]
+        );
         return response()->json($saveProfil);
     }
 
@@ -54,7 +69,15 @@ class AuteurController extends Controller
     {
 
         if($request->hasFile("image")){
-            $filename= "auteur_profil_".$request->user_id.".jpg";
+            $last = Article::orderby("id", "desc")->first();
+
+            if(empty($last)){
+                $newId= 0;
+            }else{
+                $newId= $last->id + 1;
+            }
+            $filename= "auteur_article_".$newId.".jpg";
+            // $filename= "auteur_profil_12.jpg";
             $file = $request->file("image")->move("storage/auteur", $filename);
         } else {
             $filename= "no-image.jpg";

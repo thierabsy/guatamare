@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 use App\Pub_profil;
 use App\Pub_annonce;
 use App\Pub_magazine;
-use App\Pub_boutique;
+use App\Pub_boutique; 
 
 class PubliciteController extends Controller
 {
     public function index()
     {
-        $mydata1 = "Publicité";
-        return response()->json(["rep"=> $mydata1, "nb"=> 1]);
+        // $mydata1 = "Publicité";
+        // return response()->json(["rep"=> $mydata1, "nb"=> 1]);
+        $mypub = Pub_annonce::all();
+        return response()->json(["pub" => $mypub]);
     }
     public function getpub()
     {

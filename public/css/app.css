@@ -108,6 +108,26 @@
   }
 }
 
+@-webkit-keyframes confirm {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   background: gainsboro;
   background: radial-gradient(ellipse at center, transparent 22%, gainsboro 78%, transparent);
@@ -1190,6 +1210,9 @@ ul.navbar-nav li a {
 
 .pageheader .card .card-title {
   text-transform: capitalize;
+  max-height: 90px;
+  overflow: hidden;
+  font-size: 20px;
 }
 
 .pageheader .card .card-body.text {
@@ -1853,18 +1876,30 @@ ul.navbar-nav li a {
   color: white;
   z-index: 1000;
   border-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5);
+          box-shadow: rgba(0, 0, 0, 0.5);
   -webkit-animation: posted 1s;
           animation: posted 1s;
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
 
+.Posted.error {
+  background: red;
+}
+
 .Posted .icon {
-  padding-top: 20px;
+  margin-top: 5px;
+  font-size: 30px;
+}
+
+.Posted .success_icon {
+  padding-right: 0;
 }
 
 .Posted .text {
   font-size: 13px;
+  border-left: 3px double;
 }
 
 .allersite {
@@ -2124,6 +2159,7 @@ ul.navbar-nav li a {
 .profilbody .ql-editor {
   min-height: 150px;
   background: white;
+  height: 90vh;
 }
 
 .list-group .list-group-item a {
@@ -2791,6 +2827,202 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
   border-radius: 0 !important;
   -webkit-box-shadow: 0 0 2px;
           box-shadow: 0 0 2px;
+}
+
+.sSldtArticleXXXX {
+  position: absolute;
+  background: white;
+  z-index: 10;
+  padding: 20px;
+  margin-right: 25px;
+  -webkit-box-shadow: 0 0 10px;
+          box-shadow: 0 0 10px;
+}
+
+.sSldtArticleRow {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.sSldtArticleRow .sSldtArticleCol {
+  width: 250px;
+  margin: 5px;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle {
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 5px;
+  -webkit-box-shadow: 0 0 5px;
+          box-shadow: 0 0 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .status {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 2px 5px;
+  color: white;
+  background: gray;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .sltdImg img {
+  width: 100%;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .sltdTitre {
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .btnAction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .btnAction button {
+  border-radius: 0;
+}
+
+.sSldtArticleRow .sSldtArticleCol .optionWrapper {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sSldtArticleRow .sSldtArticleCol .fullarticleAdmin,
+.sSldtArticleRow .sSldtArticleCol .auteurprofil {
+  z-index: 10;
+  height: 95vh;
+  overflow-y: scroll;
+  -webkit-box-shadow: 0 0 20px;
+          box-shadow: 0 0 20px;
+}
+
+.sSldtArticleRow .sSldtArticleCol .auteurprofil {
+  background: gainsboro;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sSldtArticleRow .sSldtArticleCol .auteurprofil .custom-control.custom-radio.custom-control-inline {
+  background: white;
+  padding: 0 5px 0 18px;
+  border-radius: 20px;
+}
+
+.annulerFermer {
+  position: absolute;
+  right: -27px;
+  top: -7px;
+  padding: 20px 20px 2px 15px;
+  color: white;
+  background: darkred;
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-box-shadow: 0 0 10px black;
+          box-shadow: 0 0 10px black;
+  z-index: 10;
+}
+
+.overlayArticle {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 10 rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0 10 rgba(0, 0, 0, 0.75);
+}
+
+.articleNumero {
+  position: absolute;
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px black, -1px -1px black;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 0 5px;
+  border-radius: 30px;
+}
+
+.articleNumero:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.articleNumero b {
+  color: #2e5bec;
+}
+
+.confirmBox {
+  position: absolute;
+  width: 300px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 100;
+  background: white;
+  text-align: center;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  -webkit-animation: confirm 2s ease-in-out;
+          animation: confirm 2s ease-in-out;
+}
+
+.confirmBox .confirmBoxText {
+  padding: 30px;
+  font-size: 20px;
+  color: lightgreen;
+  font-weight: bold;
+}
+
+.confirmBox .btnAction {
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  opacity: .8;
+  border: 1px solid;
+}
+
+.confirmBox .btnAction:hover {
+  opacity: 1;
+}
+
+.confirmBox .btnAction.yesAction {
+  background: rgba(74, 170, 44, 0.9);
+}
+
+.confirmBox .btnAction.noAction {
+  background: red;
+}
+
+.auteurprofil {
+  background: gainsboro;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /*!

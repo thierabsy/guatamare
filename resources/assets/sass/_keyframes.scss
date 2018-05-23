@@ -42,4 +42,14 @@
             right: -100vw;
         }
 }
+@keyframes confirm {
+        from{
+            // transform: scale(.8);
+            opacity: 0;
+        }
+        to{
+            // transform: scale(1);
+            opacity: 1;
+        }
+}
 
