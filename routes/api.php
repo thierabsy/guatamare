@@ -35,13 +35,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return response()->json($mydata1);
 // });
 Route::get('/data', 'AccueilController@index');
+Route::get('/data/accueil', 'AccueilController@data');
 Route::get('/data/categorie/{pages}', 'PagesController@index');
 Route::get('/data/categorie/{pages}/{articles}', 'SinglearticleController@index');
 Route::get('/data/kiosque', 'KiosqueController@index');
 Route::get('/data/auteur', 'AuteurController@index');
 Route::get('/data/admin', 'AdminController@index');
 
-Route::get('/data/publicite', 'PubliciteController@index');
+Route::get('/data/publicite/index', 'PubliciteController@index');
 Route::get('/data/publicite/getpub', 'PubliciteController@getpub');
 Route::post('/data/publicite/profil', 'PubliciteController@profil');
 Route::post('/data/publicite/annonce', 'PubliciteController@annonce');
@@ -52,4 +53,6 @@ Route::get('/data/auteur/index', 'AuteurController@index');
 Route::post('/data/auteur/profil', 'AuteurController@profil');
 Route::post('/data/auteur/article', 'AuteurController@article');
 
-Route::put('/data/admin/{article?}', 'AdminController@article');
+Route::patch('/data/admin/article/{article?}', 'AdminController@article');
+Route::patch('/data/admin/publicite/{publicite?}', 'AdminController@publicite');
+Route::patch('/data/admin/magazine/{magazine?}', 'AdminController@magazine');

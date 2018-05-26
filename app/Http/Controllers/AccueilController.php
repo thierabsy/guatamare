@@ -21,7 +21,7 @@ class AccueilController extends Controller
         $data = Article::get();
         $data2 = Auteur_profil::get();
         $data3 = array([1,2,3]);
-        $mydata1 = array();
+        $mydata1 = array(); 
         $mydata1['data1'] = $data;
         $mydata1['data2'] = $data2;
         $mydata1['data3'] = $data3;

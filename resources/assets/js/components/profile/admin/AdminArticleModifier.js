@@ -12,7 +12,7 @@ const AdminArticleModifier = ({ art, titreChange, getbd, dz, preview, fermer }) 
     // console.log(getContents(): Delta)
     
     return (
-        <div className="auteurprofil">
+        <div className="auteurprofil admin">
             <div className="annulerFermer" onClick={ () => fermer()} >Fermer</div> 
             <form action="" encType="multipart/form-data" >
                 <div className="form-group">
@@ -124,7 +124,7 @@ const AdminArticleModifier = ({ art, titreChange, getbd, dz, preview, fermer }) 
                     />                    
                 </div>
                 {/* <input type="hidden" value={{ csrf_token() }} name="_token" /> */}
-                <button type="submit" className="btn btn-primary btnlinks"><i className="fas fa-save"></i> Enregistrer </button>
+                <button type="submit" className="btn btn-primary btnlinks" disabled><i className="fas fa-save"></i> Enregistrer </button>
             </form>
         </div>
  );

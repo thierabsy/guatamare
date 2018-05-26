@@ -7,7 +7,7 @@ const Confirm = ({yesAction, noAction, subject}) => {
                 Etes vous sûr de vouloir modifier cet {subject || "élément"}
             </div>
             <div className="row">
-                <div className="col col-sm-6 btnAction yesAction" onClick={()=> yesAction()} >
+                <div className="col col-sm-6 btnAction yesAction" onClick={(e)=> yesAction(e)} >
                     Oui
                </div>
                 <div className="col col-sm-6 btnAction noAction" onClick={()=> noAction()} >

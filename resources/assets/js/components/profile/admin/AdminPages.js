@@ -19,9 +19,11 @@ export class AdminPages extends Component {
             imagePreviewUrl: []
         }
         this.handleRowSelect = this.handleRowSelect.bind(this);
+        this.onRowClick = this.onRowClick.bind(this);
         this.annuler = this.annuler.bind(this);
         this.confirm = this.confirm.bind(this);
         this.updateAuteurArticle = this.updateAuteurArticle.bind(this);
+        this.updatePub = this.updatePub.bind(this);
         this.titreChange = this.titreChange.bind(this);
         this.getBody = this.getBody.bind(this);
         this.imgLoaded = this.imgLoaded.bind(this);
@@ -35,7 +37,7 @@ export class AdminPages extends Component {
                 [e.target.name]: e.target.value
             }
         })
-        // console.log("ROW_CHANGE", this.state.selectedArticle)
+        console.log("ROW_CHANGE:::::", this.state.selectedArticle)
     }
     getBody(value){
         this.setState({
@@ -67,7 +69,14 @@ export class AdminPages extends Component {
         this.setState({
             selectedArticle: row
         })
+        console.log("ROW::::::", this.state.selectedArticle)
       }
+    onRowClick(row) {
+        this.setState({
+            selectedArticle: row
+        })
+        console.log("ROW::::::", this.state.selectedArticle)
+    }
     annuler(){
         this.setState({
             selectedArticle: {},
@@ -103,26 +112,57 @@ export class AdminPages extends Component {
 
     updateAuteurArticle(e){
         e.preventDefault();
-        let data = new FormData();
-        for(let key in this.state.selectedArticle){
-            data.append(key , this.state.selectedArticle[key]);
-        }
-        let url= urlPath+"/api/data/admin/"+this.state.selectedArticle.id;
+        // let data = new FormData();
+        // for(let key in this.state.selectedArticle){
+        //     data.append(key , this.state.selectedArticle[key]);
+        // }
+        // console.log("ARTTTTT:::::: ", this.state.selectedArticle)
+        let url= urlPath+"/api/data/admin/article/"+this.state.selectedArticle.id;
         let self = this;
-        axios.update(url, data)
-            .then((res) => this.successMsg(res))
+        axios.patch(url, this.state.selectedArticle)
+            .then((res) => {
+                this.confirm()
+                this.successMsg(res)
+            })
             .catch((e) => this.failMsg(e))
+    }
+    updatePub(e){
+        e.preventDefault();
+        let url= urlPath+"/api/data/admin/publicite/"+this.state.selectedArticle.id;
+        let self = this;
+        axios.patch(url, this.state.selectedArticle)
+            .then((res) => {
+                this.confirm()
+                this.successMsg(res)
+            })
+            .catch((e) => {
+                console.log(e)
+                this.failMsg(e)
+            })
     }
 
     render(){
         return (
             <div className="">
                 { (this.state.posted || this.state.error) && <Posted error={this.state.error} />}
-
                 {
                     this.props.type === "Pubs" ?
                             <AdminPagesPubs 
                                 pubs={this.props.pubs}
+                                type={this.props.type} 
+                                subcategorie={this.props.subcategorie} 
+
+                                handleRowSelect={this.handleRowSelect} 
+                                onRowClick={this.onRowClick} 
+                                annuler={this.annuler} 
+                                confirm={this.confirm} 
+                                confirmation={this.state.confirmation} 
+                                selectedArticle={this.state.selectedArticle} 
+                                updatePub={this.updatePub} 
+                                titreChange={this.titreChange} 
+                                getbd={this.getBody} 
+                                preview={this.state.imagePreviewUrl[0] && this.state.imagePreviewUrl[0].preview} 
+                                dz={this.dropZone} 
                             />
                         :
                         <AdminPagesContent 
@@ -133,6 +173,7 @@ export class AdminPages extends Component {
                             data={this.props.data} 
                             articles={this.props.articles} 
                             handleRowSelect={this.handleRowSelect} 
+                            onRowClick={this.onRowClick} 
                             annuler={this.annuler} 
                             confirm={this.confirm} 
                             confirmation={this.state.confirmation} 

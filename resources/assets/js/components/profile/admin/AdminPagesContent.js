@@ -104,9 +104,10 @@ onAddRow(row) {
     console.log(row)
     console.log(this.state.stateArticles)
   }
-  onRowClick(row) {
-    console.log("ROW CLICK", row)
-  }
+//   onRowClick(row) {
+//     console.log("ROW CLICK", row)
+//   }
+
 //   handleRowSelect(row) {
 //     // console.log("ROW SELECTED", row, isSelected, e)
 //     // let article = this.state.selectedArticles.findIndex(x => x.id==row.id)
@@ -165,6 +166,11 @@ onAddRow(row) {
 //       stateArticles: this.products
 //     });
 //   }
+// onRowClick(row) {
+    //     this.setState({
+    //         selectedArticle: row
+    //     })
+    // }
 
 
 
@@ -198,7 +204,7 @@ render(props) {
         insertModalFooter: this.createCustomModalFooter,
         // insertModalBody: this.createCustomModalBody
         onAddRow: this.onAddRow,
-        onRowClick: this.onRowClick,
+        onRowClick: this.props.onRowClick,
         insertText: 'Ajouter',
         deleteText: 'Supprimer',
         exportCSVText: 'Export (CSV)'
@@ -223,7 +229,7 @@ render(props) {
     return (
         <div className="SelectedArticle">
             <div className="modifications">
-                <button className="btn btn-default btn-large" onClick={() => this.Saved()} >ENREGISTRER LES MODIFICATIONS</button>
+                <button className="btn btn-default btn-large" onClick={() => this.Saved()} >SELECTIONNER UN ARTICLE POUR MODIFICATIONS</button>
             </div>
 
             { this.props.confirmation && 
@@ -311,7 +317,7 @@ render(props) {
                 <TableHeaderColumn 
                     dataField='status'
                     editable={{ type: 'select', options: { values: status }}}
-                    // onChange={() => this.updateData()}
+                    onChange={() => this.props.titreChange()}
                     // hidden // Hide column in table
                     export // Export hidden field
                     dataSort> Status
@@ -319,7 +325,7 @@ render(props) {
                 <TableHeaderColumn 
                     dataField='slider'
                     editable={{ type: 'select', options: { values: slider }}}
-                    // onChange={() => this.updateData()}
+                    onChange={() => this.props.titreChange()}
                     // hidden // Hide column in table
                     export // Export hidden field
                     dataSort> Slider

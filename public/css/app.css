@@ -1529,6 +1529,8 @@ ul.navbar-nav li a {
   width: 33.33%;
   text-align: center;
   border-right: 1px solid #455a64;
+  max-width: 82.98px;
+  overflow: hidden;
 }
 
 .mag .maginnerwrapper .magText .details span {
@@ -1888,9 +1890,28 @@ ul.navbar-nav li a {
   background: red;
 }
 
+.Posted.error .icon {
+  margin-top: 5px;
+  padding-right: 18px;
+  padding-top: 2px;
+  font-size: 30px;
+  background: darkred;
+  border-radius: 50%;
+  padding-left: 11px;
+}
+
+.Posted .colText {
+  padding-left: 10px !important;
+}
+
 .Posted .icon {
   margin-top: 5px;
+  padding-right: 2px;
+  padding-top: 5px;
   font-size: 30px;
+  background: darkgreen;
+  border-radius: 50%;
+  padding-left: 6px;
 }
 
 .Posted .success_icon {
@@ -1898,8 +1919,9 @@ ul.navbar-nav li a {
 }
 
 .Posted .text {
+  padding-left: 10px;
   font-size: 13px;
-  border-left: 3px double;
+  border-left: 3px double darkgreen;
 }
 
 .allersite {
@@ -2898,15 +2920,27 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
   border-radius: 0;
 }
 
+.sSldtArticleRow .sSldtArticleCol .sSldtArticle .list-group {
+  margin-bottom: 5px !important;
+}
+
 .sSldtArticleRow .sSldtArticleCol .optionWrapper {
   position: absolute;
   left: 0;
+  width: 100%;
+  border-radius: 10px;
   z-index: 10;
   overflow: hidden;
 }
 
+.sSldtArticleRow .sSldtArticleCol .optionWrapper .pubbanner {
+  padding: 3px;
+  background: gainsboro;
+  width: 100%;
+}
+
 .sSldtArticleRow .sSldtArticleCol .fullarticleAdmin,
-.sSldtArticleRow .sSldtArticleCol .auteurprofil {
+.sSldtArticleRow .sSldtArticleCol .auteurprofil.admin {
   z-index: 10;
   height: 95vh;
   overflow-y: scroll;
@@ -2914,13 +2948,13 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
           box-shadow: 0 0 20px;
 }
 
-.sSldtArticleRow .sSldtArticleCol .auteurprofil {
+.sSldtArticleRow .sSldtArticleCol .auteurprofil.admin {
   background: gainsboro;
   padding: 10px;
   border-radius: 5px;
 }
 
-.sSldtArticleRow .sSldtArticleCol .auteurprofil .custom-control.custom-radio.custom-control-inline {
+.sSldtArticleRow .sSldtArticleCol .auteurprofil.admin .custom-control.custom-radio.custom-control-inline {
   background: white;
   padding: 0 5px 0 18px;
   border-radius: 20px;
@@ -2971,7 +3005,7 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
 }
 
 .articleNumero b {
-  color: #2e5bec;
+  color: darkred;
 }
 
 .confirmBox {
@@ -3020,7 +3054,6 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
 }
 
 .auteurprofil {
-  background: gainsboro;
   padding: 10px;
   border-radius: 5px;
 }

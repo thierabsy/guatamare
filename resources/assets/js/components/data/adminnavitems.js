@@ -19,7 +19,7 @@ export const  adminnavitems = [
                 sublink: ""
             },
             {
-                subname: "economie",
+                subname: "Ancien",
                 sublink: ""
             },
         ]
@@ -65,7 +65,7 @@ export const  adminnavitems = [
         name: "Utilisateurs",
         option: 1,
         link: "utilisateurs",
-        color: "#4288ce",
+        color: "#43a047",
         icon: "users",
         subnav: [
             {
@@ -88,6 +88,27 @@ export const  adminnavitems = [
                 subname: "Magazine",
                 sublink: ""
             },
+        ]
+    },
+    {
+        name: "Magazines",
+        option: 1,
+        link: "magazine",
+        color: "#4288ce",
+        icon: "newspaper",
+        subnav: [
+            {
+                subname: "Active",
+                sublink: ""
+            },
+            {
+                subname: "Inactive",
+                sublink: ""
+            },
+            {
+                subname: "Ancien",
+                sublink: ""
+            }
         ]
     },
     {

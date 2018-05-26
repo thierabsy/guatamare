@@ -6,8 +6,12 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 import { urlPath } from '../../path';
+import Confirm from '../Confirm';
 
 import { articles } from '../../data/articles';
+import AdminArticleSlctedArticle from './AdminArticleSlctedArticle';
+import AdminArticlePreview from './AdminArticlePreview';
+import AdminAnnonceSelected from './AdminAnnonceSelected';
 
 export default class AdminPagesPubs extends Component {
     constructor(props){
@@ -15,9 +19,12 @@ export default class AdminPagesPubs extends Component {
         this.state = {
             currentArticle: {},
             stateArticles: [],
-            pubs: []
-            // type : this.props.type,
-            // subcategorie : this.props.subcategorie,
+            selectedArticles: [],
+            selectedArticle: {},
+            spreview: false,
+            smodifier: false,
+            fermeBtn: false,
+            overlay: false
         }
         this.handleSave = this.handleSave.bind(this);
         this.createCustomModalFooter = this.createCustomModalFooter.bind(this);
@@ -25,8 +32,12 @@ export default class AdminPagesPubs extends Component {
         this.updateData = this.updateData.bind(this);
         this.Saved = this.Saved.bind(this);
         this.onAddRow = this.onAddRow.bind(this);
-
-        this.getpubs = this.getpubs.bind(this); 
+        // this.handleRowSelect = this.handleRowSelect.bind(this);
+        // this.annuler = this.annuler.bind(this);
+        this.fermer = this.fermer.bind(this);
+        this.overlayFermer = this.overlayFermer.bind(this);
+        this.showPreview = this.showPreview.bind(this);
+        this.showModifier = this.showModifier.bind(this);
     }
 componentDidMount(){
     // let marticles = 
@@ -38,20 +49,7 @@ componentDidMount(){
     this.setState({
         stateArticles: data
     })
-    this.getpubs()
 }
-
-getpubs(){
-    let url = urlPath+"/api/data/publicite";
-    let self = this;
-    axios.get(url)
-         .then(res => {
-            self.setState({
-                pubs: res.data.pub
-        })
-    })
-}
-
 handleSave(save) {
     // Custom your onSave event here,
     // it's not necessary to implement this function if you have no any process before save
@@ -107,6 +105,61 @@ onAddRow(row) {
     console.log(row)
     console.log(this.state.stateArticles)
   }
+  onRowClick(row) {
+    console.log("ROW CLICK", row)
+  }
+//   handleRowSelect(row) {
+//     // console.log("ROW SELECTED", row, isSelected, e)
+//     // let article = this.state.selectedArticles.findIndex(x => x.id==row.id)
+//     // console.log("ART-FI", article)
+//     // if(article === -1){
+//     //     this.setState({
+//     //         selectedArticles: [
+//     //             ...this.state.selectedArticles,
+//     //             row
+//     //         ]
+//     //     })
+//     // }else{
+//     //     console.log("Already exists!");
+//     //     // setTimeout(()=> {
+//     //         this.state.selectedArticles.splice(this.state.selectedArticles.indexOf(row), 1)
+//     //     // }, 500)
+//     // }
+//     this.setState({
+//         selectedArticle:row
+//     })
+//   }
+//   annuler(){
+//     this.setState({
+//         selectedArticle: {},
+//         overlay: false
+//     })
+//   }
+  fermer(){
+    this.setState({
+        spreview: "",
+        overlay: false
+    })
+  }
+  overlayFermer(){
+    this.setState({
+        spreview: "",
+        overlay: false
+    })
+  }
+  showPreview(id){
+    // this.props.search.pushState("serchhhhh");
+    this.setState({
+        spreview: "Preview",
+        overlay: true
+    })
+  }
+  showModifier(){
+    this.setState({
+        spreview: "Modifier",
+        overlay: true
+    })
+  }
 // onAddRow(row) {
 //     this.products.push(row);
 //     this.setState({
@@ -114,24 +167,39 @@ onAddRow(row) {
 //     });
 //   }
 
+
+
 render(props) {
     // let pageContent = queryString.parse(this.props.location.search);
     // let type = pageContent.type;
     // let subcategorie = pageContent.subcategorie;
-    // console.log(this.state.stateArticles)
+    // console.log("PROPS_hi", )
+    // console.log("SUBCAT", this.props.subcategorie)
+    // console.log("PAGE", this.props)
+    // console.log("PAGE_search", this.props.page.search)
+    // console.log("PAGE_ART", this.props.page.Article)
+ 
+    console.log("SEL_ART", this.state.selectedArticle)
     // console.log(this.props.type, this.props.subcategorie)
     // console.log(this.state.stateArticles.categorie.has("Désactivé"))
     // let filtered = this.state.stateArticles.filter(a => a.categorie === "economie")
     // console.log(filtered)
     let datas = this.props.data;
-    let pubsData = this.props.pubs;
-    const status = [ 'Activé', 'Désactivé', 'Draft', 'Ancien' ];
+    const status = ['active', 'desactive', 'draft', 'ancien' ];
+    const slider = ['non',
+                    'sl_main', 
+                    'sl_top3', 
+                    'sl_top2',  
+                    'sl_horizontalArticles', 
+                    'sl_topArticles', 
+                ];
      
     const options = {
         noDataText: 'Pas de données ...',
         insertModalFooter: this.createCustomModalFooter,
         // insertModalBody: this.createCustomModalBody
         onAddRow: this.onAddRow,
+        onRowClick: this.onRowClick,
         insertText: 'Ajouter',
         deleteText: 'Supprimer',
         exportCSVText: 'Export (CSV)'
@@ -139,28 +207,72 @@ render(props) {
     const selectRow = {
         mode: 'checkbox', //radio or checkbox
         bgColor: 'rgba(69, 90, 100, 0.5)',
+        onSelect:  this.props.handleRowSelect,
         showOnlySelected: true,
-        clickToExpand: true
+        clickToExpand: true,
+        clickToSelect: true
       };
       const cellEditProp = {
         mode: 'click',
         blurToSave: true,
       };
-      const selectRowProp = {
-        mode: "checkbox",
-        clickToSelect: true
-      };
+    //   const selectRowProp = {
+    //     mode: "checkbox",
+    //     clickToSelect: true
+    //   };
+    
     return (
-        <div>
+        <div className="SelectedArticle">
             <div className="modifications">
-                <button className="btn btn-default btn-large" onClick={() => this.Saved()} >ENREGISTRER LES MODIFICATIONS</button>
+                <button className="btn btn-default btn-large" onClick={() => this.Saved()} >SELECTIONNER UN ARTICLE POUR MODIFICATIONS</button>
             </div>
+
+            { this.props.confirmation && 
+                <div>
+                    <audio src="confirm.wav" autoPlay={true} loop={true} />
+                    <Confirm 
+                        yesAction={this.props.updatePub} 
+                        noAction={this.props.confirm}  
+                        subject={"annonce"}  
+                    />
+                </div>
+            }
+
+            {
+                this.state.overlay && <div className="overlayArticle" onClick={() => this.overlayFermer()} />
+            }
+
+            {
+                Object.keys(this.props.selectedArticle).length !== 0 && 
+                <div>
+                    <hr />
+                    <span className="articleNumero" > Annonce: <b>#{this.props.selectedArticle.id}</b> </span> 
+                    <div className="sSldtArticleRow"> 
+                        <AdminAnnonceSelected 
+                            // page={this.props.page.Article} 
+                            sltArt={this.props.selectedArticle} 
+                            fermeBtn={this.state.fermeBtn} 
+                            annuler={this.props.annuler} 
+                            confirm={this.props.confirm} 
+                            fermer={this.fermer} 
+                            showPreview={this.showPreview} 
+                            showModifier={this.showModifier} 
+                            spreview={this.state.spreview} 
+                            updatePub={this.props.updatePub} 
+                            titreChange={this.props.titreChange} 
+                            getbd={this.props.getbd} 
+                            preview={this.props.preview} 
+                            dz={this.props.dz} 
+                        />
+                    </div>
+                </div>
+            }
             <hr />
-            {/* <button onClick={this.getSelectedRowKeys.bind(this)}>Get selected row keys</button> */}
             <BootstrapTable 
-                selectRow={selectRowProp} ref='table'
-                // data={datas} 
-                data={this.state.pubs} 
+                // selectRow={selectRowProp} 
+                ref='table'
+                data={this.props.pubs} 
+                // data={this.state.stateArticles} 
                 striped 
                 hover 
                 insertRow
@@ -181,16 +293,21 @@ render(props) {
                 scrollTop={ 'Bottom' }
                 version='4'>
                 <TableHeaderColumn 
-                    dataField='id' 
-                    dataSort> #id
-                </TableHeaderColumn>
-                <TableHeaderColumn 
-                    dataField='user_id' 
-                    dataSort> User Id
+                    dataField='id'
+                    width='60' 
+                    dataSort> #ID
                 </TableHeaderColumn>
                 <TableHeaderColumn 
                     dataField='type' 
                     dataSort> Type
+                </TableHeaderColumn>
+                <TableHeaderColumn 
+                    dataField='user_id' 
+                    dataSort> Annonceur
+                </TableHeaderColumn>
+                <TableHeaderColumn 
+                    dataField='img' 
+                    dataSort> Image
                 </TableHeaderColumn>
                 <TableHeaderColumn 
                     dataField='status'
@@ -201,23 +318,20 @@ render(props) {
                     dataSort> Status
                 </TableHeaderColumn>
                 <TableHeaderColumn 
-                    dataField='created_at'
+                    dataField='alttext'
+                    // editable={{ type: 'select', options: { values: slider }}}
+                    // onChange={() => this.updateData()}
+                    // hidden // Hide column in table
+                    export // Export hidden field
+                    dataSort> Alt Text
+                </TableHeaderColumn>
+                <TableHeaderColumn 
+                    dataField='updated_at'
                     // dataFormat={(cell, row)=>(<span>{cell.toString()}</span>)}
                     dataSort> Date
-                </TableHeaderColumn>
-                <TableHeaderColumn 
-                    dataField='siteweb'
-                    // dataFormat={(cell, row)=>(<span>{cell.toString()}</span>)}
-                    dataSort> Siteweb
-                </TableHeaderColumn>
-                <TableHeaderColumn 
-                    dataField='alttext'
-                    // dataFormat={(cell, row)=>(<span>{cell.toString()}</span>)}
-                    dataSort> AltText
                 </TableHeaderColumn>
             </BootstrapTable>
         </div>
     );
 }
 }
-

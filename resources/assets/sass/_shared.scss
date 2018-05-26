@@ -170,17 +170,35 @@
     animation-delay: 5s;
     &.error{
         background: red;
+        .icon {
+            margin-top: 5px;
+            padding-right: 18px;
+            padding-top: 2px;
+            font-size: 30px;
+            background: darkred;
+            border-radius: 50%;
+            padding-left: 11px;
+        }
+
+    }
+    .colText{
+        padding-left: 10px !important;
     }
     .icon{
-        margin-top:5px;
-        // padding-right:5px;
+        margin-top: 5px;
+        padding-right: 2px;
+        padding-top: 5px;
         font-size: 30px;
+        background: darkgreen;
+        border-radius: 50%;
+        padding-left: 6px;
     }
     .success_icon{
         padding-right: 0;
     }
     .text{
+        padding-left: 10px;
         font-size: 13px;
-        border-left: 3px double;
+        border-left: 3px double darkgreen;
     }
 }

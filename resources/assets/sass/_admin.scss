@@ -144,20 +144,30 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
                     border-radius: 0;
                 }
             }
+            .list-group{
+                margin-bottom: 5px !important;
+            }
         }
         .optionWrapper{
             position: absolute;
             left: 0;
+            width: 100%;
+            border-radius: 10px;
             z-index: 10;
             overflow: hidden;
+            .pubbanner {
+                padding: 3px;
+                background: gainsboro;
+                width: 100%;
+            }
         }
-        .fullarticleAdmin, .auteurprofil {
+        .fullarticleAdmin, .auteurprofil.admin {
             z-index: 10;
             height: 95vh;
             overflow-y: scroll;
             box-shadow: 0 0 20px;
         }
-        .auteurprofil {
+        .auteurprofil.admin {
             background: gainsboro;
             padding: 10px;
             border-radius: 5px;
@@ -204,7 +214,7 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
         box-shadow: none;
     }
     b{
-        color: $blue1;
+        color: darkred;
     }
 }
 .confirmBox {
@@ -245,7 +255,30 @@ svg.svg-inline--fa.fa-sort.fa-w-10.order {
 }
 
 .auteurprofil {
-    background: gainsboro;
+    // background: gainsboro;
     padding: 10px;
     border-radius: 5px;
 }
+
+/// WHEEL
+// .container.maincontainer:before {
+//     position: absolute;
+//     border-radius: 50%;
+//     box-shadow: 0 0 10px;
+//     content: "";
+//     width: 0;
+//     height: 0;
+//     background-blend-mode: multiply;
+//     background-position: top;
+//     right: 11px;
+//     top: 0;
+//     border-bottom: 60px solid yellow;
+//     border-top: 60px solid #455f73;
+//     border-left: 60px solid lime;
+//     border-right: 60px solid red;
+//     z-index: 10;
+//     transition: all 5s;
+// }
+// .container.maincontainer:hover:before{
+//     transform: rotate(1500deg);
+// }

@@ -1305,6 +1305,8 @@ ul.navbar-nav{
                 width: 33.33%;
                 text-align: center;
                 border-right: 1px solid $blue3;
+                max-width: 82.98px;
+                overflow: hidden;
                 span{
                     display: block
                 }

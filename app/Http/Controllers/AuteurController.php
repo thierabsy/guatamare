@@ -6,14 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Auteur_profil;
 use App\Article;
+use App\Pub_annonce;
+use App\Pub_magazine;
 
 class AuteurController extends Controller
 {
     public function index()
     {
-        // $mydata1 = "Auteur";
+        $mydata2 = Article::where("categorie", "sante")->get();
         $mydata1 = Article::all();
-        return response()->json($mydata1);
+        $mydata3 = Pub_annonce::all();
+        $mydata4 = Pub_magazine::all();
+        return response()->json([ 
+                                    "articles" => $mydata1, 
+                                    "articleSante" => $mydata2, 
+                                    "annonces" => $mydata3,
+                                    "magazines" => $mydata4
+                                ]);
     }
 
     public function profil(Request $request)
@@ -24,7 +33,7 @@ class AuteurController extends Controller
             $filename= "auteur_profil_".$request->user_id.".jpg";
             $file = $request->file("avatar")->move("storage/auteur", $filename);
         } else {
-            $filename= "pub_profil.jpg";
+            $filename= "pub_profil.jpg"; 
         };
         if($request->hasFile("cv")){
             $cvAuteur= "auteur_cv_".$request->user_id.".pdf";

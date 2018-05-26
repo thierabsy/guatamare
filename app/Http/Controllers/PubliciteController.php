@@ -8,6 +8,7 @@ use App\Pub_profil;
 use App\Pub_annonce;
 use App\Pub_magazine;
 use App\Pub_boutique; 
+use App\Article; 
 
 class PubliciteController extends Controller
 {
@@ -16,12 +17,19 @@ class PubliciteController extends Controller
         // $mydata1 = "Publicité";
         // return response()->json(["rep"=> $mydata1, "nb"=> 1]);
         $mypub = Pub_annonce::all();
-        return response()->json(["pub" => $mypub]);
+        return response()->json($mypub);
     }
     public function getpub()
     {
         $mypub = Pub_annonce::all();
-        return response()->json(["pub" => $mypub]);
+        $myart = Article::all();
+        $myart2 = Article::where("categorie", "economie")->get();
+        $mydata = array(); 
+        $mydata["pub"] = $mypub; 
+        $mydata["art1"] = $myart; 
+        $mydata["art2_eco"] = $myart2; 
+
+        return response()->json($myart2);
     }
     public function profil(Request $request) 
     {

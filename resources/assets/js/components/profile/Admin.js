@@ -26,6 +26,7 @@ export default class Admin extends Component {
             stateArticles: [],
             pubs: [],
             articlesDb: [],
+            articlesDb2: [],
             posted: false,
             error: false
         },
@@ -48,17 +49,17 @@ export default class Admin extends Component {
             stateArticles: articles,
             filtre: queryString.parse(this.props.location.search).subcategorie,
         })
-        this.getpubs()
+        // this.getpubs()
         this.getArticles()
     }
 
     getpubs(){
-        let url = urlPath+"/api/data/publicite";
+        let url = urlPath+"/api/data/publicite/index";
         let self = this;
         axios.get(url)
              .then(res => {
                 self.setState({
-                    pubs: res.data.pub
+                    pubs: res.data
             })
         })
     }
@@ -68,7 +69,9 @@ export default class Admin extends Component {
         axios.get(url2)
              .then(res => {
                 self.setState({
-                    articlesDb: res.data
+                    articlesDb: res.data.articles,
+                    articlesDb2: res.data,
+                    pubs: res.data.annonces
             })
         })
     }
@@ -102,10 +105,14 @@ export default class Admin extends Component {
         let type = pageContent.type;
         let subcategorie = pageContent.subcategorie;
 
+        let rdcode = Math.floor(Math.random(100,200));
+
         // console.log("PC", this.props.location.search='hi=ho');
         // console.log("PC_hi", pageContent.hi);
-        console.log("pubs", this.state.pubs);
+        console.log("pubs::::::: ", this.state.pubs);
         console.log("ARTICLES_DB", this.state.articlesDb);
+        console.log("ARTICLES_DB2", this.state.articlesDb2);
+        // console.log("RANDOM", rdcode);
 
         return (
             <div className="profilpage" >
@@ -153,7 +160,7 @@ export default class Admin extends Component {
                                         </Smiler>
                                             :
                                         <AdminPages 
-                                            type={this.type} 
+                                            type={type} 
                                             search={this.props.location.search} 
                                             subcategorie={subcategorie} 
                                             page={pageContent} 

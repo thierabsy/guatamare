@@ -9,8 +9,8 @@ let AdminArticleSlctedArticle = ({sltArt, annuler, titreChange, getbd, dz, previ
                 <div className="sSldtArticleCol">
                     <div className="sSldtArticle" >
                         <div className="status" >{sltArt.status}</div> 
-                        <div className="annulerFermer" onClick={ () => annuler()} >Annuler</div> 
-                        <div className="sltdImg">
+                        
+                        <div className="sltdImg"><div className="annulerFermer" onClick={ () => annuler()} >Annuler</div> 
                             <img src={`${urlPath}/storage/auteur/${sltArt.image}`} />
                         </div>
                         <h3 className="sltdTitre">{ sltArt.titre }</h3>
