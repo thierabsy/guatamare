@@ -41,8 +41,8 @@ const Auteurrediger = ({titreChange, imgLoaded, dz, preview, getbd, currentArtic
                         <label className="custom-control-label" htmlFor="tourisme">Tourisme</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="humanitaire" name="categorie" className="custom-control-input" value="humanitaire" onChange={ e => titreChange(e) }/>
-                        <label className="custom-control-label" htmlFor="humanitaire">Humanitaire</label>
+                        <input type="radio" id="environnement" name="categorie" className="custom-control-input" value="environnement" onChange={ e => titreChange(e) }/>
+                        <label className="custom-control-label" htmlFor="environnement">Environnement</label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="societe" name="categorie" className="custom-control-input" value="societe" onChange={ e => titreChange(e) }/>

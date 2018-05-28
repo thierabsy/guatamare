@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { urlPath } from '../path';
 import Slider from 'react-slick';
 
-import { articles } from '../data/articles';
+// import { articles } from '../data/articles';
 
 class Singlearticleslider extends Component {
     constructor(props) {
@@ -28,18 +28,19 @@ class Singlearticleslider extends Component {
         };
         let pageCategorie = this.props.pageCategorie;
         let article = this.props.article;
+        let articles = this.props.articles;
         let singlearticleslider = () => {
             return(
-                articles.filter(a => a.categorie === pageCategorie && a.title !== article)
+                articles ?  articles.filter(a => a.categorie === pageCategorie && a.titre !== article)
                     .map((page, index) => {
-                        let link2 = page.title.split(" ").join("-").toLowerCase();
+                        let link2 = page.titre.split(" ").join("-").toLowerCase()+"-"+page.id;
                         return(
                             <div className="cardwrapper" key={index}>
                                 <div className="card" >
-                                    <img src={`${urlPath}/img/${page.categorie}${index+1}.jpg`} className="card-img-top" />
+                                    <img src={`${ urlPath }/storage/auteur/${page.image}`} className="card-img-top" />
                                     <div className="card-body text">
                                         {/* <h4 className="card-title" >{page.categorie} {index+1} </h4> */}
-                                        <p className="card-text" >{page.toparticle}</p>
+                                        <p className="card-text" >{page.titre}</p>
                                         <Link to={`/categorie/${page.categorie}/${link2}`} >
                                             <button className="btn btn-block">Lire...</button>
                                         </Link>
@@ -47,7 +48,7 @@ class Singlearticleslider extends Component {
                                 </div>
                             </div>
                         );
-                })
+                }) : <div></div>
             );
         }
         return (
@@ -58,7 +59,8 @@ class Singlearticleslider extends Component {
                 </div>
                 <div className="singlearticleslider">
                     <Slider ref={sas => this.slider = sas } {...settings} className="sliderwrapper" >
-                        {singlearticleslider()}
+                        {/* <Singlearticleslider  /> */}
+                        { singlearticleslider() }
                     </Slider>
                     <div className="prevnext" >
                         <button className='btx prev' onClick={this.previous}> <i className="fas fa-angle-left"></i> </button>

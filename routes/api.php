@@ -34,7 +34,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     // $dt = toArray($data, $data2);
 //     return response()->json($mydata1);
 // });
-Route::get('/data', 'AccueilController@index');
+Route::get('/data/index', 'AccueilController@index');
 Route::get('/data/accueil', 'AccueilController@data');
 Route::get('/data/categorie/{pages}', 'PagesController@index');
 Route::get('/data/categorie/{pages}/{articles}', 'SinglearticleController@index');

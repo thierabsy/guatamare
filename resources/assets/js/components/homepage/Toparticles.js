@@ -6,48 +6,28 @@ import Sidebarslider from '../sliders/Sidebarslider';
 import Sidebarad2 from '../ads/Sidebarad2';
 // import Sidebarslider from '../sliders/Sidebarslider';
 
-class Toparticles extends Component {
-    constructor(props) {
-        super(props)
-            this.next = this.next.bind(this)
-            this.previous = this.previous.bind(this)
-        }
-        next() {
-            this.slider.slickNext()
-        }
-        previous() {
-            this.slider.slickPrev()
-        }
-    render() {
-        let settings = {
-            infinite: true,
-            speed: 3000,
-            fade: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            autoplay: true
-        };
-        let singlearticle = () => {
+let Singlearticle = ({dataActive}) => dataActive ? dataActive.filter(a => a.slider === "sl_topArticles").map((item, index) => {
+            let link2 = page.titre.split(" ").join("-").toLowerCase();
             return(
-                toparticles.map((item, index) => {
-                    return(
-                        <div key={index}>
-                            <div className="verticalarticle">
-                                <img src={`${urlPath}/img/${item.img}`} />
-                                <div className="text">
-                                    <div className="categorie"><span> {item.categorie} </span></div>
-                                    <a href="#">
-                                        <h3 className="text-truncate" >{item.h3}</h3>
-                                        <p>{item.p}</p> 
-                                    </a>
-                                </div>
+                <div key={index}>
+                    <div className="verticalarticle">
+                        <img src={`${urlPath}/storage/auteur/${item.image}`} />
+                        <div className="text">
+                            <div className="categorie"><span> {item.categorie} </span></div>
+                            <div  className="innerText">
+                                <a href={ `${urlPath}/categorie/${ item.categorie }/${link2}-${page.id}`}>
+                                    <h4 className="" >{item.titre}</h4>
+                                    <p>{item.resume}</p> 
+                                </a>
                             </div>
                         </div>
-                    );
-                })
+                    </div>
+                </div>
             );
-        }
+        }): <div></div>
+    
+const Toparticles = ({data})=> {
+    
         return (
             <div className="toparticles">
             <div className="row">
@@ -57,8 +37,7 @@ class Toparticles extends Component {
                         <div className="line"></div>
                     </div>
                     <div className="left">
-                        { singlearticle()}
-                        { singlearticle()}
+                        <Singlearticle dataActive={data} />
                     </div>
                 </div>
                 <div className="col col-sm-12 col-md-3 right sidebarslider">
@@ -69,6 +48,5 @@ class Toparticles extends Component {
         </div>
     );
     }
-}
 
 export default Toparticles;

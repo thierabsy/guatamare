@@ -3,15 +3,15 @@ import Articlesgroup1 from './Articlesgroup1';
 import Articlesgroup2 from './Articlesgroup2';
 import Panelistes from '../sliders/Panelistes';
 
-export default class Articles extends Component {
-    render() {
+const Articles = ({data}) => {
         return (
             <div className="articles">
-                <Articlesgroup1 />
+                <Articlesgroup1 data={data} />
                 <Panelistes />
-                <Articlesgroup2 />
+                <Articlesgroup2 data={data} />
             </div>
         );
-    }
 }
+
+export default Articles;
 

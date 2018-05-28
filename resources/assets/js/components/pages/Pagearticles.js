@@ -14,14 +14,14 @@ class Pagearticles extends Component {
         this.next = this.next.bind(this)
         this.previous = this.previous.bind(this)
         this.state= {
-            data: []
+            articles: []
         }
     }
     componentDidMount(){
         let $this = this;
-        axios.get("/api/data/auteur").then(res => {
+        axios.get("/api/data/index").then(res => {
         $this.setState({
-                data: res.data
+                articles: res.data.articles
             })
         })
     }
@@ -43,12 +43,12 @@ class Pagearticles extends Component {
         };
         // let pageCategorie = props.match.params.categorie;
         // let pageCategorie = "economie";
-        console.log("DATA", this.state.data);
+        console.log("DATA", this.state.articles);
         let pageCategorie = (this.props.pageCategorie).toString().toLowerCase();
-        let singlearticle = () => {
+        let Singlearticle = ({data}) => {
             return(
                 // articles.filter(a => a.categorie === pageCategorie)
-                this.state.data.filter(a => a.categorie === pageCategorie)
+                data ? data.filter(a => a.categorie === pageCategorie)
                     .map((page, index) => {
                         // if(page.categorie === pageCategorie){
                             // let link2 = page.title.split(" ").join("-").toLowerCase();
@@ -60,24 +60,24 @@ class Pagearticles extends Component {
                                         {/* <img src={`${urlPath}/img/${page.categorie}${index+1}.jpg`} className="card-img-top" /> */}
                                         <img src={`${urlPath}/storage/auteur/${page.image}`} className="card-img-top" />
                                         <div className="card-body text">
-                                            <h3 className="card-title" >{page.categorie} {index+1} </h3>
+                                            <h3 className="card-title" >{page.titre} </h3>
                                             {/* <p className="card-text" >{page.toparticle}</p> */}
-                                            <p className="card-text" >{page.titre}</p>
+                                            {/* <p className="card-text" >{page.resume}</p> */}
                                             {/* <Link to={`/categorie/${page.categorie}/${link2}`} > */}
-                                            <Link to={`/categorie/${page.categorie}/${link2}`} >
+                                            <Link to={`/categorie/${page.categorie}/${link2}-${page.id}`} >
                                                 <button className="btn">Lire...</button>
                                             </Link>
                                         </div>
                                         <div className="card-footer">
-                                            <span className="text-left"><i className="fas fa-edit"></i> Auteur</span>
-                                            <span className="text-right"><i className="fas fa-clock"></i> 04-04-2018</span>
+                                            <span className="text-left"><i className="fas fa-edit"></i> Auteur</span> {'  '}
+                                            <span className="text-right"><i className="fas fa-clock"></i> 2018-05-28</span>
                                         </div> 
                                     </div> 
                                 : 
                                     <div key={index} className="card" >
                                         <div className="videowrapper">
-                                            <img src={`${urlPath}/img/${page.categorie}${index+1}.jpg`} className="card-img-top" />
-                                            <Link to={`/categorie/${page.categorie}/${link2}`} >
+                                            <img src={`${urlPath}/storage/auteur/${page.image}`} className="card-img-top" />
+                                            <Link to={`${urlPath}/categorie/${page.categorie}/${link2}-${page.id}`} >
                                                 <img src={`${urlPath}/img/video.png`} className="videooverlay" />
                                             </Link>
                                         </div>
@@ -88,9 +88,9 @@ class Pagearticles extends Component {
                                             </Link>
                                         </div>
                                     </div>
-                            );
+                            ) 
                         // }
-                })
+                }): <div></div>
             );
         }
         return (
@@ -99,7 +99,7 @@ class Pagearticles extends Component {
                     <div className="col col-sm-12 col-md-9 pagearticles">
                         {/* <Grid className="card-columns"> */}
                         <div className="articlesgrid">
-                            {singlearticle()}
+                            <Singlearticle data={this.state.articles} />
                         </div>
                     </div>
                     <div className="col col-sm-12 col-md-3 right sidebarslider">

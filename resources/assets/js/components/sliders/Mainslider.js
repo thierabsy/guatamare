@@ -10,6 +10,9 @@ class Mainslider extends Component {
     super(props)
         this.next = this.next.bind(this)
         this.previous = this.previous.bind(this)
+        this.state = {
+            data: this.props.data || []
+        }
     }
     next() {
         this.slider.slickNext()
@@ -17,25 +20,38 @@ class Mainslider extends Component {
     previous() {
         this.slider.slickPrev()
     }
-    render() {
+    render(props) {
+        let dataActive =  this.props.data;
         let singleslide = () => {
             return(
-                mainsliders.map((item, index) => {
+                dataActive ?  dataActive.filter(a => a.slider === "sl_main").map((item, index) => {
                     return(
                         <div key={index}>
-                           <a href={`img/${item.link}`}>
-                                <img src={`img/${item.img}`} />
-                                <div className="text">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.subtitle}</p>
-                                    <button className="btn">Lire...</button>
-                                </div> 
-                           </a>
+                            <a href={`categorie/${item.categorie}/${item.titre}`}>
+                                    <img src={`storage/auteur/${item.image}`} />
+                                    <div className="text">
+                                        <h3>{item.titre}</h3>
+                                        {/* <p>{item.resume}</p> */}
+                                        <button className="btn">Lire...</button>
+                                    </div> 
+                            </a> 
                         </div>
                     );
-                })
+                }) : <div></div>
             );
         }
+       
+        let top3 = dataActive ? dataActive.filter(a => a.slider === "sl_top3").map((item, index) => {
+                    return <div key={index} className="col col-sm-4 col-md-12">
+                                <a href={`img/${item.categorie}`}>
+                                <img src={`storage/auteur/${item.image}`} />
+                                <div className="title">
+                                    <h4>{item.categorie}</h4>
+                                    <p>{item.titre}</p>
+                                </div>
+                                </a>
+                            </div>}) : <div></div>
+                
         let settings = {
                 infinite: true,
                 speed: 5000,
@@ -60,27 +76,7 @@ class Mainslider extends Component {
                         </div>
                         <div className="col col-md-3 msright">
                             <div className="row">
-                                <div className="col col-sm-4 col-md-12">
-                                    <img src="img/actualite.jpg" />
-                                    <div className="title">
-                                        <h4>Actualité</h4>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                                <div className="col col-sm-4 col-md-12">
-                                    <img src="img/economie.jpg" />
-                                    <div className="title">
-                                        <h4>Economie</h4>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                                <div className="col col-sm-4 col-md-12">
-                                    <img src="img/culture3.jpg" />
-                                    <div className="title">
-                                        <h4>Actualité</h4>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
+                                { top3 }
                             </div>
                         </div>
                     </div>

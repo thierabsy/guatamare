@@ -20,8 +20,8 @@ export const navbarItems = [
         color: "#4caf50"
     },
     {
-        name: "Humanitaire",
-        link: "humanitaire",
+        name: "Environnement",
+        link: "environnement",
         color: "#42a5f5"
     },
     {
